@@ -19,7 +19,7 @@ class Login extends CI_Controller {
                     $w = $this->Usuario_model->findDNI($_POST['username']);
                     $data_session = array (
                         'id_user'   	=>  $w->id_user,
-                        'username'   	=>  $w->dni,
+                        'name'   	    =>  $w->nombres,
                         'perfil' 		=> 	$w->perfil,
                         'idpermiso' 	=> 	$w->idpermiso,
                         'lvlpermiso'    =>  $w->lvl_permiso,

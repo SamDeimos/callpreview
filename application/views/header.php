@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo $control ?> - Mi Dami</title>
+	<title><?php echo $this->uri->segment(1)?> - Mi Dami</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/png" href="<?php echo base_url()?>assets/images/icon/favicon.png">
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
@@ -70,51 +70,20 @@
 				<div class="menu-inner">
 					<nav>
 						<ul class="metismenu" id="menu">
-							<?php
-							$lvl = $_SESSION['lvlpermiso'];
-							?>
-							<li class="<?php
-								echo ($control == "Dashboard") ? "active":" ";
-								echo " ";
-								echo ($lvl < 2) ? "d-none":" ";
-								?>">
-								<a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-								<ul class="collapse">
-									<li class="<?php echo ($control == "Dashboard") ? "active":" ";?>"><a href="<?php echo base_url() ?>Dashboard">Panel Administración</a></li>
-								</ul>
-							</li>
-							<li class="<?php
-								echo ($control == "Usuarios" || $control == "Productos") ? "active":" ";
-								echo " ";
-								echo ($lvl < 9) ? "d-none":" ";
-								?>">
-								<a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Sistema</span></a>
-								<ul class="collapse">
-									<li class="<?php echo ($control == "Usuarios") ? "active":" ";?>"><a href="<?php echo base_url() ?>Usuarios">Usuarios</a></li>
-									<li class="<?php echo ($control == "Productos") ? "active":" ";?>"><a href="<?php echo base_url() ?>Productos">Productos</a></li>
-								</ul>
-							</li>
-							<li class="<?php
-								echo ($control == "Callcenter" || $control == "Clientes") ? "active":" ";
-								echo " ";
-								echo ($lvl < 2) ? "d-none":" ";
-							;?>">
-								<a href="javascript:void(0)" aria-expanded="true"><i class="ti-view-list"></i><span>Call Center</span></a>
-								<ul class="collapse">
-									<li class="<?php echo ($control == "Callcenter") ? "active":" ";?>"><a href="<?php echo base_url() ?>Callcenter">DAMI</a></li>
-									<li class="<?php echo ($control == "Clientes") ? "active":" ";?>"><a href="<?php echo base_url() ?>Clientes">Clientes</a></li>
-								</ul>
-							</li>
-							<li class="<?php
-							echo ($control == "Reporte") ? "active":" ";
-							echo " ";
-							echo ($lvl < 4) ? "d-none":" ";
-							;?>">
-								<a href="javascript:void(0)" aria-expanded="true"><i class="ti-stats-up"></i><span>Reportes</span></a>
-								<ul class="collapse">
-									<li class="<?php echo ($control == "Reporte") ? "active":" ";?>"><a href="<?php echo base_url() ?>Reporte">Agente</a></li>
-								</ul>
-							</li>
+						<?php foreach($menu as $main){
+							if($main->nivel_up == 0){?>
+								<li class="<?php echo ($this->uri->segment(1) == $main->menu) ? "active":" " ?>">
+									<a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span><?php echo $main->menu ?></span></a>
+									<?php foreach($menu as $sub){ 
+										if ($sub->nivel_up == $main->id_menu){?>
+											<ul class="collapse">
+												<li class="<?php echo ($this->uri->segment(1) == $main->menu) ? "active":" " ?>"><a href="<?php echo $sub->url ?>"><?php echo $sub->menu ?></a></li>
+											</ul>
+									<?php }
+									}?>
+								</li>
+						<?php }
+						} ?>
 						</ul>
 					</nav>
 				</div>
@@ -141,17 +110,17 @@
 			<div class="row align-items-center">
 				<div class="col-sm-6">
 					<div class="breadcrumbs-area clearfix">
-						<h4 class="page-title pull-left"><?php echo $_SESSION['perfil']?></h4>
+						<h4 class="page-title pull-left"><?php echo $this->session->userdata('perfil')?></h4>
 						<ul class="breadcrumbs pull-left">
 							<li><a href="<?php echo base_url()?>">Home</a></li>
-							<li><span><?php echo $control ?></span></li>
+							<li><span><?php echo $this->uri->segment(1)?></span></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-6 clearfix">
 					<div class="user-profile pull-right">
 						<img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
-						<h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $user->nombre ." " .$user->apellido;?> <i class="fa fa-angle-down"></i></h4>
+						<h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('name');?> <i class="fa fa-angle-down"></i></h4>
 						<span class="d-none" id="lvluser"><?php echo $lvl ?></span>
                         <div class="dropdown-menu">
 							<a class="dropdown-item" href="<?php echo base_url()?>login/Salir">Cerrar sesión</a>
