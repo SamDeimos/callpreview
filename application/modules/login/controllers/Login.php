@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 		$this->load->model('../modules/usuarios/models/Usuario_model');
 	}
 	public function index(){
-        if($this->session->userdata('username')){
+        if($this->session->userdata('log_in') == TRUE){
             redirect('dashboard');
         }
 	    if (isset($_POST['username']) && isset($_POST['password'])) {

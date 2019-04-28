@@ -59,13 +59,7 @@
 <script src="<?php echo base_url()?>assets/js/script-functions.js"></script>
 
 <!-- Script Usuarios -->
-	<?php if($this->uri->segment(1) == "Usuarios"){ ?>
-		<script src="<?php echo base_url()?>assets/js/usuarios.js"></script>
-	<?php }elseif($this->uri->segment(1) == "Callcenter"){ ?>
-        <script src="<?php echo base_url()?>assets/js/damis.js"></script>
-	<?php }elseif($this->uri->segment(1) == "Clientes"){ ?>
-        <script src="<?php echo base_url()?>assets/js/clientes.js"></script>
-    <?php } ?>
+<script src="<?php echo base_url()?>assets/js/<?php echo $this->uri->segment(1)?>.js"></script>
 
 <?php 
 var_dump($this->session->userdata());

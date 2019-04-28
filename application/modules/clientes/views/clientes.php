@@ -7,7 +7,6 @@
             <tr>
                 <th>ID</th>
                 <th data-priority="1">Nombres</th>
-                <th>Apellido</th>
                 <th>Cédula</th>
                 <th>Correo</th>
                 <th>Teléfono</th>
@@ -15,9 +14,6 @@
                 <th>Genero</th>
                 <th>Estado</th>
                 <th data-priority="3">Perfil</th>
-				<th>Número Agente</th>
-				<th>Meta</th>
-				<th>Call Center</th>
 				<th>Estado usuario</th>
                 <th class="text-center" data-priority="2">Acción</th>
             </tr>
@@ -26,7 +22,6 @@
             <tr>
                 <th>ID</th>
                 <th data-priority="1">Nombres</th>
-                <th>Apellido</th>
                 <th>Cédula</th>
                 <th>Correo</th>
                 <th>Teléfono</th>
@@ -34,9 +29,6 @@
                 <th>Genero</th>
                 <th>Estado</th>
                 <th>Perfil</th>
-				<th>Número Agente</th>
-				<th>Meta</th>
-				<th>Call Center</th>
 				<th>Estado Usuario</th>
                 <th class="text-center data-priority="2"">Acción</th>
             </tr>
