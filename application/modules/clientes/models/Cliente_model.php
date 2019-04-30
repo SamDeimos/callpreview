@@ -23,7 +23,7 @@ class Cliente_model extends CI_Model{
 
     function findID($id){
         $this->db->select('*', FALSE);
-        $this->db->from('md_cliente');
+        $this->db->from('md_clientes');
         $this->db->where('id_cliente', $id);
         $query = $this->db->get();
         return $query->row();

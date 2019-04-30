@@ -61,10 +61,9 @@
 <!-- Script Usuarios -->
 <script src="<?php echo base_url()?>assets/js/<?php echo $this->uri->segment(1)?>.js"></script>
 
-<?php 
-var_dump($this->session->userdata());
+<?php
 echo "<hr>";
-var_dump($menu);
+var_dump($generos);
 ?>
 
 </body>

@@ -6,9 +6,13 @@ class Clientes extends CI_Controller {
         parent::__construct();
         $this->load->model('Cliente_model');
         $this->load->model('../modules/tools/models/Tools_model');
+        $this->load->library('Attributes');
 
         //Variables indispensables
         $this->data['menu'] = $this->Tools_model->getMenu($this->session->userdata('idpermiso'));
+        $this->data['clientes'] = $this->Cliente_model->findAll();
+        $this->data['generos'] = $this->attributes->getGenero();
+
 	}
 
 	public function index(){
@@ -21,11 +25,31 @@ class Clientes extends CI_Controller {
         $this->load->view('footer');
     }
 
-    //Infromacion de clientes
-    public function ClientTable(){
-        echo json_encode($this->Cliente_model->findAll());
+    public function cliente($id = NULL){
+        if($id == NULL){
+            $this->data['cliente'] = NULL;
+            $this->load->view('header', $this->data);
+            $this->load->view('formulario');
+            $this->load->view('footer');
+        }else{
+            $this->data['cliente'] = $this->Cliente_model->findID($id);
+            $this->load->view('header', $this->data);
+            $this->load->view('formulario');
+            $this->load->view('footer');
+        }
+        if($this->input->post()){
+            $data['nombre'] = $this->input->post('nombre');
+            $data['dni'] = $this->input->post('cedula');
+            $genero = $this->input->post('genero');
+            $data['id_genero'] = array_sum($genero);
+
+            echo "<script>console.log('Con data: ".json_encode($data)."')</script>";
+        }else{
+            echo "<script>console.log('Sin data: ')</script>";
+        }
+
     }
     
 }
 
-/* End of file Dashboard.php */
+/* End of file Clientes.php */
