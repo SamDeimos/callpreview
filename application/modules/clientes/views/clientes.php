@@ -1,4 +1,9 @@
-<button type="button" class="btn-float" data-toggle="modal" data-target="#userModalNew"><span>+</span></button>
+<br>
+<div class="card">
+    <div class="card-acction">
+        <a class="btn btn-primary btn-xs" href="clientes/cliente"><i class="fa fa-user-plus"></i> Nueva cliente</a>
+    </div>
+</div>
 <br>
 <div class="card">
     <div class="card-body">
@@ -20,7 +25,7 @@
                 <?php foreach($clientes as $cliente){ ?>
                     <tr>
                         <td><?php echo $cliente->id_cliente; ?></td>
-                        <td><?php echo $cliente->nombres; ?></td>
+                        <td><a href="<?php echo base_url()."clientes/cliente/".$cliente->id_cliente; ?>"><?php echo $cliente->nombres; ?></a></td>
                         <td><?php echo $cliente->dni; ?></td>
                         <td><?php echo $cliente->email; ?></td>
                         <td><?php echo $cliente->tel; ?></td>

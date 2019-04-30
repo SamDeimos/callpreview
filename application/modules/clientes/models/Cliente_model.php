@@ -30,23 +30,13 @@ class Cliente_model extends CI_Model{
     }
 
     public function AddClient($param){
-        if($this->db->insert('md_cliente',$param)){
-            $result['estado'] = 'success';
-            $result['id_insert'] = $this->db->insert_id();
-        }else{
-            $result['estado'] = 'error';
-        }
-        return $result;
+        $this->db->insert('md_clientes',$param);
+        return $this->db->insert_id();
     }
 
     public function EditClient($param, $id){
         $this->db->where('id_cliente', $id);
-        if($this->db->update('md_cliente', $param)){
-            $result['estado'] = 'success';
-        }else{
-            $result['estado'] = 'error';
-        }
-        return $result;
+        $this->db->update('md_clientes', $param);
     }
 
     public function DeleteClient($param){

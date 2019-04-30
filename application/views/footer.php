@@ -62,8 +62,8 @@
 <script src="<?php echo base_url()?>assets/js/<?php echo $this->uri->segment(1)?>.js"></script>
 
 <?php
-echo "<hr>";
-var_dump($generos);
+// echo "<hr>";
+// var_dump($generos);
 ?>
 
 </body>
