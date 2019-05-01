@@ -20,11 +20,8 @@ class Usuario_model extends CI_Model{
 	}
 
     function findID($id){
-        $this->db->select('*', FALSE);
-        $this->db->from('md_user a');
-        $this->db->join('md_permisos b', 'a.id_permisos = b.id_permisos', 'left');
         $this->db->where('id_user', $id);
-        $query = $this->db->get();
+        $query = $this->db->get('md_user');
         $result = $query->row();
 
         //Decode Password and remplace
@@ -46,16 +43,14 @@ class Usuario_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
-	function count_user(){
-		return $this->db->count_all_results('md_user');
-	}
 
     public function AddUser($param){
-	    $this->db->insert('md_user',$param);
+		$this->db->insert('md_user',$param);
+		return $this->db->insert_id();
     }
 
-    public function EditUser($param){
-	    $this->db->where('dni', $param['dni']);
+    public function EditUser($param, $id){
+	    $this->db->where('id_user', $id);
         $this->db->update('md_user', $param);
     }
 

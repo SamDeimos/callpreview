@@ -23,6 +23,9 @@ class Workflows extends CI_Controller {
     }
 
     public function workflow($id = null){
+        //Validación de inicio de session
+        $this->Tools_model->validateLogin();
+
         $this->load->view('header', $this->data);
         if($id != ''){
             echo "<script>console.log('Con parametros: ".$id."')</script>";
@@ -36,7 +39,10 @@ class Workflows extends CI_Controller {
     }
 
     public function WorkflowTable(){
-	    echo json_encode($this->Workflow_model->findAll());
+        //Validación de inicio de session
+        $this->Tools_model->validateLogin();
+
+	    echo json_encode((empty($this->data['tareas'])) ? NULL : $this->data['tareas']);
 	}
 }
 

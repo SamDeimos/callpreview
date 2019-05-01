@@ -19,25 +19,10 @@
                 <th>Genero</th>
                 <th>Estado</th>
                 <th data-priority="3">Perfil</th>
+                <th></th>
                 <th class="text-center" data-priority="2">Acción</th>
             </tr>
             </thead>
-            <tbody>
-                <?php foreach($usuarios as $user){ ?>
-                <tr>
-                    <td><?php echo $user->id_user; ?></td>
-                    <td><?php echo $user->nombres; ?></td>
-                    <td><?php echo $user->dni; ?></td>
-                    <td><?php echo $user->email; ?></td>
-                    <td><?php echo $user->tel; ?></td>
-                    <td><?php echo $user->address; ?></td>
-                    <td><?php echo $user->genero; ?></td>
-                    <td><?php echo $user->estado; ?></td>
-                    <td><?php echo $user->perfil; ?></td>
-                    <td></td>
-                </tr>
-                <?php }?>
-            </tbody>
             <tfoot>
             <tr>
                 <th>ID</th>
@@ -49,6 +34,7 @@
                 <th>Genero</th>
                 <th>Estado</th>
                 <th>Perfil</th>
+                <th></th>
                 <th class="text-center data-priority="2"">Acción</th>
             </tr>
             </tfoot>

@@ -30,17 +30,26 @@ class Clientes extends CI_Controller {
     }
 
     public function cliente($id = NULL){
+        //Validación de inicio de session
+        $this->Tools_model->validateLogin();
+        
+        /*
+        / Condicionamos @id si es Nuevo cliente
+        / o Editar cliente
+        / @id int
+        */ 
         if($id == NULL){
             $this->data['cliente'] = NULL;
-            $this->load->view('header', $this->data);
-            $this->load->view('formulario');
-            $this->load->view('footer');
         }else{
             $this->data['cliente'] = $this->Cliente_model->findID($id);
-            $this->load->view('header', $this->data);
-            $this->load->view('formulario');
-            $this->load->view('footer');
         }
+
+        //Cargamos las vitas del modulo Clinetes
+        $this->load->view('header', $this->data);
+        $this->load->view('formulario');
+        $this->load->view('footer');
+
+        //Validamos ingreso de datos po post
         if($this->input->post()){
              //Array
             $genero = $this->input->post('genero');
@@ -72,6 +81,13 @@ class Clientes extends CI_Controller {
             echo "<script>console.log('Sin data: ')</script>";
         }
 
+    }
+
+    public function ClienteTable(){
+        //Validación de inicio de session
+        $this->Tools_model->validateLogin();
+
+        echo json_encode((empty($this->data['clientes'])) ? NULL : $this->data['clientes']);
     }
     
 }

@@ -62,8 +62,12 @@
 <script src="<?php echo base_url()?>assets/js/<?php echo $this->uri->segment(1)?>.js"></script>
 
 <?php
-// echo "<hr>";
-// var_dump($generos);
+
+echo "<script>console.log('Memoria usada: ".$this->benchmark->memory_usage()."')</script>";
+echo "<script>console.log('Tiempo de ejecución: ".$this->benchmark->elapsed_time()."')</script>";
+
+echo "<hr>";
+//var_dump($usuarios);
 ?>
 
 </body>

@@ -135,45 +135,48 @@ var Tableuser = $('#Tableuser').DataTable( {
 		"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 	},
 	ajax: {
-		"url" : baseurl+"admin/usuarios/UserTable",
+		"url" : baseurl+"usuarios/UsuarioTable",
 		"type" : "POST",
 		dataSrc: ''
 	},
 	columns : [
-			{data: 'id_user'},
-			{data: 'nombre'},
-			{data: 'apellido'},
-			{data: 'dni'},
-			{data: 'email'},
-			{data: 'tel'},
-			{data: 'address'},
-			{data: 'genero'},
-			{data: 'estado'},
-			{data: 'perfil'},
-			{"orderable": true,
-				render:function (data, type, row) {
-					if (row.estadouser == 'habilitado'){
-						return '<i class="fa fa-check-circle">Habilitado</i>';
-					}else{
-						return '<i class="fa fa-times-circle">Deshabilitado</i>';
-					}
+        {data: 'id_user'},
+        {"orderable": true,
+            render:function(data, type, row){
+                return '<a target="_black" href="'+baseurl+'usuarios/usuario/'+row.id_user+'">'+row.nombres+'</a>';
+            }
+        },
+		{data: 'dni'},
+		{data: 'email'},
+		{data: 'tel'},
+		{data: 'address'},
+		{data: 'genero'},
+		{data: 'estado'},
+		{data: 'perfil'},
+		{"orderable": true,
+			render:function (data, type, row) {
+				if (row.estadouser == 'habilitado'){
+					return '<i class="fa fa-check-circle">Habilitado</i>';
+				}else{
+					return '<i class="fa fa-times-circle">Deshabilitado</i>';
+				}
+			}
+		},
+		{"orderable": true,
+			render:function (data, type, row) {
+				if(row.perfil == 'Admin'){
+					return '<a href="#" data-toggle="modal" data-target="#userModalEdit" data-id="'+row.id_user+'"><i class="far fa-edit"></i></a>'+
+						'<i class="far fa-trash-alt"></i>';
+				}else{
+					return '<a href="#" data-toggle="modal" data-target="#userModalEdit" data-id="'+row.id_user+'"><i class="far fa-edit"></i></a>'+
+						'<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="'+row.id_user+'"><i class="far fa-trash-alt""></i></a>';
 				}
 			},
-			{"orderable": true,
-				render:function (data, type, row) {
-					if(row.perfil == 'Admin'){
-						return '<a href="#" data-toggle="modal" data-target="#userModalEdit" data-id="'+row.id_user+'"><i class="far fa-edit"></i></a>'+
-							'<i class="far fa-trash-alt"></i>';
-					}else{
-						return '<a href="#" data-toggle="modal" data-target="#userModalEdit" data-id="'+row.id_user+'"><i class="far fa-edit"></i></a>'+
-							'<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="'+row.id_user+'"><i class="far fa-trash-alt""></i></a>';
-					}
-				},
-				"className": "text-center"
-			}
-		],
-	buttons:[{
-		extend: 'collection',
+			"className": "text-center"
+		}
+    ],
+    buttons:[{
+        extend: 'collection',
 		text: '<i class="fas fa-file-export"></i> Exportar',
 		background: false,
 		buttons: [
@@ -182,14 +185,14 @@ var Tableuser = $('#Tableuser').DataTable( {
 				extend: 'excel',
 				text: '<i class="fa fa-file-excel-o"></i> Excel',
 				exportOptions: {
-					columns: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+					columns: [0, 1, 2, 5, 6, 7, 8, 9]
 				}
 			},
 			{
 				extend: 'csv',
 				text: '<i class="fas fa-file-csv"></i> CSV',
 				exportOptions: {
-					columns: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+					columns: [0, 1, 2, 5, 6, 7, 8, 9]
 				}
 			},
 			{
@@ -198,7 +201,7 @@ var Tableuser = $('#Tableuser').DataTable( {
 				text: '<i class="fas fa-file-pdf"></i> PDF',
 				pageSize: 'LEGAL',
 				exportOptions: {
-					columns: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+					columns: [0, 1, 2, 5, 6, 7, 8, 9]
 				}
 			},
 			{
@@ -226,7 +229,7 @@ var Tableuser = $('#Tableuser').DataTable( {
 					head.appendChild(style);
 				},
 				exportOptions: {
-					columns: [1, 2, 5, 6, 7, 8, 9, 10, 11, 12]
+					columns: [1, 2, 5, 6, 7, 8, 9]
 				}
 			}
 			]
@@ -234,7 +237,7 @@ var Tableuser = $('#Tableuser').DataTable( {
 		{
 			text: "<i class='fas fa-sync-alt'></i>",
 			action: function (e, dt, node, config) {
-				dt.ajax.reload(null,false)
+				Tableuser.ajax.reload(null,false)
 			}
 		}
 
