@@ -29,6 +29,10 @@
     <!--  bootstrap-datepicker3  -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-datepicker3.min.css">
 
+    <!-- bootstrap-select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />
+
     <!--  TableExport  -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/tableexport.min.css">
 
@@ -121,7 +125,6 @@
 					<div class="user-profile pull-right">
 						<img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
 						<h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('name');?> <i class="fa fa-angle-down"></i></h4>
-						<span class="d-none" id="lvluser"><?php echo $lvl ?></span>
                         <div class="dropdown-menu">
 							<a class="dropdown-item" href="<?php echo base_url()?>login/Salir">Cerrar sesión</a>
 						</div>

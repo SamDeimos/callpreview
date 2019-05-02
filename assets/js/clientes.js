@@ -233,13 +233,44 @@ function ValidateUserDebounce(){
 }
 
 //Campo de fecha
-
-$(function () {
-	$('#clFecNac').datepicker({
-		format: 'yyyy-mm-dd',
-		language: "es"
-	}).datepicker("setDate", new Date());
+$('#fec_nac').datepicker({
+	format: 'yyyy-mm-dd',
+	language: "es"
 });
 
+//bootstrap-select
+
+$("#cedula").select2({
+    theme: "bootstrap",
+    tags: true,
+    createTag: function (params) {
+      return {
+        id: params.term,
+        text: params.term,
+        newOption: true
+      }
+    },
+    templateResult: function (data) {
+      var $result = $("<span></span>");
+      $result.text(data.text);
+  
+      if (data.newOption== true) {
+        $result.append(" <em>(Crear cliente)</em>");
+      }
+      return $result;
+    },
+    containerCssClass: "input-sm",
+    minimumResultsForSearch: 5
+  });
+
+  $('#cedula').on('select2:select', function (e) {
+    var data = e.params.data;
+    let array = data.text.split('-');
+    let id = array[2].replace('#', '').trim();
+    console.log(id);
+    if(id > 0){
+        location.href = baseurl+"clientes/cliente/"+id;
+    }
+  });
 
 

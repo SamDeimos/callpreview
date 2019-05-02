@@ -28,7 +28,7 @@ class Login extends CI_Controller {
                     $this->session->set_userdata($data_session);
                     redirect('dashboard');
                 }else{
-                    redirect('Login#mal');
+                    redirect('login#mal');
                 }
             };
 	    }

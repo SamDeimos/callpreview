@@ -13,8 +13,13 @@
             <div class="col-6 border-right">
                 <input class="form-control" name="id_cliente" id="id_cliente" type="hidden" value="<?php echo set_value("id_cliente", (isset($cliente->id_cliente) ? $cliente->id_cliente : "")); ?>">
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input class="form-control form-control-sm" name="nombre" id="nombre" type="text" required value="<?php echo set_value("nombre", (isset($cliente->nombres) ? $cliente->nombres : "")); ?>">
+                    <label for="">Cédula</label>
+					<select class="custom-select custom-select-sm" name="cedula" id="cedula" <?php echo (isset($cliente->dni) ? 'disabled' : ''); ?> required>
+                        <option <?php echo (isset($cliente->dni) ? '' : 'selected'); ?> value=""></option>
+						<?php foreach ($cedulas as $cedula){ ?>
+						<option <?php echo ((isset($cliente->dni) ? $cliente->dni : '') == $cedula->dni) ? "selected" : ""; ?> value="<?php echo $cedula->dni; ?>"><?php echo $cedula->dni; ?> - <?php echo $cedula->nombres; ?> - #<?php echo $cedula->id_cliente; ?></option>
+						<?php } ?>
+					</select>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -57,9 +62,13 @@
             <!-- Columna derecha -->
             <div class="col-6">
                 <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input class="form-control form-control-sm" name="nombre" id="nombre" type="text" required value="<?php echo set_value("nombre", (isset($cliente->nombres) ? $cliente->nombres : "")); ?>">
+                </div>
+                <!-- <div class="form-group">
                     <label for="cedula">Cédula</label>
                     <input class="form-control form-control-sm" name="cedula" id="cedula" type="text" required value="<?php echo set_value("cedula", (isset($cliente->dni) ? $cliente->dni : "")); ?>">
-                </div>
+                </div> -->
                 <div class="row form-group">
                     <!-- Columna izquierda -->
                     <div class="col-6">

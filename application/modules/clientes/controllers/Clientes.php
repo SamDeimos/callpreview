@@ -16,6 +16,7 @@ class Clientes extends CI_Controller {
 
         //Variables para modulo
         $this->data['clientes'] = $this->Cliente_model->findAll();
+        $this->data['cedulas'] = $this->Cliente_model->getClientDNI();
 
 	}
 

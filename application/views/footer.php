@@ -37,6 +37,10 @@
 <script src="<?php echo base_url()?>assets/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url()?>assets/js/bootstrap-datepicker.es.min.js"></script>
 
+<!-- bootstrap-select2 -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.js"></script>
+
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -66,8 +70,8 @@
 echo "<script>console.log('Memoria usada: ".$this->benchmark->memory_usage()."')</script>";
 echo "<script>console.log('Tiempo de ejecución: ".$this->benchmark->elapsed_time()."')</script>";
 
-echo "<hr>";
-//var_dump($usuarios);
+//echo "<hr>";
+//var_dump($cliente);
 ?>
 
 </body>
