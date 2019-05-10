@@ -6,15 +6,15 @@ class Usuarios extends CI_Controller{
 		parent::__construct();
         $this->load->model('Usuario_model');
         $this->load->model('../modules/tools/models/Tools_model');
-        $this->load->library('AttributesPersona');
+        $this->load->library('AttributosPersona');
 
         //Variables indispensables
         $this->data['menu'] = $this->Tools_model->getMenu($this->session->userdata('idpermiso'));
-        $this->data['generos'] = $this->attributespersona->getGenero();
-        $this->data['estadosciviles'] = $this->attributespersona->getEstadoCivil();
-        $this->data['lvlformaciones'] = $this->attributespersona->getLvlFormacion();
-        $this->data['permisos'] = $this->attributespersona->getPermisos();
-        $this->data['estadousers'] = $this->attributespersona->getEstadousers();
+        $this->data['generos'] = $this->attributospersona->getGenero();
+        $this->data['estadosciviles'] = $this->attributospersona->getEstadoCivil();
+        $this->data['lvlformaciones'] = $this->attributospersona->getLvlFormacion();
+        $this->data['permisos'] = $this->attributospersona->getPermisos();
+        $this->data['estadousers'] = $this->attributospersona->getEstadousers();
 
         //Variables para modulo
         $this->data['usuarios'] = $this->Usuario_model->findAll();

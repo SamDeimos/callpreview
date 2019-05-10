@@ -14,18 +14,14 @@ class Cliente_model extends CI_Model{
     }
 
     function findDNI($clientdni){
-        $this->db->select('*', FALSE);
-        $this->db->from('md_cliente');
         $this->db->where('dni', $clientdni);
-        $query = $this->db->get();
+        $query = $this->db->get('md_cliente');
         return $query->row();
     }
 
-    function findID($id){
-        $this->db->select('*', FALSE);
-        $this->db->from('md_clientes');
-        $this->db->where('id_cliente', $id);
-        $query = $this->db->get();
+    function findID($id_cliente){
+        $this->db->where('id_cliente', $id_cliente);
+        $query = $this->db->get('md_clientes');
         return $query->row();
     }
 
@@ -34,14 +30,14 @@ class Cliente_model extends CI_Model{
         return $this->db->insert_id();
     }
 
-    public function EditClient($param, $id){
-        $this->db->where('id_cliente', $id);
+    public function EditClient($param, $id_cliente){
+        $this->db->where('id_cliente', $id_cliente);
         $this->db->update('md_clientes', $param);
     }
 
-    public function DeleteClient($param){
-        $this->db->where('id_cliente', $param['id_cliente']);
-        $this->db->delete('md_cliente');
+    public function DeleteClient($id_cliente){
+        $this->db->where('id_cliente', $id_cliente);
+        $this->db->delete('md_clientes');
     }
 
     public function getClientDNI(){

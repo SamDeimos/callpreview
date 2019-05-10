@@ -1,6 +1,10 @@
 <br>
 <div class="card">
     <div class="card-acction">
+        <?php
+        if(isset($cliente)){ ?>
+        <a class="btn btn-primary btn-xs" href="clientes/cliente"><i class="fa fa-user-plus"></i> Nueva cliente</a>
+        <?php } ?>
         <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>clientes">volver</a>
     </div>
 </div>
@@ -11,15 +15,15 @@
         <div class="row">
             <!-- Columna izquierda -->
             <div class="col-6 border-right">
-                <input class="form-control" name="id_cliente" id="id_cliente" type="hidden" value="<?php echo set_value("id_cliente", (isset($cliente->id_cliente) ? $cliente->id_cliente : "")); ?>">
+                <input class="form-control" name="id_cliente" id="id_cliente" type="hidden" value="<?php echo set_value("id_cliente", isset($cliente->id_cliente) ? $cliente->id_cliente : ""); ?>">
                 <div class="form-group">
-                    <label for="">Cédula</label>
-					<select class="custom-select custom-select-sm" name="cedula" id="cedula" <?php echo (isset($cliente->dni) ? 'disabled' : ''); ?> required>
-                        <option <?php echo (isset($cliente->dni) ? '' : 'selected'); ?> value=""></option>
-						<?php foreach ($cedulas as $cedula){ ?>
-						<option <?php echo ((isset($cliente->dni) ? $cliente->dni : '') == $cedula->dni) ? "selected" : ""; ?> value="<?php echo $cedula->dni; ?>"><?php echo $cedula->dni; ?> - <?php echo $cedula->nombres; ?> - #<?php echo $cedula->id_cliente; ?></option>
-						<?php } ?>
-					</select>
+                    <label for="cedula">Cédula</label>
+                    <div class="input-group">
+                        <input class="form-control form-control-sm" name="cedula" id="cedula" type="text" aria-label="1777777777" aria-describedby="validar_cedula" value="<?php echo set_value("cedula", isset($cliente->dni) ? $cliente->dni : ""); ?>" <?php echo (isset($cliente)) ? 'readonly' : '' ?> required>
+                        <div class="input-group-append">
+                            <button class="input-group-text" id="ValidateUser" onclick="ValidateUserSRI(event);" href="" style="padding: 0 .4rem 0 .4rem;"><i id="ValidateDni" class="fa fa-search"></i></button>
+                        </div>                    
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -63,12 +67,8 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input class="form-control form-control-sm" name="nombre" id="nombre" type="text" required value="<?php echo set_value("nombre", (isset($cliente->nombres) ? $cliente->nombres : "")); ?>">
+                    <input class="form-control form-control-sm" name="nombres" id="nombres" type="text" required value="<?php echo set_value("nombre", (isset($cliente->nombres) ? $cliente->nombres : "")); ?>">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="cedula">Cédula</label>
-                    <input class="form-control form-control-sm" name="cedula" id="cedula" type="text" required value="<?php echo set_value("cedula", (isset($cliente->dni) ? $cliente->dni : "")); ?>">
-                </div> -->
                 <div class="row form-group">
                     <!-- Columna izquierda -->
                     <div class="col-6">

@@ -81,7 +81,7 @@
 									<?php foreach($menu as $sub){ 
 										if ($sub->nivel_up == $main->id_menu){?>
 											<ul class="collapse">
-												<li class="<?php echo ($this->uri->segment(1) == $main->menu) ? "active":" " ?>"><a href="<?php echo base_url().$sub->url ?>"><?php echo $sub->menu ?></a></li>
+												<li class="<?php echo ($this->uri->uri_string() == $sub->url) ? "active":" " ?>"><a href="<?php echo base_url().$sub->url ?>"><?php echo $sub->menu ?></a></li>
 											</ul>
 									<?php }
 									}?>

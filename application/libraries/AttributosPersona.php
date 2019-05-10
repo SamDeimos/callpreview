@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AttributesPersona{
+class AttributosPersona{
     protected $ci;
 
     function __construct(){

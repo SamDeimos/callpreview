@@ -70,8 +70,8 @@
 echo "<script>console.log('Memoria usada: ".$this->benchmark->memory_usage()."')</script>";
 echo "<script>console.log('Tiempo de ejecución: ".$this->benchmark->elapsed_time()."')</script>";
 
-//echo "<hr>";
-//var_dump($cliente);
+// echo "<hr>";
+// var_dump($cliente);
 ?>
 
 </body>

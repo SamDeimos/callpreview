@@ -12,13 +12,13 @@
 				<div class="modal-body">
 					<p>Esta acción no se puede deshacer, ¿Desea eliminar este registro?</p>
 					<?php
-					$data = array(
-						'type'  => 'text',
+                    $idDelete = array(
+						'type'  => 'hidden',
 						'name'  => 'idDelete',
 						'id'    => 'idDelete',
 						'class' => 'form-control form-control-sm',
 					);
-					echo form_input($data); ?>
+                    echo form_input($idDelete); ?>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
