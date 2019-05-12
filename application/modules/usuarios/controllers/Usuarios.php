@@ -5,11 +5,12 @@ class Usuarios extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
         $this->load->model('Usuario_model');
-        $this->load->model('../modules/tools/models/Tools_model');
+        $this->load->library('Menu');
+        $this->load->library('ValidarLogin');
         $this->load->library('AttributosPersona');
 
         //Variables indispensables
-        $this->data['menu'] = $this->Tools_model->getMenu($this->session->userdata('idpermiso'));
+        $this->data['menu'] = $this->menu->getMenu($this->session->userdata('idpermiso'));
         $this->data['generos'] = $this->attributospersona->getGenero();
         $this->data['estadosciviles'] = $this->attributospersona->getEstadoCivil();
         $this->data['lvlformaciones'] = $this->attributospersona->getLvlFormacion();
@@ -22,7 +23,7 @@ class Usuarios extends CI_Controller{
 
 	public function index(){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         //Vistas
         $this->load->view('header', $this->data);
@@ -32,7 +33,7 @@ class Usuarios extends CI_Controller{
 
     public function usuario($id = NULL){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         /*
         / Condicionamos @id si es Nuevo usuario
@@ -90,7 +91,7 @@ class Usuarios extends CI_Controller{
     
     public function UsuarioTable(){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         echo json_encode((empty($this->data['usuarios'])) ? NULL : $this->data['usuarios']);
     }

@@ -4,15 +4,16 @@ class Dashboard extends CI_Controller {
     public $data;
 	public function __construct(){
 		parent::__construct();
-        $this->load->model('../modules/tools/models/Tools_model');
+        $this->load->library('Menu');
+        $this->load->library('ValidarLogin');
 
         //Variables indispensables
-        $this->data['menu'] = $this->Tools_model->getMenu($this->session->userdata('idpermiso'));
+        $this->data['menu'] = $this->menu->getMenu($this->session->userdata('idpermiso'));
 	}
 
 	public function index(){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         //Carga de vistas
         $this->load->view('header', $this->data);

@@ -21,7 +21,7 @@ class Login extends CI_Controller {
                         'id_user'   	=>  $w->id_user,
                         'name'   	    =>  $w->nombres,
                         'perfil' 		=> 	$w->perfil,
-                        'idpermiso' 	=> 	$w->idpermiso,
+                        'idpermiso' 	=> 	$w->id_permiso,
                         'lvlpermiso'    =>  $w->lvl_permiso,
                         'log_in'  		=>  TRUE
                     );
@@ -32,8 +32,7 @@ class Login extends CI_Controller {
                 }
             };
 	    }
-        $data['control'] = get_class($this);
-		$this->load->view('login', $data);
+		$this->load->view('login');
 	}
 
 	public function Salir(){
@@ -42,4 +41,4 @@ class Login extends CI_Controller {
     }
 }
 
-/* End of file Controllername.php */
+/* End of file Login.php */

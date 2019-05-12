@@ -40,12 +40,6 @@ class Cliente_model extends CI_Model{
         $this->db->delete('md_clientes');
     }
 
-    public function getClientDNI(){
-        $this->db->select('id_cliente, nombres, dni');
-        $query = $this->db->get('md_clientes');
-        return $query->result();
-    }
-
 }
 
 /* End of file .php */

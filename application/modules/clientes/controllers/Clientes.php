@@ -5,24 +5,24 @@ class Clientes extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('Cliente_model');
-        $this->load->model('../modules/tools/models/Tools_model');
+        $this->load->library('Menu');
+        $this->load->library('ValidarLogin');
         $this->load->library('AttributosPersona');
 
         //Variables indispensables
-        $this->data['menu'] = $this->Tools_model->getMenu($this->session->userdata('idpermiso'));
+        $this->data['menu'] = $this->menu->getMenu($this->session->userdata('idpermiso'));
         $this->data['generos'] = $this->attributospersona->getGenero();
         $this->data['estadosciviles'] = $this->attributospersona->getEstadoCivil();
         $this->data['lvlformaciones'] = $this->attributospersona->getLvlFormacion();
 
         //Variables para modulo
         $this->data['clientes'] = $this->Cliente_model->findAll();
-        $this->data['cedulas'] = $this->Cliente_model->getClientDNI();
 
 	}
 
 	public function index(){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         //Carga de vistas
         $this->load->view('header', $this->data);
@@ -33,7 +33,7 @@ class Clientes extends CI_Controller {
 
     public function cliente($id = NULL){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
         
         /*
         / Condicionamos @id si es Nuevo cliente
@@ -87,14 +87,14 @@ class Clientes extends CI_Controller {
 
     public function ClienteTable(){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         echo json_encode((empty($this->data['clientes'])) ? NULL : $this->data['clientes']);
     }
 
     public function DeleteCliente(){
         //Validación de inicio de session
-        $this->Tools_model->validateLogin();
+        $this->validarlogin->validateLogin();
 
         $id_cliente = $this->input->post('idDelete');
         if ($this->Cliente_model->DeleteClient($id_cliente)){
