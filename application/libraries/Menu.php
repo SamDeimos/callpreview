@@ -7,8 +7,8 @@ class Menu{
         $this->ci =& get_instance();
     }
 
-    public function getMenu($permiso){
-        $this->ci->db->like('id_permiso', $permiso);
+    public function getMenu($id_permiso){
+        $this->ci->db->like('id_permiso', $id_permiso);
         $query = $this->ci->db->get('md_menu');
         return $query->result();
     }

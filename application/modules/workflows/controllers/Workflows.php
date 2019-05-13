@@ -14,7 +14,7 @@ class Workflows extends CI_Controller {
 
         //Variables para modulo
         $this->data['tareas'] = $this->Workflow_model->findALL();
-        $this->data['status_tasks'] = $this->Workflow_model->getStatustasks();
+        $this->data['status_tasks'] = $this->Workflow_model->getStatustasks($this->session->userdata('idpermiso'));
         $this->data['type_tasks'] = $this->Workflow_model->getTypetasks();
 
     }
@@ -66,10 +66,10 @@ class Workflows extends CI_Controller {
 
                echo "<script>console.log('Con data:".json_encode($param)." ')</script>";
            }else{
-               //Actualizamos cliente actual
-               //$id_cliente = $this->input->post('id_cliente');
-               //$this->Cliente_model->EditClient($param, $id_cliente);
-               //redirect(base_url().'clientes/cliente/'.$id_cliente,'refresh');
+               //Actualizamos task actual
+               $id_task = $this->input->post('id_task');
+               $this->Workflow_model->EditTask($param, $id_task);
+               redirect(base_url().'workflows/workflow/'.$id_task,'refresh');
 
                echo "<script>console.log('Con data:".json_encode($param)." ')</script>";            
            }

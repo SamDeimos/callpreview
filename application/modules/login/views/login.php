@@ -37,13 +37,16 @@
                 <div class="login-form-body">
                     <div class="form-gp">
                         <label for="username">Usuario</label>
-                        <input type="text" name="username" id="username">
+                        <input type="text" name="username" id="username" value="<?php set_value('username') ?>">
                         <i class="ti-email"></i>
                     </div>
                     <div class="form-gp">
                         <label for="password">Contraseña</label>
                         <input type="password" name="password" id="password">
                         <i class="ti-lock"></i>
+                    </div>
+                    <div class="form-gp">
+                        <?php echo $this->recaptcha->render(); ?>
                     </div>
                     <div class="row mb-4 rmber-area">
                         <div class="col-6">

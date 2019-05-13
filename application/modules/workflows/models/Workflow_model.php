@@ -25,7 +25,13 @@ class Workflow_model extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function getStatustasks(){
+    public function EditTask($param, $id_task){
+        $this->db->where('id_task', $id_task);
+        $this->db->update('md_tasks', $param);
+    }
+
+    public function getStatustasks($id_permiso){
+        $this->db->like('id_permiso', $id_permiso);
         $query = $this->db->get('md_statustasks');
         return $query->result();
     }
