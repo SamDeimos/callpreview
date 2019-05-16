@@ -2888,3 +2888,8 @@ i.verde{
 .card-acction{
     padding: 1rem;
 }
+
+.btn-xxs{
+    padding: 0.1em 0.5em;
+    font-size: 11px;
+}
