@@ -77,7 +77,7 @@
 						<?php foreach($menu as $main){
 							if($main->nivel_up == 0){?>
 								<li class="<?php echo ($this->uri->segment(1) == $main->menu) ? "active":" " ?>">
-									<a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span><?php echo $main->menu ?></span></a>
+									<a href="javascript:void(0)" aria-expanded="true"><i class="<?php echo $main->icono ?>"></i><span><?php echo $main->menu ?></span></a>
 									<?php foreach($menu as $sub){ 
 										if ($sub->nivel_up == $main->id_menu){?>
 											<ul class="collapse">

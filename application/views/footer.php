@@ -63,7 +63,7 @@
 <script src="<?php echo base_url()?>assets/js/script-functions.js"></script>
 
 <!-- Script Usuarios -->
-<script src="<?php echo base_url()?>assets/js/<?php echo $this->uri->segment(1)?>.js"></script>
+<script src="<?php echo base_url()?>assets/js/modules/<?php echo $this->uri->segment(1)?>.js"></script>
 
 <?php
 
@@ -73,7 +73,6 @@ echo "<script>console.log('Tiempo de ejecución: ".$this->benchmark->elapsed_tim
 isset($tarea) ? var_dump($tarea) : '';
 echo "<hr>";
 echo json_encode($this->session->userdata());
-;
 
 ?>
 

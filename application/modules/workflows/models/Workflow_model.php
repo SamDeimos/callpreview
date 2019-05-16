@@ -4,16 +4,16 @@ class Workflow_model extends CI_Model {
 
     public function findALL(){
         $this->db->select('a.id_task, a.id_cliente, b.nombres, c.estado, a.fecha_create', FALSE);
-        $this->db->from('md_tasks a');
+        $this->db->from('md_workflow_tasks a');
         $this->db->join('md_clientes b' , 'a.id_cliente = b.id_cliente', 'left');
-        $this->db->join('md_statustasks c' , 'a.id_statustask = c.id_statustask', 'left');
+        $this->db->join('md_workflow_statustasks c' , 'a.id_statustask = c.id_statustask', 'left');
         $query = $this->db->get();
         return $query->result();
     }
 
     public function findID($id_task){
         $this->db->select('a.id_task, a.id_cliente, b.dni, a.id_statustask, a.fecha_create', FALSE);
-        $this->db->from('md_tasks a');
+        $this->db->from('md_workflow_tasks a');
         $this->db->join('md_clientes b', 'a.id_cliente = b.id_cliente', 'left');
         $this->db->where('a.id_task', $id_task);
         $query = $this->db->get();
@@ -21,25 +21,25 @@ class Workflow_model extends CI_Model {
     }
 
     public function AddTask($param){
-        $this->db->insert('md_tasks',$param);
+        $this->db->insert('md_workflow_tasks',$param);
         return $this->db->insert_id();
     }
 
     public function EditTask($param, $id_task){
         $this->db->where('id_task', $id_task);
-        $this->db->update('md_tasks', $param);
+        $this->db->update('md_workflow_tasks', $param);
     }
 
     public function getStatustasks($id_permiso){
         $this->db->like('id_permiso', $id_permiso);
-        $query = $this->db->get('md_statustasks');
+        $query = $this->db->get('md_workflow_statustasks');
         return $query->result();
     }
 
     public function getTypetasks(){
-        $query = $this->db->get('md_typetasks');
+        $query = $this->db->get('md_workflow_typetasks');
         return $query->result();
     }
 }
 
-/* End of file ModelName.php */
+/* End of file Workflow_model.php */

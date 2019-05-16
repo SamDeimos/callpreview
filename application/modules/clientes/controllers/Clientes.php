@@ -14,7 +14,7 @@ class Clientes extends CI_Controller {
         $this->data['generos'] = $this->attributospersona->getGenero();
         $this->data['estadosciviles'] = $this->attributospersona->getEstadoCivil();
         $this->data['lvlformaciones'] = $this->attributospersona->getLvlFormacion();
-
+        
         //Variables para modulo
         $this->data['clientes'] = $this->Cliente_model->findAll();
 
@@ -31,19 +31,19 @@ class Clientes extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function cliente($id = NULL){
+    public function cliente($id_cliente = NULL){
         //Validación de inicio de session
         $this->validarlogin->validateLogin();
         
         /*
         / Condicionamos @id si es Nuevo cliente
         / o Editar cliente
-        / @id int
+        / @id_cliente int
         */ 
-        if($id == NULL){
+        if($id_cliente == NULL){
             $this->data['cliente'] = NULL;
         }else{
-            $this->data['cliente'] = $this->Cliente_model->findID($id);
+            $this->data['cliente'] = $this->Cliente_model->findID($id_cliente);
         }
 
         //Cargamos las vitas del modulo Clinetes
@@ -69,21 +69,26 @@ class Clientes extends CI_Controller {
             $param['client'] = 1;
 
             if(empty($this->input->post('id_cliente'))){
-                //Insertamos cliente nuevo
-                $id_cliente = $this->Cliente_model->AddClient($param);
-                redirect(base_url().'clientes/cliente/'.$id_cliente,'refresh');
+                $cliente = $this->Cliente_model->findDNI($param['dni']);
+                //Validamos que el cliente sea nuevo
+                if(is_null($cliente)){
+                    //Insertamos cliente nuevo
+                    $id_cliente = $this->Cliente_model->AddClient($param);
+                    redirect(base_url().'clientes/cliente/'.$id_cliente,'refresh');
+                }else{
+                    //Redireccionamos al cliente ya ingresado
+                    redirect(base_url().'clientes/cliente/'.$cliente->id_cliente,'refresh');
+                }
             }else{
                 //Actualizamos cliente actual
                 $id_cliente = $this->input->post('id_cliente');
                 $this->Cliente_model->EditClient($param, $id_cliente);
                 redirect(base_url().'clientes/cliente/'.$id_cliente,'refresh');
             }
-
-        }else{
-            echo "<script>console.log('Sin data: ')</script>";
         }
-
     }
+
+
 
     public function ClienteTable(){
         //Validación de inicio de session

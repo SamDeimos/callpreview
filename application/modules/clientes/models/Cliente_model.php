@@ -15,7 +15,7 @@ class Cliente_model extends CI_Model{
 
     function findDNI($clientdni){
         $this->db->where('dni', $clientdni);
-        $query = $this->db->get('md_cliente');
+        $query = $this->db->get('md_clientes');
         return $query->row();
     }
 

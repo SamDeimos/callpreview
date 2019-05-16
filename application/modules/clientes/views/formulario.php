@@ -66,8 +66,8 @@
             <!-- Columna derecha -->
             <div class="col-6">
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input class="form-control form-control-sm" name="nombres" id="nombres" type="text" required value="<?php echo set_value("nombre", (isset($cliente->nombres) ? $cliente->nombres : "")); ?>">
+                    <label for="nombres">Nombre</label>
+                    <input class="form-control form-control-sm" name="nombres" id="nombres" type="text" required value="<?php echo set_value("nombres", (isset($cliente->nombres) ? $cliente->nombres : "")); ?>">
                 </div>
                 <div class="row form-group">
                     <!-- Columna izquierda -->
