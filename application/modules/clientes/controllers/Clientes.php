@@ -43,7 +43,7 @@ class Clientes extends CI_Controller {
         if($id_cliente == NULL){
             $this->data['cliente'] = NULL;
         }else{
-            $this->data['cliente'] = $this->Cliente_model->findID($id_cliente);
+            $this->data['cliente'] = get_cliente_id($id_cliente);
         }
 
         //Cargamos las vitas del modulo Clinetes
@@ -87,8 +87,6 @@ class Clientes extends CI_Controller {
             }
         }
     }
-
-
 
     public function ClienteTable(){
         //Validación de inicio de session

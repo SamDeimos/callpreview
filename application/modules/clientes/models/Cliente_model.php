@@ -1,9 +1,11 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Cliente_model extends CI_Model{
+class Cliente_model extends CI_Model
+{
 
-    function findAll(){
-        $this->db->select('a.id_cliente, a.nombres, a.dni, a.email, a.tel, a.address, b.genero, c.estado', FALSE);
+    function findAll()
+    {
+        $this->db->select('a.id_cliente, a.nombres, a.dni, a.email, a.cel, a.tel, a.address, b.genero, c.estado', FALSE);
         $this->db->from('md_clientes a');
         $this->db->join('md_genero b', 'a.id_genero = b.id_genero', 'left');
         $this->db->join('md_statuscivil c', 'a.id_statuscivil = c.id_statuscivil', 'left');
@@ -13,33 +15,30 @@ class Cliente_model extends CI_Model{
         return $query->result();
     }
 
-    function findDNI($clientdni){
+    function findDNI($clientdni)
+    {
         $this->db->where('dni', $clientdni);
         $query = $this->db->get('md_clientes');
         return $query->row();
     }
 
-    function findID($id_cliente){
-        $this->db->where('id_cliente', $id_cliente);
-        $query = $this->db->get('md_clientes');
-        return $query->row();
-    }
-
-    public function AddClient($param){
-        $this->db->insert('md_clientes',$param);
+    public function AddClient($param)
+    {
+        $this->db->insert('md_clientes', $param);
         return $this->db->insert_id();
     }
 
-    public function EditClient($param, $id_cliente){
+    public function EditClient($param, $id_cliente)
+    {
         $this->db->where('id_cliente', $id_cliente);
         $this->db->update('md_clientes', $param);
     }
 
-    public function DeleteClient($id_cliente){
+    public function DeleteClient($id_cliente)
+    {
         $this->db->where('id_cliente', $id_cliente);
         $this->db->delete('md_clientes');
     }
-
 }
 
 /* End of file .php */

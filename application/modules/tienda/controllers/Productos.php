@@ -26,7 +26,7 @@ class Productos extends CI_Controller {
         
     }
 
-    public function venta($id_producto = NULL){
+    public function producto($id_producto = NULL){
         //Validación de inicio de session
         $this->validarlogin->validateLogin();
 

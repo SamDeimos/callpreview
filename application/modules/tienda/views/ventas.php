@@ -1,7 +1,7 @@
 <br>
 <div class="card">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="ventas/venta"><i class="fa fa-cart-plus"></i> Nueva Venta</a>
+        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>tienda/ventas/venta"><i class="fa fa-cart-plus"></i> Nueva Venta</a>
     </div>
 </div>
 <br>
@@ -12,8 +12,9 @@
                 <tr>
                     <th>ID</th>
                     <th data-priority="1">Cliente</th>
-                    <th>Producto</th>
                     <th>Estado</th>
+                    <th>Usuario</th>
+                    <th>Total</th>
                     <th class="text-center" data-priority="2">Acción</th>
                 </tr>
             </thead>
@@ -23,8 +24,9 @@
                 <tr>
                     <th>ID</th>
                     <th data-priority="1">Cliente</th>
-                    <th>Producto</th>
                     <th>Estado</th>
+                    <th>Usuario</th>
+                    <th>Total</th>
                     <th class="text-center" data-priority="2">Acción</th>
                 </tr>
             </tfoot>

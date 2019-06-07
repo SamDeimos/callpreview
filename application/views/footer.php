@@ -70,9 +70,9 @@
 echo "<script>console.log('Memoria usada: ".$this->benchmark->memory_usage()."')</script>";
 echo "<script>console.log('Tiempo de ejecución: ".$this->benchmark->elapsed_time()."')</script>";
 
-isset($tarea) ? var_dump($tarea) : '';
-echo "<hr>";
-echo json_encode($this->session->userdata());
+// isset($tarea) ? var_dump($tarea) : '';
+// echo "<hr>";
+// echo json_encode($this->session->userdata());
 
 ?>
 

@@ -84,6 +84,7 @@ var Tablecliente = $('#Tablecliente').DataTable({
         },
 		{data: 'dni'},
 		{data: 'email'},
+		{data: 'cel'},
 		{data: 'tel'},
         {data: 'address'},
         {data: 'genero'},

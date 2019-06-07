@@ -10,9 +10,10 @@ class Producto_model extends CI_Model {
         return $query->result();
     }
 
-    public function getStatusventas(){
-        $query = $this->db->get('md_shop_statusventas');
-        return $query->result();
+    public function findID($id_producto){
+        $this->db->where('id_producto', $id_producto);
+        $query = $this->db->get('md_shop_productos');
+        return $query->row();
     }
 }
 

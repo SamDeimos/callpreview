@@ -31,13 +31,6 @@ class AttributosPersona{
         $query = $this->ci->db->get('md_statususer');
         return $query->result();
     }
-
-    public function getClientDNI(){
-        $this->ci->db->select('id_cliente, nombres, dni');
-        $query = $this->ci->db->get('md_clientes');
-        return $query->result();
-    }
-
 }
 
 /* End of file AttributosPersona.php */

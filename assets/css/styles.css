@@ -82,6 +82,7 @@
 .card-body {
     padding: 25.6px;
     padding: 1.6rem;
+    box-shadow: 4px 4px 7px #c2c2c2;
 }
 
 .h-full {
@@ -2865,7 +2866,7 @@ span{
 	transform:scale(1.1);
 }
 
-td .far, td .fas{
+td .far, td .fas, td .fab{
      padding-right: 5px;
  }
 
@@ -2887,6 +2888,7 @@ i.verde{
 
 .card-acction{
     padding: 1rem;
+    box-shadow: 4px 4px 7px #c2c2c2;
 }
 
 .btn-xxs{

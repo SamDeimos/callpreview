@@ -14,6 +14,7 @@
                     <th data-priority="1">Nombres</th>
                     <th>Cédula</th>
                     <th>Correo</th>
+                    <th>Celular</th>
                     <th>Teléfono</th>
                     <th>Dirección</th>
                     <th>Genero</th>
@@ -29,6 +30,7 @@
                     <th data-priority="1">Nombres</th>
                     <th>Cédula</th>
                     <th>Correo</th>
+                    <th>Celular</th>
                     <th>Teléfono</th>
                     <th>Dirección</th>
                     <th>Genero</th>
