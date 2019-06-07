@@ -20,7 +20,6 @@ class Ventas extends CI_Controller
         //Variables para modulo
         $this->data['ventas'] = get_listado_ventas($this->session->userdata('id_user'), $this->session->userdata('idpermiso'));
         $this->data['productos'] = $this->Producto_model->findAll();
-        $this->data['status_ventas'] = get_listado_status_ventas();
         $this->data['status_pagos'] = get_listado_status_pagos();
         $this->data['metodos_pagos'] = get_listado_metodos_pagos();
     }
@@ -59,10 +58,7 @@ class Ventas extends CI_Controller
         if ($this->input->post()) {
 
             //Variables a insertar Ventas
-            $param['id_user'] = $this->session->userdata('id_user');
-            $param['id_cliente'] = $this->input->post('id_cliente');
             $param['id_statusventa'] = $this->input->post('id_statusventa');
-            $param['total'] = $this->input->post('total_venta');
 
             //Variables detalles de venta
             $id_productos = $this->input->post('id_productos');
@@ -76,6 +72,9 @@ class Ventas extends CI_Controller
                 *
                 */
                 //insert venta
+                $param['id_user'] = $this->session->userdata('id_user');
+                $param['id_cliente'] = $this->input->post('id_cliente');
+                $param['total'] = $this->input->post('total_venta');
                 $param['fecha_venta'] = date('Y-m-d');
                 $id_venta = $this->Venta_model->AddVenta($param);
 
@@ -83,7 +82,7 @@ class Ventas extends CI_Controller
                 if (!empty($id_venta)) {
                     $this->_add_venta_detalle($id_productos, $id_venta, $precios, $cantidades, $total);
                 }
-                redirect(base_url() . 'tienda/ventas/', 'refresh');
+                redirect(base_url() . 'tienda/ventas/venta/'. $id_venta, 'refresh');
             } else {
                 /*
                 * Actualizar venta

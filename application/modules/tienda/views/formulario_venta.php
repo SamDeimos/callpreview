@@ -8,7 +8,7 @@
 <br>
 <div class="card">
     <div class="card-body">
-        <form action="" method="POST">
+        <form id="form-add-venta" action="" method="POST">
             <div class="row">
                 <!-- Columna izquierda -->
                 <div class="col-6 border-right">
@@ -30,11 +30,14 @@
                     <div class="form-group">
                         <label for="id_statuspago">Estado</label>
                         <div class="input-group">
-                            <select class="custom-select custom-select-sm" name="id_statusventa" id="id_statusventa" required <?php echo (!empty($venta->id_statusventa) ? show_status_venta($venta->id_statusventa, $this->session->userdata('id_user')) : ''); ?>>
-                                <?php foreach ($status_ventas as $status_venta) { ?>
-                                    <option <?php echo ((isset($venta->id_statusventa) ? $venta->id_statusventa : '1') == $status_venta->id_statusventa) ? "selected" : ""; ?> value="<?php echo $status_venta->id_statusventa; ?>"><?php echo $status_venta->estado; ?></option>
-                                <?php } ?>
-                            </select>
+                            <?php
+                            if (isset($venta->id_statusventa)) {
+                                $status_venta = $venta->id_statusventa;
+                            } else {
+                                $status_venta = NULL;
+                            }
+                            echo mostrar_listado_status_ventas($this->session->userdata('idpermiso'), $status_venta);
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -69,7 +72,7 @@
                             <th>Precio</th>
                             <th>Cantidad</th>
                             <th>Total $</th>
-                            <?php if (!isset($detalles) OR $detalles == NULL) : ?>
+                            <?php if (!isset($detalles) or $detalles == NULL) : ?>
                                 <th></th>
                             <?php endif ?>
                         </tr>

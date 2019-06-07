@@ -52,11 +52,14 @@ class Pagos extends CI_Controller
         }
 
         //Cargamos las vitas del modulo Pagos
-        //$this->load->view('header', $this->data);
-        //$this->load->view('formulario_pago');
-        //$this->load->view('footer');
+        $this->load->view('header', $this->data);
+        $this->load->view('formulario_pago');
+        $this->load->view('footer');
 
-        //Validamos ingreso de datos por post
+        /**
+         * Creacion de una venta directa utilizando modulo de pago deirecto
+         *
+         */
         if ($this->input->post('id_cliente')) {
 
             //Variables a insertar
@@ -92,6 +95,11 @@ class Pagos extends CI_Controller
                 $this->Pago_model->EditPago($param, $id_pago);
                 redirect(base_url() . 'tienda/pagos/pago/ ' . $id_pago, 'refresh');
             }
+
+            /**
+             * Este proceso se inicia cuando se desea crear un pago de una venta
+             * y recibe el id_de la venta por post
+             */
         } elseif ($this->input->post('id_venta')) {
 
             //Variables a insertar
@@ -127,7 +135,7 @@ class Pagos extends CI_Controller
                 $iva = $this->_iva($producto['valor']);
                 $valor = $producto['valor'] - $iva;
 
-                //FUNCION Realizar pago
+                //FUNCION Realizar pago placetopay
                 $this->_realizar_pago_metodo_placetopay($param['id_venta'], $id_pago, $cliente, $producto, $iva, $valor);
             }
         }

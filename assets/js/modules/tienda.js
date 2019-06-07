@@ -31,6 +31,10 @@ $(window).on('load', function () {
                         return '<button type="button" class="btn btn-outline-success btn-xxs" disabled>' + row.estado + '</button>';
                     } else if (row.estado == 'Fallido' || row.estado == 'Sin cupo') {
                         return '<button type="button" class="btn btn-outline-danger btn-xxs" disabled>' + row.estado + '</button>';
+                    } else if (row.estado == 'Pendiente') {
+                        return '<button type="button" class="btn btn-outline-primary btn-xxs" disabled>' + row.estado + '</button>';
+                    } else {
+                        return '<button type="button" class="btn btn-outline-secondary btn-xxs" disabled>' + row.estado + '</button>';
                     }
                 },
                 "className": "text-center"
@@ -215,6 +219,14 @@ $(window).on('load', function () {
         }
     });
 
+    //Validar que tenga productos seleccionados
+    $('#form-add-venta').submit(function (event){
+        if($('#total_venta').val() == 0 ){
+            alert('Para poder crear una venta debe de ingrese un producto.');
+            return false;
+        }
+    });
+
     //Pagar Venta
     //Cargar datos al modal Pago
     $('#pagarModal').on('show.bs.modal', function (event) {
@@ -226,7 +238,6 @@ $(window).on('load', function () {
     //Insertar datos de pago de la venta
     $('#form-pagar').submit(function (event) {
         event.preventDefault();
-        console.log($(this).serialize());
         $.ajax({
             type: 'POST',
             url: baseurl + 'tienda/pagos/pago',
