@@ -34,13 +34,12 @@ class Login extends CI_Controller
                                 'name'           =>  $w->nombres,
                                 'perfil'         =>     $w->perfil,
                                 'idpermiso'     =>     $w->id_permiso,
-                                'lvlpermiso'    =>  $w->lvl_permiso,
                                 'log_in'          =>  TRUE
                             );
                             $this->session->set_userdata($data_session);
                             redirect('dashboard');
                         } else {
-                            redirect('login#mal');
+                            redirect('login');
                         }
                     };
                 }

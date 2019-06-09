@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
 
         //Variables indispensables
         $this->data['menu'] = $this->menu->getMenu($this->session->userdata('idpermiso'));
+        $this->data['ventas_diarias'] = widget_cantidad_ventas_diarias($this->session->userdata('id_user'), $this->session->userdata('idpermiso'));
 	}
 
 	public function index(){

@@ -62,6 +62,7 @@ class Clientes extends CI_Controller {
             $param['id_genero'] = array_sum($genero);
             $param['email'] = $this->input->post('email');
             $param['tel'] = $this->input->post('tel');
+            $param['cel'] = $this->input->post('cel');
             $param['fec_nac'] = $this->input->post('fec_nac');
             $param['address'] = $this->input->post('address');
             $param['id_lvlformacion'] = $this->input->post('lvlformacion');

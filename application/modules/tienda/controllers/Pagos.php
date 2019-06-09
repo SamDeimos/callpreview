@@ -76,7 +76,7 @@ class Pagos extends CI_Controller
 
                 if ($param['id_metodopago'] == '1') {
                     //Metodo Realizar pago metodo efectivo
-                    $this->_realizar_pago_metodo_efectivo($id_pago);
+                    $this->_realizar_pago_metodo_efectivo($id_pago, $id_venta = null, $importe = null);
                 } elseif ($param['id_metodopago'] == '2') {
                     //realizar pago Placetopay
                     $cliente = get_cliente_id($param['id_cliente']);
@@ -275,12 +275,16 @@ class Pagos extends CI_Controller
         $this->Pago_model->EditPago($param, $id_pago);
     }
 
-    /*
-    *Realizar pago metodo efectivo
-    *
-    *
-    */
-    protected function _realizar_pago_metodo_efectivo($id_pago, $id_venta, $importe)
+    /**
+     * Realizar pago por metodo efectivo, el cual recibe un valor a pagar; todas
+     * las ventas realizadas por este metodo son como aprobadas
+     *
+     * @param   int  $id_pago   id de pago a realiza 
+     * @param   int  $id_venta  id de la venta a pagar
+     * @param   int  $importe   valor total de la venta
+     *
+     */
+    protected function _realizar_pago_metodo_efectivo($id_pago, $id_venta = NULL, $importe)
     {
 
         $param['id_statuspago'] = 2;

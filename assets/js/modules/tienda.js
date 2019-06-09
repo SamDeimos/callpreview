@@ -50,6 +50,15 @@ $(window).on('load', function () {
                 "className": "text-center"
             }
         ],
+        buttons: [
+            {
+                text: "<i class='fas fa-sync-alt'></i>",
+                action: function (e, dt, node, config) {
+                    Tableventa.ajax.reload(null, false)
+                }
+            }
+        ],
+        dom: "<'row'<'col-6'B><'col-6'f>>t<'row'<'col-6'i><'col-6'p>>",
     });
 
     //Creamos data table de de nuestra tabla
@@ -220,8 +229,8 @@ $(window).on('load', function () {
     });
 
     //Validar que tenga productos seleccionados
-    $('#form-add-venta').submit(function (event){
-        if($('#total_venta').val() == 0 ){
+    $('#form-add-venta').submit(function (event) {
+        if ($('#total_venta').val() == 0) {
             alert('Para poder crear una venta debe de ingrese un producto.');
             return false;
         }

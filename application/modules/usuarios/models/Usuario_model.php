@@ -11,7 +11,7 @@ class Usuario_model extends CI_Model{
 	}
 
 	function findDNI($username){
-		$this->db->select('a.id_user, a.nombres, a.dni, a.id_permiso, b.perfil, b.lvl_permiso', FALSE);
+		$this->db->select('a.id_user, a.nombres, a.dni, a.id_permiso, b.perfil', FALSE);
 		$this->db->from('md_user a');
 		$this->db->join('md_permisos b', 'a.id_permiso = b.id_permiso', 'left');
 		$this->db->where('dni', $username);
