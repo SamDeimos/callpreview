@@ -94,7 +94,8 @@ $autoload['helper'] = array(
     'url',
     'form',
     'clientes',
-    'tienda'
+    'tienda',
+    'widget'
 );
 
 /*

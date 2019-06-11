@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group">
                         <label for="fec_nac">Fecha de nacimiento</label>
-                        <input class="form-control form-control-sm" name="fec_nac" id="fec_nac" type="text" required value="<?php echo set_value("fec_nac", (isset($cliente->fec_nac) ? $cliente->fec_nac : "")); ?>">
+                        <input class="form-control form-control-sm fec_datepicker" name="fec_nac" id="fec_nac" type="text" required value="<?php echo set_value("fec_nac", (isset($cliente->fec_nac) ? $cliente->fec_nac : "")); ?>">
                     </div>
                     <div class="form-group">
                         <label for="address">Dirección</label>

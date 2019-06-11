@@ -201,7 +201,7 @@ class Pagos extends CI_Controller
                 $param_venta['importe'] = $pago->importe + importe_pagado_venta_id($pago->id_venta);
 
                 //Validacion si la venta es completa
-                if (check_status_venta($pago->id_venta, $param_venta['importe']) == TRUE) {
+                if (!is_null(check_status_venta($pago->id_venta, $param_venta['importe']))) {
                     $param_venta['id_statusventa'] = 2;
                 } else {
                     $param_venta['id_statusventa'] = 4;
@@ -293,7 +293,7 @@ class Pagos extends CI_Controller
         $param_venta['importe'] = $importe + importe_pagado_venta_id($id_venta);
 
         //Validacion si la venta es completa
-        if (check_status_venta($id_venta, $param_venta['importe']) == TRUE) {
+        if (!is_null(check_status_venta($id_venta, $param_venta['importe']))) {
             $param_venta['id_statusventa'] = 2;
         } else {
             $param_venta['id_statusventa'] = 4;

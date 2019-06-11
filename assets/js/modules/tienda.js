@@ -39,6 +39,7 @@ $(window).on('load', function () {
                 },
                 "className": "text-center"
             },
+            { data: 'fecha_venta' },
             { data: 'nombres_usuario' },
             { data: 'total' },
             {

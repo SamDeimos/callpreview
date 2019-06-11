@@ -93,7 +93,7 @@
                     <!-- Columna derecha -->
                     <div class="col-6">
                         <label for="fec_nac">Fecha de nacimineto</label>
-                        <input class="form-control form-control-sm" name="fec_nac" id="fec_nac" type="text" value="<?php echo set_value("fec_nac", (isset($usuario->fec_nac) ? $usuario->fec_nac : "")); ?>">
+                        <input class="form-control form-control-sm fec_datepicker" name="fec_nac" id="fec_nac" type="text" value="<?php echo set_value("fec_nac", (isset($usuario->fec_nac) ? $usuario->fec_nac : "")); ?>">
                     </div>
                 </div>
                 <div class="form-group">

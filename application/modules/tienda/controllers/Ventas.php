@@ -75,7 +75,7 @@ class Ventas extends CI_Controller
                 $param['id_user'] = $this->session->userdata('id_user');
                 $param['id_cliente'] = $this->input->post('id_cliente');
                 $param['total'] = $this->input->post('total_venta');
-                $param['fecha_venta'] = date('Y-m-d');
+                $param['fecha_venta'] = date('Y-m-d H:s:i');
                 $id_venta = $this->Venta_model->AddVenta($param);
 
                 //insert venta detalle

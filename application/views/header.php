@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?php echo $this->uri->segment(1) ?> - Mi Dami</title>
+    <title><?php echo ucfirst($this->uri->segment(1)) ?> - Mi Dami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url() ?>assets/images/icon/favicon.png">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
@@ -96,31 +96,25 @@
             </div>
         </div>
         <div class="main-content">
-            <div class="header-area">
+            <!-- <div class="header-area">
                 <div class="row align-items-center">
-                    <!-- nav and search button -->
                     <div class="col-md-6 col-sm-8 clearfix">
                         <div class="nav-btn pull-left">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-                        <!--					<div id="Buscadorentabla" class="search-box pull-left">-->
-                        <!--							<input id="extendbuscador" type="text" name="search" placeholder="Search...">-->
-                        <!--							<i class="ti-search"></i>-->
-                        <!--					</div>-->
-                    </div>
-                    <div class="col-md-6 col-sm-4 clearfix">
-                        <ul class="notification-area pull-right">
-                            <li id="full-view"><i class="ti-fullscreen"></i></li>
-                            <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
-                        </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
+                        <div class="nav-btn pull-left">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left"><?php echo $this->session->userdata('perfil') ?></h4>
                             <ul class="breadcrumbs pull-left">

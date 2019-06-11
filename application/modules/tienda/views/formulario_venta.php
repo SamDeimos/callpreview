@@ -59,7 +59,7 @@
                 <div class="col-4">
                     <div class="form-group">
                         <label for="">&nbsp;</label>
-                        <button id="btn-agregar" type="button" class="btn btn-primary btn-block btn-xs"><span class="fa fa-plus"></span> Agregar</button>
+                        <button id="btn-agregar" type="button" class="btn btn-primary btn-block btn-xs" <?php echo deshabilitar_status_ventas($this->session->userdata('idpermiso'), $status_venta) ?>><span class="fa fa-plus"></span> Agregar</button>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
             <?php if (isset($venta->id_venta) && $venta->total != $venta->importe) : ?>
                 <a href="#" data-toggle="modal" data-target="#pagarModal" data-idventa="<?php echo $venta->id_venta ?>"><button class="btn btn-secondary">Pagar</button></a>
             <?php endif ?>
-            <input class="btn btn-primary float-right" type="submit" value="<?php echo (isset($venta) ? "Actualizar" : "Guardar"); ?>">
+            <input class="btn btn-primary float-right" type="submit" value="<?php echo (isset($venta) ? "Actualizar" : "Guardar"); ?>" <?php echo deshabilitar_status_ventas($this->session->userdata('idpermiso'), $status_venta) ?>>
         </form>
     </div>
 </div>

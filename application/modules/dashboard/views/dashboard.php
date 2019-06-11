@@ -6,8 +6,8 @@
                 <div class="card">
                     <div class="seo-fact sbg1">
                         <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="ti-layout-grid2"></i> Ventas</div>
-                            <h2>22</h2>
+                            <div class="seofct-icon"><i class="ti-layout-grid2"></i> Total Ventas</div>
+                            <h2><?php echo $cantidad_ventas_mes->ventas_mes ?></h2>
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                     <div class="seo-fact sbg2">
                         <div class="p-4 d-flex justify-content-between align-items-center">
                             <div class="seofct-icon"><i class="ti-layout-grid3"></i> Monto</div>
-                            <h2>3,984</h2>
+                            <h2><?php echo $importe_ventas_mes->importe_mes ?></h2>
                         </div>
                     </div>
                 </div>
@@ -47,13 +47,13 @@
                 var ventasDataSemana = {
                     label: 'Número de ventas semanales',
                     data: [
-                        <?php echo $ventas_diarias->lunes; ?>,
-                        <?php echo $ventas_diarias->martes; ?>,
-                        <?php echo $ventas_diarias->miercoles; ?>,
-                        <?php echo $ventas_diarias->jueves; ?>,
-                        <?php echo $ventas_diarias->viernes; ?>,
-                        <?php echo $ventas_diarias->sabado; ?>,
-                        <?php echo $ventas_diarias->domingo; ?>
+                        <?php echo $ventas_semanales->lunes; ?>,
+                        <?php echo $ventas_semanales->martes; ?>,
+                        <?php echo $ventas_semanales->miercoles; ?>,
+                        <?php echo $ventas_semanales->jueves; ?>,
+                        <?php echo $ventas_semanales->viernes; ?>,
+                        <?php echo $ventas_semanales->sabado; ?>,
+                        <?php echo $ventas_semanales->domingo; ?>
                     ],
                     backgroundColor: 'rgba(92, 109, 243, 0.6)',
                     borderColor: 'rgba(78, 93, 211, 1)',

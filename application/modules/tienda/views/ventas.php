@@ -13,8 +13,9 @@
                     <th>ID</th>
                     <th data-priority="1">Cliente</th>
                     <th>Estado</th>
+                    <th>fecha</th>
                     <th>Usuario</th>
-                    <th>Total</th>
+                    <th data-priority="3">Total</th>
                     <th class="text-center" data-priority="2">Acción</th>
                 </tr>
             </thead>
@@ -25,8 +26,9 @@
                     <th>ID</th>
                     <th data-priority="1">Cliente</th>
                     <th>Estado</th>
+                    <th>fecha</th>
                     <th>Usuario</th>
-                    <th>Total</th>
+                    <th data-priority="3">Total</th>
                     <th class="text-center" data-priority="2">Acción</th>
                 </tr>
             </tfoot>

@@ -4,7 +4,7 @@
 	<!-- footer area start-->
 	<footer>
 		<div class="footer-area">
-			<p>© Copyright 2018. All right reserved. Developer by <a href="https://colorlib.com/wp/">Santiago Gutierrez</a>.</p>
+			<p>© Copyright 2019. All right reserved. Developer by <a href="https://github.com/SamDeimos">Santiago Gutierrez</a>.</p>
 		</div>
 	</footer>
 <!-- footer area end-->

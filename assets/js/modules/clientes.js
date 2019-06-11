@@ -158,13 +158,6 @@ function ValidateUserDebounce() {
     });
 }
 
-//Campo de fecha
-$('#fec_nac').datepicker({
-    format: 'yyyy-mm-dd',
-    autoclose: true,
-    language: "es"
-});
-
 //bootstrap-select
 // $("select#cedula").select2({
 //     theme: "bootstrap",
