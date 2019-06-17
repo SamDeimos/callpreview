@@ -22,16 +22,17 @@ $(window).on('load', function () {
                 }
             },
             { data: 'nombres_cliente' },
+            { data: 'dni' },
             {
                 "orderable": true,
                 render: function (data, type, row) {
-                    if (row.estado == 'Borrador') {
+                    if (row.id_statusventa == '1') {
                         return '<button type="button" class="btn btn-outline-warning btn-xxs" disabled>' + row.estado + '</button>';
-                    } else if (row.estado == 'Completado') {
+                    } else if (row.id_statusventa == '2') {
                         return '<button type="button" class="btn btn-outline-success btn-xxs" disabled>' + row.estado + '</button>';
-                    } else if (row.estado == 'Fallido' || row.estado == 'Sin cupo') {
+                    } else if (row.id_statusventa == '3' || row.id_statusventa == '4') {
                         return '<button type="button" class="btn btn-outline-danger btn-xxs" disabled>' + row.estado + '</button>';
-                    } else if (row.estado == 'Pendiente') {
+                    } else if (row.id_statusventa == '5') {
                         return '<button type="button" class="btn btn-outline-primary btn-xxs" disabled>' + row.estado + '</button>';
                     } else {
                         return '<button type="button" class="btn btn-outline-secondary btn-xxs" disabled>' + row.estado + '</button>';
@@ -41,12 +42,18 @@ $(window).on('load', function () {
             },
             { data: 'fecha_venta' },
             { data: 'nombres_usuario' },
-            { data: 'total' },
+            { data: 'importe' },
             {
                 "orderable": true,
                 render: function (data, type, row) {
-                    return '<a href="' + baseurl + 'tienda/ventas/detalle/' + row.id_venta + '" target="_blank" title="Detalle venta" data-id="' + row.id_venta + '"><i class="far fa-list-alt"></i></a>' +
-                        '<a href="#" title="Eliminar" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_venta + '" data-modulo="venta"><i class="far fa-trash-alt"></i></a>';
+                    $html = '<a href="' + baseurl + 'tienda/ventas/detalle/' + row.id_venta + '" target="_blank" title="Detalle venta" data-id="' + row.id_venta + '"><i class="far fa-list-alt"></i></a>'
+                    if (get_permisos_ventas_delete(idpermiso, row.id_statusventa) == true) {
+                        $html += '<a href="#" title="Eliminar" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_venta + '" data-modulo="venta"><i class="far fa-trash-alt"></i></a>';
+                    }else{
+                        $html += '<a class="btn-link disabled" title="No es posible eliminar"><i class="far fa-trash-alt"></i></a>';
+                    }
+
+                    return $html
                 },
                 "className": "text-center"
             }
@@ -63,7 +70,7 @@ $(window).on('load', function () {
     });
 
     //Creamos data table de de nuestra tabla
-    //@Tableventa
+    //@Tableproducto
     var Tableproducto = $('#Tableproducto').DataTable({
         language: {
             url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -96,7 +103,7 @@ $(window).on('load', function () {
     });
 
     //Creamos data table de de nuestra tabla
-    //@Tableventa
+    //@Tablepago
     var Tablepago = $('#Tablepago').DataTable({
         language: {
             url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -168,11 +175,125 @@ $(window).on('load', function () {
         ],
     });
 
-    //bootstrap-select
-    $("select.select_single").select2({
-        theme: "bootstrap",
-        containerCssClass: "input-sm",
-        minimumInputLength: 3,
+    //Creamos data table de de nuestra tabla
+    //@Tablepago
+    var Tablereporte = $('#Tablereporte').DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+        ajax: {
+            url: baseurl + "tienda/ventas/VentaTable",
+            type: "POST",
+            dataSrc: ''
+        },
+        order: [
+            [0, 'desc'],
+        ],
+        columns: [
+            {
+                "orderable": true,
+                render: function (data, type, row) {
+                    return '<a href=' + baseurl + 'tienda/ventas/venta/' + row.id_venta + '>#' + row.id_venta + '</a>';
+                }
+            },
+            { data: 'nombres_cliente' },
+            {
+                "orderable": true,
+                render: function (data, type, row) {
+                    if (row.estado == 'Borrador') {
+                        return '<button type="button" class="btn btn-outline-warning btn-xxs" disabled>' + row.estado + '</button>';
+                    } else if (row.estado == 'Completado') {
+                        return '<button type="button" class="btn btn-outline-success btn-xxs" disabled>' + row.estado + '</button>';
+                    } else if (row.estado == 'Fallido' || row.estado == 'Sin cupo') {
+                        return '<button type="button" class="btn btn-outline-danger btn-xxs" disabled>' + row.estado + '</button>';
+                    } else if (row.estado == 'Pendiente') {
+                        return '<button type="button" class="btn btn-outline-primary btn-xxs" disabled>' + row.estado + '</button>';
+                    } else {
+                        return '<button type="button" class="btn btn-outline-secondary btn-xxs" disabled>' + row.estado + '</button>';
+                    }
+                },
+                "className": "text-center"
+            },
+            { data: 'fecha_venta' },
+            { data: 'nombres_usuario' },
+            { data: 'total' },
+            {
+                "orderable": true,
+                render: function (data, type, row) {
+                    return '<a href="' + baseurl + 'tienda/ventas/detalle/' + row.id_venta + '" target="_blank" title="Detalle venta" data-id="' + row.id_venta + '"><i class="far fa-list-alt"></i></a>' +
+                        '<a href="#" title="Eliminar" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_venta + '" data-modulo="venta"><i class="far fa-trash-alt"></i></a>';
+                },
+                "className": "text-center"
+            }
+        ],
+        buttons: [
+            {
+                extend: 'collection',
+                text: '<i class="fas fa-file-export"></i> Exportar',
+                background: false,
+                buttons: [
+                    // 'copy',
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa fa-file-excel-o"></i> Excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="fas fa-file-csv"></i> CSV',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        text: '<i class="fas fa-file-pdf"></i> PDF',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> Imprimir',
+                        customize: function (win) {
+
+                            var last = null;
+                            var current = null;
+                            var bod = [];
+
+                            var css = '@page { size: landscape; }',
+                                head = win.document.head || win.document.getElementsByTagName('head')[0],
+                                style = win.document.createElement('style');
+
+                            style.type = 'text/css';
+                            style.media = 'print';
+
+                            if (style.styleSheet) {
+                                style.styleSheet.cssText = css;
+                            } else {
+                                style.appendChild(win.document.createTextNode(css));
+                            }
+
+                            head.appendChild(style);
+                        },
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    }
+                ]
+            },
+            {
+                text: "<i class='fas fa-sync-alt'></i>",
+                action: function (e, dt, node, config) {
+                    Tablereporte.ajax.reload(null, false)
+                }
+            }
+        ],
+        dom: "<'row'<'col-6'B><'col-6'f>>t<'row'<'col-6'i><'col-6'p>>",
     });
 
     //agregar producto a la venta
@@ -245,6 +366,7 @@ $(window).on('load', function () {
         $('input[name=id_venta]').val(idventa);
 
     });
+
     //Insertar datos de pago de la venta
     $('#form-pagar').submit(function (event) {
         event.preventDefault();
@@ -292,6 +414,28 @@ $(window).on('load', function () {
                 }
             },
         });
+    });
+
+    $.fn.dataTable.ext.search.push(function (settings, searchData, counter) {
+        if (settings.nTable.id === 'Tablereporte') {
+            min = $('input[name="fecha_rango"]').data('daterangepicker').startDate._d;
+            max = $('input[name="fecha_rango"]').data('daterangepicker').endDate._d;
+            age = new Date(searchData[3]);
+
+            if ((isNaN(min) && isNaN(max)) ||
+                (isNaN(min) && age <= max) ||
+                (min <= age && isNaN(max)) ||
+                (min <= age && age <= max)) {
+                return true;
+            }
+            return false;
+        }
+        return true
+
+    });
+
+    $('.fecha_daterangepicker').change(function () {
+        Tablereporte.ajax.reload(null, false);
     });
 });
 

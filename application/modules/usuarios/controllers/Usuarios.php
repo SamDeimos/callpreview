@@ -48,7 +48,7 @@ class Usuarios extends CI_Controller{
 
         //Cargamos las vitas del modulo Clinetes
         $this->load->view('header', $this->data);
-        $this->load->view('formulario');
+        $this->load->view('formulario_usuario');
         $this->load->view('footer');
 
 
@@ -74,18 +74,15 @@ class Usuarios extends CI_Controller{
                 //Insertamos usuario nuevo
                 $id_usuario = $this->Usuario_model->AddUser($param);
                 redirect(base_url().'usuarios/usuario/'.$id_usuario,'refresh');
-                echo "<script>console.log('Con data: ".json_encode($param)."')</script>";
+                //echo "<script>console.log('Con data: ".json_encode($param)."')</script>";
             }else{
                 //Actualizamos usuario actual
                 $id_usuario = $this->input->post('id_usuario');
                 $this->Usuario_model->EditUser($param, $id_usuario);
                 redirect(base_url().'usuarios/usuario/'.$id_usuario,'refresh');
-                echo "<script>console.log('Con data: ".json_encode($param)."')</script>";
+                //echo "<script>console.log('Con data: ".json_encode($param)."')</script>";
 
             }
-
-        }else{
-            echo "<script>console.log('Sin data: ')</script>";
         }
     }
     

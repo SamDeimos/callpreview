@@ -96,10 +96,9 @@ if (!function_exists('get_listado_ventas')) {
                 break;
             case 3:
                 //Listado de vestas para DIRECTORES O DUEÑOS DE GRUPO
-                $id_grupo = get_grupo_user($id_user);
-                $CI->db->join('md_users_grupos e', 'a.id_user = e.id_user', 'inner');
-                $CI->db->where('e.id_grupo', $id_grupo);
-                $CI->db->where('d.estado !=', 'Borrador');
+                $id_grupo = get_id_grupo($id_user);
+                $CI->db->join('md_grupos g', 'g.belong_user_grupo like concat("%", a.id_user, "%")', 'inner');
+                $CI->db->where('g.id_grupo', $id_grupo);
                 break;
             case 4:
                 //Mosmotramos todas las ventas si es Autorizador
@@ -108,7 +107,7 @@ if (!function_exists('get_listado_ventas')) {
                 break;
         }
 
-        $CI->db->select('a.id_venta, a.id_cliente, a.total, b.nombres as nombres_cliente, a.fecha_venta, c.nombres as nombres_usuario, d.id_statusventa, d.estado', FALSE);
+        $CI->db->select('a.id_venta, a.id_cliente, a.total, a.importe, b.nombres as nombres_cliente, b.dni, a.fecha_venta, c.nombres as nombres_usuario, d.id_statusventa, d.estado', FALSE);
         $CI->db->from('md_shop_ventas a');
         $CI->db->join('md_clientes b', 'a.id_cliente = b.id_cliente', 'left');
         $CI->db->join('md_user c', 'a.id_user = c.id_user', 'left');

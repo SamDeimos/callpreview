@@ -1,18 +1,27 @@
 <br>
 <div class="card">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>tienda/ventas/venta"><i class="fa fa-cart-plus"></i> Nueva Venta</a>
+        <div class="col-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="fecha_rango"><i class="fa fa-calendar-minus-o"></i></span>
+                </div>
+                <input class="form-control form-control-sm fecha_daterangepicker" name="fecha_rango" id="fecha_rango" type="text">
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <br>
 <div class="card">
     <div class="card-body">
-        <table id="Tableventa" class="table table-hover text-left dataTable no-footer dtr-inline dt-responsive nowrap" style="width:100%">
+        <table id="Tablereporte" class="table table-hover text-left dataTable no-footer dtr-inline dt-responsive nowrap" style="width:100%">
             <thead class="bg-light text-capitalize">
                 <tr>
-                    <th>Codigo</th>
+                    <th>ID</th>
                     <th data-priority="1">Cliente</th>
-                    <th>Cédula</th>
                     <th>Estado</th>
                     <th>fecha</th>
                     <th>Usuario</th>
@@ -24,9 +33,8 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Codigo</th>
+                    <th>ID</th>
                     <th data-priority="1">Cliente</th>
-                    <th>Cédula</th>
                     <th>Estado</th>
                     <th>fecha</th>
                     <th>Usuario</th>

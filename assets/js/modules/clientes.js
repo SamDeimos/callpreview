@@ -93,7 +93,12 @@ var Tablecliente = $('#Tablecliente').DataTable({
         {
             "orderable": true,
             render: function (data, type, row) {
-                return '<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_cliente + '"><i class="far fa-trash-alt"></i></a>';
+                $html = '<a class="btn-link disabled" title="No es posible eliminar"><i class="far fa-trash-alt"></i></a>';
+                if (get_permisos_clientes_delete(idpermiso) == true) {
+                    $html = '<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_cliente + '"><i class="far fa-trash-alt"></i></a>';
+                }
+
+                return $html
             },
             "className": "text-center"
         }

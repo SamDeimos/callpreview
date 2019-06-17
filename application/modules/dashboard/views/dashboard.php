@@ -2,34 +2,22 @@
     <div class="sales-report-area sales-style-two">
         <div class="row">
             <!-- inicio de primer bloque -->
-            <div class="col-md-4 mt-4">
-                <div class="card">
-                    <div class="seo-fact sbg1">
-                        <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="ti-layout-grid2"></i> Total Ventas</div>
-                            <h2><?php echo $cantidad_ventas_mes->ventas_mes ?></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- fin de primer bloque -->
-            <div class="col-md-4 mt-4">
+            <div class="col-md-6 mt-4">
                 <div class="card">
                     <div class="seo-fact sbg2">
                         <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="ti-layout-grid3"></i> Monto</div>
-                            <h2><?php echo $importe_ventas_mes->importe_mes ?></h2>
+                            <div class="seofct-icon"><i class="ti-layout-grid2"></i>Atuorizadas</div>
+                            <h2><?php echo $cantidad_ventas_mes_completado->ventas_mes ?></h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- fin de primer bloque -->
-            <div class="col-md-4 mt-4">
+            <div class="col-md-6 mt-4">
                 <div class="card">
-                    <div class="seo-fact sbg3">
+                    <div class="seo-fact sbg1">
                         <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="ti-bolt"></i> Meta</div>
-                            <h2>3,200</h2>
+                            <div class="seofct-icon"><i class="ti-bolt"></i> Total Ventas</div>
+                            <h2><?php echo $importe_ventas_mes->importe_mes ?></h2>
                         </div>
                     </div>
                 </div>
@@ -42,63 +30,91 @@
             <div class="d-flex justify-content-between mb-2">
                 <h4 class="header-title mb-0">últimos 7 días</h4>
             </div>
-            <canvas id="myChart" width="400" height="150"></canvas>
+            <div id="grafico_semanal"></div>
+            <!-- <canvas id="myChart" width="400" height="150"></canvas> -->
             <script>
-                var ventasDataSemana = {
-                    label: 'Número de ventas semanales',
-                    data: [
-                        <?php echo $ventas_semanales->lunes; ?>,
-                        <?php echo $ventas_semanales->martes; ?>,
-                        <?php echo $ventas_semanales->miercoles; ?>,
-                        <?php echo $ventas_semanales->jueves; ?>,
-                        <?php echo $ventas_semanales->viernes; ?>,
-                        <?php echo $ventas_semanales->sabado; ?>,
-                        <?php echo $ventas_semanales->domingo; ?>
-                    ],
-                    backgroundColor: 'rgba(92, 109, 243, 0.6)',
-                    borderColor: 'rgba(78, 93, 211, 1)',
-                };
-
-                var ventasData = {
-                    label: 'Número de ventas',
-                    data: [3, 0, 2, 1, 3, 4],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }
-
-                var ctx = document.getElementById('myChart');
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Lunes', 'Martes', 'Miercoles', 'jueves', 'viernes', 'Sábado', 'domingo'],
-                        datasets: [ventasDataSemana]
+                Highcharts.chart('grafico_semanal', {
+                    chart: {
+                        type: 'areaspline'
                     },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: false
-                                }
-                            }]
+                    title: false,
+                    yAxis: {
+                        title: false,
+                        gridLineColor: '#fbf7f7',
+                        gridLineWidth: 1
+                    },
+                    xAxis: {
+                        categories: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+                        gridLineColor: '#fbf7f7',
+                        gridLineWidth: 1
+                    },
+                    series: [{
+                            name: 'Vetas Autorizadas',
+                            data: [
+                                <?php echo $ventas_semanales_completado->lunes; ?>,
+                                <?php echo $ventas_semanales_completado->martes; ?>,
+                                <?php echo $ventas_semanales_completado->miercoles; ?>,
+                                <?php echo $ventas_semanales_completado->jueves; ?>,
+                                <?php echo $ventas_semanales_completado->viernes; ?>,
+                                <?php echo $ventas_semanales_completado->sabado; ?>,
+                                <?php echo $ventas_semanales_completado->domingo; ?>
+                            ],
+                            fillColor: 'rgba(76, 57, 249, 0.5)',
+                            lineColor: 'transparent'
+                        },
+                        {
+                            name: 'Ventas Sin cupo',
+                            data: [
+                                <?php echo $ventas_semanales_sincupo->lunes; ?>,
+                                <?php echo $ventas_semanales_sincupo->martes; ?>,
+                                <?php echo $ventas_semanales_sincupo->miercoles; ?>,
+                                <?php echo $ventas_semanales_sincupo->jueves; ?>,
+                                <?php echo $ventas_semanales_sincupo->viernes; ?>,
+                                <?php echo $ventas_semanales_sincupo->sabado; ?>,
+                                <?php echo $ventas_semanales_sincupo->domingo; ?>
+                            ],
+                            fillColor: 'rgba(103, 13, 251, 0.5)',
+                            lineColor: 'transparent'
                         }
-                    }
+                    ]
                 });
+                // var myChart = new Chart(ctx, {
+                //     type: 'line',
+                //     data: {
+                //         labels: ['Lunes', 'Martes', 'Miercoles', 'jueves', 'viernes', 'Sábado', 'domingo'],
+                //         datasets: [ventasDataSemanaCompletado, ventasDataSemanaSincupo]
+                //     },
+                //     options: {
+                //         scales: {
+                //             yAxes: [{
+                //                 ticks: {
+                //                     beginAtZero: true
+                //                 }
+                //             }]
+                //         }
+                //     }
+                // });
             </script>
         </div>
     </div>
 </div>
+
+<!-- notas
+
+Agregar estados a al venta
+Reversado -> cuando se anulo la venta
+• Competaldo -> cambiar a Autorizado Listo
+• Fallido -> Negado 
+
+reprote -> para vendedor y director (sin opcion a exportar)
+
+detalles de la venta
+• cedula de cleinte
+producto => buscar la forma de incrustar lso detalles de la venta
+• importe
+
+directora puede ver lo borradores de sus vendedores
+poder cambiar creador de venta solo admin
+
+
+-->

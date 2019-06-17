@@ -15,10 +15,15 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/slicknav.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <!-- chart.js css -->
+    <!-- chart.js css - js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" type="text/css" media="all" />
-    <!-- start chart js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <!-- daterangepicker.js -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <!--  DataTable  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -39,16 +44,17 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/tableexport.min.css">
 
     <!-- others css -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typography.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/default-css.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styles.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/typography.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/default-css.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styles.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
 
     <!-- modernizr css -->
     <script src="<?php echo base_url() ?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <!-- Script adjuntar base_url -->
     <script>
-        let baseurl = "<?php echo base_url() ?>";
+        var baseurl = "<?php echo base_url(); ?>";
+        var idpermiso = <?php echo $this->session->userdata('idpermiso'); ?>;
     </script>
 
 
