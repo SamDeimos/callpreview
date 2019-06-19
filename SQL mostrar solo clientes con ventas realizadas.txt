@@ -1,0 +1,6 @@
+
+select *
+from md_cliente a
+inner join md_dami b on a.id_cliente = b.id_cliente
+where b.id_statusdami = 1
+group by a.id_cliente
