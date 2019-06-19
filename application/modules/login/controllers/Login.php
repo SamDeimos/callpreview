@@ -8,7 +8,6 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('Login_model');
         $this->load->model('../modules/usuarios/models/Usuario_model');
-        $this->load->library('recaptcha');
     }
     public function index()
     {
@@ -16,14 +15,8 @@ class Login extends CI_Controller
             redirect('dashboard');
         } else {
             if ($this->input->post()) {
-                //Validacion de reCaptcah
-                // Catch the user's answer
-                $captcha_answer = $this->input->post('g-recaptcha-response');
 
-                // Verify user's answer
-                $response = $this->recaptcha->verifyResponse($captcha_answer);
-
-                if (!empty($this->input->post('username', TRUE)) && !empty($this->input->post('password', TRUE)) && $response['success']) {
+                if ($this->input->post('username', TRUE) != '' && $this->input->post('password', TRUE) != '') {
                     if ($this->Login_model->Login($this->input->post('username', TRUE))) {
                         $result = $this->Login_model->Login($this->input->post('username', TRUE));
                         $pass_decode = $this->encrypt->decode($result->pass);

@@ -1,0 +1,21 @@
+1- Agregar permisos de reescritura al directorio del proyecto
+
+    <Directory "/var/www/html/Economundo">
+        Order allow,deny
+        Allow from all
+        Allowoverride all
+    </Directory>
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+    </IfModule>
+
+2- Verificar que en la configuración de /var/www/html/Economundo/application/config/config.php
+	Este configurada de esta manera
+		$config['index_page'] = '';
+3.- editar tu .htaccess de esta manera
+
+		RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ index.php/$1 [L]

@@ -70,7 +70,7 @@ class Usuarios extends CI_Controller{
             $param['id_lvlformacion'] = $this->input->post('lvlformacion');
             $param['id_statuscivil'] = $this->input->post('estadocivil');
 
-            if(empty($this->input->post('id_usuario'))){
+            if(!$this->input->post('id_usuario')){
                 //Insertamos usuario nuevo
                 $id_usuario = $this->Usuario_model->AddUser($param);
                 redirect(base_url().'usuarios/usuario/'.$id_usuario,'refresh');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?php echo $this->uri->segment(1) ?> - Mi Dami</title>
+    <title><?php echo $this->uri->segment(1) ?> - XUDO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
@@ -44,9 +44,6 @@
                         <label for="password">Contraseña</label>
                         <input type="password" name="password" id="password">
                         <i class="ti-lock"></i>
-                    </div>
-                    <div class="form-gp">
-                        <?php echo $this->recaptcha->render(); ?>
                     </div>
                     <div class="row mb-4 rmber-area">
                         <div class="col-6">
