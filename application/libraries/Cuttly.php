@@ -12,10 +12,10 @@ class Cuttly
 
         if ($result['url']['status'] == 7) {
             return $result['url']['shortLink'];
-        }else{
+        } else {
             return $URL_long;
         }
     }
 }
 
-/* End of file GoogleShortener.php */
+/* End of file Cuttly.php */

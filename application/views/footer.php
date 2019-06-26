@@ -47,6 +47,7 @@
 
 <script src="<?php echo base_url() ?>assets/js/plugins.js"></script>
 <script src="<?php echo base_url() ?>assets/js/scripts.js"></script>
+<script src="<?php echo base_url() ?>assets/js/docs.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/script-functions.js"></script>
 
 <!-- Script Usuarios -->
