@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>callcenter/calls/registry"><i class="fa fa-user-plus"></i> Registro de llamadas</a>
+        <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>callcenter/calls">volver</a>
     </div>
 </div>
 <div class="card mt-4">
@@ -24,7 +24,7 @@
                         <td><?php echo $reg->campaign ?></td>
                         <td><?php echo $reg->nombres ?></td>
                         <td><?php echo $reg->dst ?></td>
-                        <td><?php echo $reg->calldate ?></td>
+                        <td><?php echo ($reg->cdr_calldate == '') ? $reg->reg_calldate : $reg->cdr_calldate ?></td>
                         <td><?php echo seg_to_hours($reg->billsec) ?></td>
                         <td><?php echo ($reg->disposition != '') ? $reg->disposition : 'NO ANSWERED'  ?></td>
                     </tr>

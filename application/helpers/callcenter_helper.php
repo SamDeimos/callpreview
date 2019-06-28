@@ -32,7 +32,7 @@ if (!function_exists('get_listado_calls')) {
                 break;
         }
 
-        $CI->db->select('a.id_call, a.phones, a.nombres, b.id_call_attribute, b.data_attribute, c.campaign, d.estado', FALSE);
+        $CI->db->select('a.id_call, a.phones, a.nombres, b.id_call_attribute, b.data_attribute, c.id_form, c.campaign, d.id_call_status, d.estado', FALSE);
         $CI->db->from('md_callcenter_calls a');
         $CI->db->join('md_callcenter_call_attribute b', 'a.id_call = b.id_call', 'left');
         $CI->db->join('md_callcenter_campaigns c', 'a.id_campaign = c.id_campaign', 'left');
@@ -69,12 +69,61 @@ if (!function_exists('get_listado_registrys')) {
                 break;
         }
 
-        $CI->db->select('a.id_call_registry, a.id_call, a.dst, d.campaign, b.id_user, b.phones, b.nombres, c.calldate, c.billsec, c.disposition', FALSE);
+        $CI->db->select('a.id_call_registry, a.id_call, a.dst, a.calldate as reg_calldate, d.campaign, b.id_user, b.phones, b.nombres, c.calldate as cdr_calldate, c.billsec, c.disposition', FALSE);
         $CI->db->from('md_callcenter_call_registry a');
         $CI->db->join('md_callcenter_calls b', 'a.id_call = b.id_call', 'left');
         $CI->db->join('asteriskcdrdb.cdr c', 'a.uniqueid = c.uniqueid', 'left');
         $CI->db->join('md_callcenter_campaigns d', 'b.id_campaign = d.id_campaign', 'left');
         $query = $CI->db->get();
         return $query->result();
+    }
+}
+
+/**
+ * Creacion de formulario dinamico
+ *
+ * @param   int $id_form            id de fromulario asignado en la campaña
+ * @param   int $id_call_registry   id del registro de la llamada
+ * 
+ * @return  html  formulario construido html
+ */
+if (!function_exists('constructor_formulario')) {
+    function constructor_formulario($id_form, $id_call_regsitry)
+    {
+        $CI = &get_instance();
+        $CI->db->where('id_form', $id_form);
+        $query = $CI->db->get('md_callcenter_form_fields');
+        $form_fields = $query->result();
+
+        //$html_form = '<div class="row">';
+        $html_form = '<div class="col">';
+        $html_form .= '<form id="form_data_recolected" action="" method="POST">';
+        $html_form .= '<input class="" name="id_call_registry" type="hidden" value="' . $id_call_regsitry . '">';
+        $html_form .= '<input class="" name="id_form" type="hidden" value="' . $id_form . '">';
+
+        foreach ($form_fields as $field) {
+            if ($field->type == 0) {
+                $html_form .= '<div class="form-group">';
+                $html_form .= '<label for="id_user">' . $field->label . '</label>';
+                $html_form .= '<input class="form-control form-control-sm" name="' . $field->label . '" type="text">';
+                $html_form .= '</div>';
+            } elseif ($field->type == 1) {
+                $values = json_decode($field->value, TRUE);
+                $html_form .= '<div class="form-group">';
+                $html_form .= '<label for="id_user">' . $field->label . '</label>';
+                $html_form .= '<select class="custom-select custom-select-sm" name="'.$field->label.'">';
+                foreach ($values as $value) {
+                    $html_form .= '<option value="' . $value . '">' . $value . '</option>';
+                }
+                $html_form .= '</select>';
+                $html_form .= '</div>';
+            }
+        }
+
+        $html_form .= '<input class="btn btn-success btn-xs float-right" type="submit" value="Guardar Datos">';
+        $html_form .= '</form>';
+        $html_form .= '</div>';
+
+        return $html_form;
     }
 }

@@ -12,6 +12,7 @@ class Campaign_model extends CI_Model
     public function findAll(){
         $this->db->select('*', FALSE);
         $this->db->from('md_callcenter_campaigns a');
+        $this->db->join('md_callcenter_campaign_status b', 'a.id_campaign_status = b.id_campaign_status', 'left');
         $query = $this->db->get();
         return $query->result();
     }

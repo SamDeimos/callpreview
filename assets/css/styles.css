@@ -2084,11 +2084,12 @@ table tr td [class^="ti-"] {
 
 .status-p {
     color: #fff;
-    padding: 0px 20px 1px;
+    padding: 0px 10px 1px;
     border-radius: 20px;
     display: inline-block;
     text-transform: capitalize;
     vertical-align: middle;
+    font-size: 0.8em;
 }
 
 /*-------------------- END Table Basic ------------------- */

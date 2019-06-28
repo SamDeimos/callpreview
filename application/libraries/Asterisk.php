@@ -37,7 +37,6 @@ class Asterisk
         }
         /**
          * Capturar unique id de llamada generada con Originate
-         * sumamos 1 al unique id para capturar el unique id de la llamada degunda llamada saliente
          *
          */
         $array_Request_Originate = str_replace('</br>', '', explode("\r\n\r\n", $wrets));
@@ -65,6 +64,7 @@ class Asterisk
         // Actualizamos uniqueid de llamada
         $param['id_call'] = $id_call;
         $param['dst'] = $phone;
+        $param['calldate'] = date('Y-m-d H:i:s');
         $param['uniqueid'] = $uniqueid;
         $CI->db->insert('md_callcenter_call_registry', $param);
         return $CI->db->insert_id();

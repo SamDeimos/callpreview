@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>callcenter/campaigns/campaign"><i class="fa fa-user-plus"></i> Nueva campaña</a>
+        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>callcenter/forms/form"><i class="fa fa-user-plus"></i> Nuevo Formulario</a>
     </div>
 </div>
 <div class="card mt-4">
@@ -9,23 +9,23 @@
             <thead class="bg-light text-capitalize">
                 <tr>
                     <th>ID</th>
-                    <th class="text-center" data-priority="1">campaña</th>
+                    <th class="text-center" data-priority="1">formulario</th>
                     <th class="text-center" data-priority="2">Estado</th>
                     <th class="text-center" data-priority="3">Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($campaigns as $campaign) : ?>
+                <?php foreach ($forms as $form) : ?>
                     <tr>
                         <!-- id_call -->
-                        <td><?php echo "#" . $campaign->id_campaign; ?></td>
+                        <td><?php echo "#" . $form->id_form; ?></td>
 
                         <!-- campaña -->
-                        <td class="text-center"><?php echo $campaign->campaign; ?></td>
+                        <td class="text-center"><?php echo $form->form; ?></td>
 
-                        <!-- nombres -->
+                        <!-- estado -->
                         <td class="text-center">
-                            <button type="button" class="btn btn-outline-<?php echo ($campaign->id_campaign_status = 1) ? 'success' : 'danger'; ?> btn-xxs" disabled><?php echo $campaign->estado; ?></button>
+                            <button type="button" class="btn btn-outline-<?php echo ($form->id_form_status = 1) ? 'success' : 'danger'; ?> btn-xxs" disabled><?php echo $form->id_form_status; ?></button>
                         </td>
 
                         <!-- Acción -->
@@ -38,7 +38,7 @@
             <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th class="text-center" data-priority="1">Campaña</th>
+                    <th class="text-center" data-priority="1">formulario</th>
                     <th class="text-center" data-priority="2">Estado</th>
                     <th class="text-center" data-priority="3">Acción</th>
                 </tr>

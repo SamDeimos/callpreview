@@ -40,6 +40,38 @@ class Call_model extends CI_Model
         $this->db->where('id_call', $id_call);
         $this->db->update('md_callcenter_calls', $param);
     }
+
+    public function get_exist_id_call_registry($id_call_registry)
+    {
+        $this->db->where('id_call_registry', $id_call_registry);
+        $query = $this->db->get('md_callcenter_form_data_recolected');
+        return $query->row();
+    }
+
+    public function get_call_registry($id_call){
+        $this->db->select('a.id_call_registry, a.id_call, a.dst, a.calldate as reg_calldate, d.campaign, b.id_user, b.phones, b.nombres, c.calldate as cdr_calldate, c.billsec, c.disposition', FALSE);
+        $this->db->from('md_callcenter_call_registry a');
+        $this->db->join('md_callcenter_calls b', 'a.id_call = b.id_call', 'left');
+        $this->db->join('asteriskcdrdb.cdr c', 'a.uniqueid = c.uniqueid', 'left');
+        $this->db->join('md_callcenter_campaigns d', 'b.id_campaign = d.id_campaign', 'left');
+        $this->db->where('a.id_call', $id_call);
+        $this->db->order_by('a.id_call_registry', 'desc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function add_form_data_recolected($param)
+    {
+        $this->db->insert('md_callcenter_form_data_recolected', $param);
+        return $this->db->insert_id();
+    }
+
+    public function update_form_data_recolected($id_call_registry, $param)
+    {
+        $this->db->where('id_call_registry', $id_call_registry);
+        $this->db->update('md_callcenter_form_data_recolected', $param);
+
+    }
 }
 
 /* End of file Call_model.php */

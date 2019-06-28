@@ -4,29 +4,32 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="callModalLabel">Gestionar llamada</h5>
-            </div>
-            <?php echo form_open('', 'id="form-calificar"') ?>
-            <div class="modal-body">
-                <div id="caja_data_attribute" class="row col-12 mb-4">
+                <?php echo form_open('', 'id="form-calificar"') ?>
+                <input type="hidden" name="id_registry" id="id_registry">
+                <div class="input-group">
+                    <select class="custom-select custom-select-sm" name="id_call_status" id="id_call_status" required>
+                        <?php foreach ($calls_status as $call_status) { ?>
+                            <option value="<?php echo $call_status->id_call_status; ?>"><?php echo $call_status->estado; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
+                <?php echo form_close(); ?>
+            </div>
 
-                <div class="row border-top">
-                    <div class="col-6 mt-4">
-                        <input type="hidden" name="id_registry" id="id_registry">
-                        <div class="input-group">
-                            <select class="custom-select custom-select-sm" name="id_call_status" id="id_call_status" required>
-                                <?php foreach ($calls_status as $call_status) { ?>
-                                    <option value="<?php echo $call_status->id_call_status; ?>"><?php echo $call_status->estado; ?></option>
-                                <?php } ?>
-                            </select>
+            <div class="modal-body">
+                <div class="row">
+                    <div id="caja_data_attribute" class="col-6 mb-4 border-right">
+                        <h4 class="mb-2">Detalle de cliente</h4>
+                        <div class="col">
                         </div>
+                    </div>
+                    <div id="caja_form" class="row col-6 mb-4">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <button id="button-form-calificar" type="button" class="btn btn-primary">Guardar Gestion</button>
             </div>
-            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
@@ -58,6 +61,44 @@
                 <input type="submit" value="Seleccionar" class="btn btn-primary" />
             </div>
             <?php echo form_close(); ?>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal selecionar extension -->
+
+<!-- Modal Registro de llamada por -->
+<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="regModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="regModalLabel">Número de llamdas realizadas: <span></span></h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="tableReg" class="table text-center table-sm">
+                                <thead class="text-uppercase bg-primary">
+                                    <tr class="text-white">
+                                        <th scope="col">Campaña</th>
+                                        <th scope="col">Fecha de llamada</th>
+                                        <th scope="col">Duración</th>
+                                        <th scope="col">Resultado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>

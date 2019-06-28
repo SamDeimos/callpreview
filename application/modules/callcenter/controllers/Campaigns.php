@@ -44,7 +44,7 @@ class Campaigns extends CI_Controller
     public function AddCampaign()
     {
         $param['campaign'] = $this->input->post('campaign');
-        $param['id_status_campaign'] = 1;
+        $param['id_campaign_status'] = 1;
 
         $id_user = $this->input->post('id_user');
         $id_campaign = $this->Campaign_model->AddCampaign($param);

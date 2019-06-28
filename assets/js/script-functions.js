@@ -90,4 +90,17 @@ $('.fecha_daterangepicker').daterangepicker({
         ],
         "firstDay": 1
     }
-}); 
+});
+
+function secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    h = (h < 9) ? (h = '0' + h) : h;
+    m = (m < 9) ? (m = '0' + m) : m;
+    s = (s < 9) ? (s = '0' + s) : s;
+
+    return h + ':' + m + ':' + s;
+} 
