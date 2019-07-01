@@ -20,7 +20,7 @@
                 <!-- Columna derecha -->
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="id_cliente">Selccionar Cliente</label>
+                        <label for="id_cliente">Propietario de Grupo</label>
                         <div class="input-group">
                             <select class="custom-select custom-select-sm select_single" name="own_g" id="own_g" required <?php echo (isset($venta->id_cliente) ? 'disabled' : ''); ?>>
                                 <option <?php echo (isset($grupo->id_grupo) ? '' : 'selected'); ?> value=""></option>

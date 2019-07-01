@@ -9,12 +9,13 @@
             <thead class="bg-light text-capitalize">
                 <tr>
                     <th>ID</th>
-                    <th data-priority="4">campaña</th>
-                    <th data-priority="1">Nombres cliente</th>
-                    <th data-priority="2">Llamado</th>
-                    <th data-priority="2">Fecha llamada</th>
-                    <th data-priority="2">Duración</th>
-                    <th data-priority="2">Resultado</th>
+                    <th>campaña</th>
+                    <th>Nombres cliente</th>
+                    <th>Llamado</th>
+                    <th>Fecha llamada</th>
+                    <th>Duración</th>
+                    <th>Resultado</th>
+                    <th>Formulario</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,18 +28,24 @@
                         <td><?php echo ($reg->cdr_calldate == '') ? $reg->reg_calldate : $reg->cdr_calldate ?></td>
                         <td><?php echo seg_to_hours($reg->billsec) ?></td>
                         <td><?php echo ($reg->disposition != '') ? $reg->disposition : 'NO ANSWERED'  ?></td>
+                        <td>
+                            <?php foreach (json_decode($reg->data) as $key => $value) {
+                                echo '<div class="col-4"><strong>' . $key . ' :</strong>' . $value . '</div>';
+                            } ?>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
             <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th data-priority="4">Campaña</th>
-                    <th data-priority="1">Nombres cliente</th>
-                    <th data-priority="2">Llamado</th>
-                    <th data-priority="2">Fecha llamada</th>
-                    <th data-priority="2">Duración</th>
-                    <th data-priority="2">Resultado</th>
+                    <th>campaña</th>
+                    <th>Nombres cliente</th>
+                    <th>Llamado</th>
+                    <th>Fecha llamada</th>
+                    <th>Duración</th>
+                    <th>Resultado</th>
+                    <th>Formulario</th>
                 </tr>
             </tfoot>
         </table>

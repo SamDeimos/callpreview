@@ -37,6 +37,7 @@ if (!function_exists('get_listado_calls')) {
         $CI->db->join('md_callcenter_call_attribute b', 'a.id_call = b.id_call', 'left');
         $CI->db->join('md_callcenter_campaigns c', 'a.id_campaign = c.id_campaign', 'left');
         $CI->db->join('md_callcenter_call_status d', 'a.id_call_status = d.id_call_status', 'left');
+        $CI->db->where('c.id_campaign_status', '1');
         $query = $CI->db->get();
         return $query->result();
     }
@@ -69,11 +70,12 @@ if (!function_exists('get_listado_registrys')) {
                 break;
         }
 
-        $CI->db->select('a.id_call_registry, a.id_call, a.dst, a.calldate as reg_calldate, d.campaign, b.id_user, b.phones, b.nombres, c.calldate as cdr_calldate, c.billsec, c.disposition', FALSE);
+        $CI->db->select('a.id_call_registry, a.id_call, a.dst, a.calldate as reg_calldate, d.campaign, b.id_user, b.phones, b.nombres, c.calldate as cdr_calldate, c.billsec, c.disposition, e.data', FALSE);
         $CI->db->from('md_callcenter_call_registry a');
         $CI->db->join('md_callcenter_calls b', 'a.id_call = b.id_call', 'left');
         $CI->db->join('asteriskcdrdb.cdr c', 'a.uniqueid = c.uniqueid', 'left');
         $CI->db->join('md_callcenter_campaigns d', 'b.id_campaign = d.id_campaign', 'left');
+        $CI->db->join('md_callcenter_form_data_recolected e', 'a.id_call_registry = e.id_call_registry', 'left');
         $query = $CI->db->get();
         return $query->result();
     }

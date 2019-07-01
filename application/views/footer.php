@@ -21,6 +21,7 @@
 <script src="<?php echo base_url() ?>assets/js/metisMenu.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/jquery.slimscroll.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/jquery.slicknav.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/bootstrap4-toggle.min.js"></script>
 
 <!-- start DataTable -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

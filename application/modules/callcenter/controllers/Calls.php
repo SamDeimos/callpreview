@@ -19,6 +19,7 @@ class Calls extends CI_Controller
         $this->data['calls'] = get_listado_calls($this->session->userdata('id_user'), $this->session->userdata('idpermiso'));
         $this->data['registrys'] = get_listado_registrys($this->session->userdata('id_user'), $this->session->userdata('idpermiso'));
         $this->data['calls_status'] = $this->Call_model->get_call_status();
+        $this->data['schedule'] = json_encode($this->Call_model->get_call_schedule());
     }
 
 
@@ -45,6 +46,17 @@ class Calls extends CI_Controller
         $this->load->view('footer');
     }
 
+    public function calendar()
+    {
+        //Validación de inicio de session
+        $this->validarlogin->validateLogin();
+
+        //Carga de vistas
+        $this->load->view('header', $this->data);
+        $this->load->view('calendar');
+        $this->load->view('footer');
+    }
+
     public function realizar_llamada_AMI()
     {
         if ($this->input->post()) {
@@ -60,6 +72,11 @@ class Calls extends CI_Controller
         if ($this->input->post()) {
             $id_call = $this->Call_model->get_id_call($this->input->post('id_registry'));
             $param['id_call_status'] = $this->input->post('id_call_status');
+
+            //Actualizar registro en registro de llamada
+            $this->Call_model->update_call_registry_status($this->input->post('id_registry'), $param);
+
+            //Actualizar estado de llamada
             $this->Call_model->update_call_status($id_call, $param);
         }
     }

@@ -6,6 +6,18 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo ucfirst($this->uri->segment(1)) ?> - Mi Dami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fullcalendar -->
+    <link href="<?php echo base_url() ?>assets/js/fullcalendar/packages/core/main.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/js/fullcalendar/packages/daygrid/main.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/js/fullcalendar/packages/timegrid/main.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/js/fullcalendar/packages/list/main.css" rel="stylesheet">
+    <script src="<?php echo base_url() ?>assets/js/fullcalendar/packages/core/main.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/fullcalendar/packages/interaction/main.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/fullcalendar/packages/daygrid/main.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/fullcalendar/packages/timegrid/main.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/fullcalendar/packages/list/main.js"></script>
+
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url() ?>assets/images/icon/favicon.png">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/font-awesome.min.css">
@@ -49,12 +61,15 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
 
+    <!-- bootstrap4-toggle.js css - js -->
+    <link href="<?php echo base_url() ?>assets/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
     <!-- modernizr css -->
     <script src="<?php echo base_url() ?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
     <!-- Script adjuntar base_url -->
     <script>
         var baseurl = "<?php echo base_url(); ?>";
-        var idpermiso = <?php echo $this->session->userdata('idpermiso'); ?>;
     </script>
 
 
@@ -92,10 +107,10 @@
                                                     <li class="<?php echo ($this->uri->uri_string() == $sub->url) ? "active" : " " ?>"><a href="<?php echo base_url() . $sub->url ?>"><?php echo $sub->menu ?></a></li>
                                                 </ul>
                                             <?php }
-                                    } ?>
+                                        } ?>
                                     </li>
                                 <?php }
-                        } ?>
+                            } ?>
                         </ul>
                     </nav>
                 </div>

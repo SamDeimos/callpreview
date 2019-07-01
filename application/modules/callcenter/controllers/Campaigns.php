@@ -141,6 +141,15 @@ class Campaigns extends CI_Controller
         # Al finar cerrar el gestor
         fclose($gestor);
     }
+
+    public function update_campaign_status()
+    {
+
+        if ($this->input->post()) {
+            $param['id_campaign_status'] = $this->input->post('id_campaign_status');
+            $this->Campaign_model->update_campaign_status($this->input->post('id_campaign'), $param);
+        }
+    }
 }
 
 /* End of file Campaign.php */

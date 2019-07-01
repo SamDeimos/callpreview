@@ -1,5 +1,5 @@
 
-(function($) {
+(function ($) {
     "use strict";
 
     /*================================
@@ -7,21 +7,21 @@
     ==================================*/
 
     var preloader = $('#preloader');
-    $(window).on('load', function() {
-        preloader.fadeOut('slow', function() { $(this).remove(); });
+    $(window).on('load', function () {
+        preloader.fadeOut('slow', function () { $(this).remove(); });
     });
 
     /*================================
     sidebar collapsing
     ==================================*/
-    $('.nav-btn').on('click', function() {
+    $('.nav-btn').on('click', function () {
         $('.page-container').toggleClass('sbar_collapsed');
     });
 
     /*================================
     Start Footer resizer
     ==================================*/
-    var e = function() {
+    var e = function () {
         var e = (window.innerHeight > 0 ? window.innerHeight : this.screen.height) - 5;
         (e -= 67) < 1 && (e = 1), e > 67 && $(".main-content").css("min-height", e + "px")
     };
@@ -42,7 +42,10 @@
         height: '435px'
     });
     $('.timeline-area').slimScroll({
-        height: '500px'
+        height: '350px',
+        color: '#000000',
+        size: '10px',
+        distance: '10px'
     });
     $('.recent-activity').slimScroll({
         height: 'calc(100vh - 114px)'
@@ -54,7 +57,7 @@
     /*================================
     stickey Header
     ==================================*/
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         var scroll = $(window).scrollTop(),
             mainHeader = $('#sticky-header'),
             mainHeaderHeight = mainHeader.innerHeight();
@@ -73,12 +76,12 @@
     $('[data-toggle="popover"]').popover()
 
     /*------------- Start form Validation -------------*/
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -118,10 +121,10 @@
     /*================================
     login form
     ==================================*/
-    $('.form-gp input').on('focus', function() {
+    $('.form-gp input').on('focus', function () {
         $(this).parent('.form-gp').addClass('focused');
     });
-    $('.form-gp input').on('focusout', function() {
+    $('.form-gp input').on('focusout', function () {
         if ($(this).val().length === 0) {
             $(this).parent('.form-gp').removeClass('focused');
         }
@@ -130,7 +133,7 @@
     /*================================
     slider-area background setting
     ==================================*/
-    $('.settings-btn, .offset-close').on('click', function() {
+    $('.settings-btn, .offset-close').on('click', function () {
         $('.offset-area').toggleClass('show_hide');
         $('.settings-btn').toggleClass('active');
     });
@@ -175,7 +178,7 @@
 
     if ($('#full-view').length) {
 
-        var requestFullscreen = function(ele) {
+        var requestFullscreen = function (ele) {
             if (ele.requestFullscreen) {
                 ele.requestFullscreen();
             } else if (ele.webkitRequestFullscreen) {
@@ -189,7 +192,7 @@
             }
         };
 
-        var exitFullscreen = function() {
+        var exitFullscreen = function () {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.webkitExitFullscreen) {
@@ -206,13 +209,13 @@
         var fsDocButton = document.getElementById('full-view');
         var fsExitDocButton = document.getElementById('full-view-exit');
 
-        fsDocButton.addEventListener('click', function(e) {
+        fsDocButton.addEventListener('click', function (e) {
             e.preventDefault();
             requestFullscreen(document.documentElement);
             $('body').addClass('expanded');
         });
 
-        fsExitDocButton.addEventListener('click', function(e) {
+        fsExitDocButton.addEventListener('click', function (e) {
             e.preventDefault();
             exitFullscreen();
             $('body').removeClass('expanded');

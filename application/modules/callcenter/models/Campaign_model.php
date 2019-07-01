@@ -16,6 +16,12 @@ class Campaign_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function update_campaign_status($id_campaign, $param)
+    {
+        $this->db->where('id_campaign', $id_campaign);
+        $this->db->update('md_callcenter_campaigns', $param);
+    }
 }
 
 /* End of file Campaign_model.php */

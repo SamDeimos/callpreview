@@ -1,6 +1,7 @@
 <div class="card mt-4">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>callcenter/calls/registry"><i class="fa fa-user-plus"></i> Registro de llamadas</a>
+    <a title="Llamadas agendadas" class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>callcenter/calls/calendar"><i class="fa fa-calendar-o"></i></a>
+        <a title="Registro de llamadas" class="btn btn-primary btn-xs float-right mr-1" href="<?php echo base_url(); ?>callcenter/calls/registry"><i class="fa fa-fax"></i></a>
     </div>
 </div>
 <div class="card mt-4">
@@ -9,7 +10,7 @@
             <thead class="bg-light text-capitalize">
                 <tr>
                     <th>ID</th>
-                    <th data-priority="5">campaña</th>
+                    <th data-priority="5">Campaña</th>
                     <th data-priority="1">Nombres</th>
                     <th data-priority="2">Teléfonos</th>
                     <th data-priority="3">Estado</th>

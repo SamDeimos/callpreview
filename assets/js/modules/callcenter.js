@@ -128,6 +128,7 @@ $(document).ready(function () {
                                     async: true,
                                     success: function (data) {
                                         console.log('data guardada');
+                                        $('#form_data_recolected').children('input[type="submit"]').val('Datos Guardados');
                                     }
                                 });
                             });
@@ -158,15 +159,23 @@ $(document).ready(function () {
                     async: true,
                     success: function (data) {
                         let arrayDATA = JSON.parse(data);
-                        console.log(arrayDATA['call_registry']);
+                        let icono = null;
                         $.each(arrayDATA['call_registry'], function (ind, elem) {
-                            html = '<tr>';
-                            html += '<td>' + elem.campaign + '</td>';
-                            html += '<td>' + (elem.cdr_calldate == null ? elem.reg_calldate : elem.cdr_calldate) + '</td>';
-                            html += '<td>' + secondsToHms(elem.billsec) + '</td>';
-                            html += '<td>' + elem.disposition + '</td>';
-                            html += '</tr>';
-                            $('#tableReg tbody').append(html);
+                            html = '<div class="timeline-task">';
+                            html += '<a title="' + elem.estado + '"><div class="icon bg' + elem.id_call_status + '">';
+                            html += '<i class="fa fa-phone"></i>';
+                            html += '</div></a>';
+                            html += '<div class="tm-title">';
+                            html += '<h4>' + (elem.cdr_calldate == null ? elem.reg_calldate : elem.cdr_calldate) + '</h4>';
+                            html += '<span class="time"><i class="ti-time"></i>' + secondsToHms(elem.billsec) + '</span>'
+                            html += '</div>';
+                            html += '<div class="row">';
+                            $.each(JSON.parse(elem.data), function (key, value) {
+                                html += '<div class="col-4"><strong>' + key + ': </strong>' + value + '</div>';
+                            });
+                            html += '</div>';
+                            html += '</div>';
+                            $('.timeline-area').append(html);
 
                             $('#regModalLabel').children('span').text(arrayDATA['call_registry'].length);
                         });
@@ -210,15 +219,17 @@ $(document).ready(function () {
                 Tablecall.ajax.reload(null, false);
             }
         });
+        e.preventDefault();
     });
 
     $("#callModal").on('hidden.bs.modal', function () {
         $('#caja_data_attribute').children().children().remove();
         $('#caja_form').children().remove();
+        $('#form_data_recolected').children('input[type="submit"]').val('Guardar Datos');
     });
 
     $("#regModal").on('hidden.bs.modal', function () {
-        $('#tableReg tbody tr').remove();
+        $('.timeline-area').children().remove();
     });
 
     /**
@@ -226,7 +237,6 @@ $(document).ready(function () {
      */
     $('#add_campo').on('click', function () {
         let input = $('#create_form tr:last').find('td:eq(0)').children('input').val();
-        console.log(input);
         if (input == '' || input == null) {
             alert('Debe de llenar "nombre de campo"');
         } else {
@@ -299,9 +309,25 @@ $(document).ready(function () {
 
     });
 
-    $(document).on('submit', '#form_add', function (e) {
-        //e.preventDefault();
-        console.log($(this).serialize());
+    $(document).on('change', '#status_camp', function () {
+        if ($(this).prop('checked') == true) {
+            id_campaign_status = 1;
+        } else {
+            id_campaign_status = 2;
+        }
+        let parametros = {
+            'id_campaign': $(this).data('id_campaign'),
+            'id_campaign_status': id_campaign_status,
+        };
+        $.ajax({
+            type: "POST",
+            url: baseurl + 'callcenter/campaigns/update_campaign_status',
+            data: parametros,
+            async: true,
+            success: function (data) {
+            }
+        });
+
     });
 });
 

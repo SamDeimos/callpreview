@@ -77,24 +77,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="table-responsive">
-                            <table id="tableReg" class="table text-center table-sm">
-                                <thead class="text-uppercase bg-primary">
-                                    <tr class="text-white">
-                                        <th scope="col">Campaña</th>
-                                        <th scope="col">Fecha de llamada</th>
-                                        <th scope="col">Duración</th>
-                                        <th scope="col">Resultado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <!-- timeline area start -->
+                <div class="timeline-area">
                 </div>
+                <!-- timeline area end -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
