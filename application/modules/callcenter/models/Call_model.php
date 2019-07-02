@@ -19,6 +19,7 @@ class Call_model extends CI_Model
 
     public function get_call_status()
     {
+        $this->db->where('id_call_status !=', 1);
         $query = $this->db->get('md_callcenter_call_status');
         return $query->result();
     }

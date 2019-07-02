@@ -22,6 +22,13 @@ class Campaign_model extends CI_Model
         $this->db->where('id_campaign', $id_campaign);
         $this->db->update('md_callcenter_campaigns', $param);
     }
+
+    public function data_export_registro_llamada($id_campaign){
+        $this->db->simple_query('SET NAMES \'latin1\'');
+        $this->db->where('id_campaign', $id_campaign);
+        $query = $this->db->get('registro_llamadas');
+        return $query->result();
+    }
 }
 
 /* End of file Campaign_model.php */

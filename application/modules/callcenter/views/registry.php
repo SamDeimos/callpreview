@@ -29,9 +29,15 @@
                         <td><?php echo seg_to_hours($reg->billsec) ?></td>
                         <td><?php echo ($reg->disposition != '') ? $reg->disposition : 'NO ANSWERED'  ?></td>
                         <td>
-                            <?php foreach (json_decode($reg->data) as $key => $value) {
-                                echo '<div class="col-4"><strong>' . $key . ' :</strong>' . $value . '</div>';
-                            } ?>
+                            <?php
+                            if ($reg->data != null) {
+                                foreach (json_decode($reg->data) as $key => $value) {
+                                    echo '<div class="col-4"><strong>' . $key . ' : </strong>' . $value . '</div>';
+                                }
+                            }else{
+                                echo 'sin datos';
+                            }
+                            ?>
                         </td>
                     </tr>
                 <?php endforeach ?>

@@ -50,7 +50,7 @@
                                             </select>
                                         </td>
                                         <td><input class="values_camp" name="values_camp[]" type="hidden"></td>
-                                        <td> </td>
+                                        <td><button class="btn btn-primary btn-xs remove_campo">-</button></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -1,10 +1,29 @@
 $(document).ready(function () {
+
+    //Valdiar si hay una extension en en localstorage
+    var ext = localStorage.getItem('ext');
+    if (ext == null || ext == 'undefined') {
+        $('#extModal').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
+    }
+
+    //Tabla de registro de llamadas
     var Tableregistry = $('#Tableregistry').DataTable({
         language: {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },
         pageLength: 25,
         order: [[0, 'desc']]
+    });
+
+    //Tabla de listado de campañas
+    var Tablecampaign = $('#Tablecampaign').DataTable({
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
     });
 
     var Tablecall = $('#Tablecall').DataTable({
@@ -85,36 +104,41 @@ $(document).ready(function () {
                         data: parametros,
                         async: true,
                         success: function (data) {
-                            $('#caja_data_attribute .col').append('<div><p><strong>Nombres: </strong>' + nombres + '</p></div>');
                             let arrayDATA = JSON.parse(data);
 
-                            //insertar formulario de gestion
-                            $('#caja_form').append(arrayDATA['form']);
+                            if (arrayDATA['id_registry'] != null) {
+                                //insertamos nombres
+                                $('#caja_data_attribute .col').append('<div><p><strong>Nombres: </strong>' + nombres + '</p></div>');
 
-                            //inserta el valor del registro actual en input #id_registry
-                            $('#id_registry').val(arrayDATA['id_registry']);
+                                //insertar formulario de gestion
+                                $('#caja_form').append(arrayDATA['form']);
 
-                            //se llena div #caja_data_attribute con los datos de cada llamda
-                            if (typeof arrayDATA['data_attribute'] == 'string') {
-                                mapdata_attribute = new Map(Object.entries((JSON.parse(arrayDATA['data_attribute']))));
-                                for (var [key, value] of mapdata_attribute) {
-                                    $('#caja_data_attribute .col').append('<div><p class=" text-capitalize"><strong>' + key + ': </strong>' + value + '</p></div>');
+                                //inserta el valor del registro actual en input #id_registry
+                                $('#id_registry').val(arrayDATA['id_registry']);
+
+                                //se llena div #caja_data_attribute con los datos de cada llamda
+                                if (typeof arrayDATA['data_attribute'] == 'string') {
+                                    mapdata_attribute = new Map(Object.entries((JSON.parse(arrayDATA['data_attribute']))));
+                                    for (var [key, value] of mapdata_attribute) {
+                                        $('#caja_data_attribute .col').append('<div><p class=" text-capitalize"><strong>' + key + ': </strong>' + value + '</p></div>');
+                                    }
+                                    $('#callModal').modal({
+                                        backdrop: 'static',
+                                        keyboard: false,
+                                        show: true
+                                    });
+                                } else {
+                                    console.log('Llamada sin datos');
+                                    $('#caja_data_attribute .col').append('<div><p><strong>Sin datos</strong></p></div>');
+                                    $('#callModal').modal({
+                                        backdrop: 'static',
+                                        keyboard: false,
+                                        show: true
+                                    });
                                 }
-                                $('#callModal').modal({
-                                    backdrop: 'static',
-                                    keyboard: false,
-                                    show: true
-                                });
                             } else {
-                                console.log('Llamada sin datos');
-                                $('#caja_data_attribute .col').append('<div><p><strong>Sin datos</strong></p></div>');
-                                $('#callModal').modal({
-                                    backdrop: 'static',
-                                    keyboard: false,
-                                    show: true
-                                });
+                                console.log('Error: Conexión con ext fallida.');
                             }
-
 
                             /**
                             * Envio de form_data_recolected
@@ -159,7 +183,6 @@ $(document).ready(function () {
                     async: true,
                     success: function (data) {
                         let arrayDATA = JSON.parse(data);
-                        let icono = null;
                         $.each(arrayDATA['call_registry'], function (ind, elem) {
                             html = '<div class="timeline-task">';
                             html += '<a title="' + elem.estado + '"><div class="icon bg' + elem.id_call_status + '">';
@@ -189,15 +212,6 @@ $(document).ready(function () {
             });
         }
     });
-
-    var ext = localStorage.getItem('ext');
-    if (ext == null || ext == 'undefined') {
-        $('#extModal').modal({
-            backdrop: 'static',
-            keyboard: false,
-            show: true
-        });
-    }
 
     $('#form-ext').submit(function (event) {
         event.preventDefault();
@@ -230,6 +244,7 @@ $(document).ready(function () {
 
     $("#regModal").on('hidden.bs.modal', function () {
         $('.timeline-area').children().remove();
+        $('#regModalLabel').children('span').text('');
     });
 
     /**
@@ -244,10 +259,19 @@ $(document).ready(function () {
             html += '<td><input class="form-control form-control-sm" name="label[]" placeholder="nombre de campo" type="text" required></td>';
             html += '<td><select class="custom-select custom-select-sm type" name="id_form_type[]" id="id_form_type"><option value="0">texto</option><option value="1">lista</option></select></td>';
             html += '<td><input class="values_camp" name="values_camp[]" type="hidden"></td>';
-            html += '<td> </td>';
+            html += '<td><button class="btn btn-primary btn-xs remove_campo">-</button></td>';
             html += '</tr>';
 
             $('#create_form tbody').append(html);
+        }
+    });
+
+    $(document).on('click', '.remove_campo', function (e) {
+        e.preventDefault();
+        if ($('#create_form tr').length > 2) {
+            $(this).closest('tr').remove();
+        }else{
+            console.log('no puede eliminar este elemnto');
         }
     });
 
@@ -309,6 +333,7 @@ $(document).ready(function () {
 
     });
 
+    //Cambiar estado de campañas
     $(document).on('change', '#status_camp', function () {
         if ($(this).prop('checked') == true) {
             id_campaign_status = 1;
@@ -327,7 +352,15 @@ $(document).ready(function () {
             success: function (data) {
             }
         });
+    });
 
+    $(document).on('click', '#btn-ext', function (e) {
+        e.preventDefault();
+        $('#extModal').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
     });
 });
 

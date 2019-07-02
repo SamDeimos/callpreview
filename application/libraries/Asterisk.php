@@ -40,22 +40,24 @@ class Asterisk
          *
          */
         $array_Request_Originate = str_replace('</br>', '', explode("\r\n\r\n", $wrets));
-        $arrayresponseOriginate = explode("\r\n", $array_Request_Originate[4]);
-        $arrayresponseUniqueid = array();
-        foreach ($arrayresponseOriginate as $responseOriginate) {
-            $element = explode(": ", $responseOriginate);
-            $arrayresponseUniqueid[$element[0]] = $element[1];
-        };
-        $uniqueid =$arrayresponseUniqueid['Uniqueid'];
-        fclose($socket);
+        $OriginateResponse = explode(": ", $array_Request_Originate[2]);
 
-        // var_dump($array_Request_Originate);
+        //Validacion del estado de originate
+        if (preg_replace("/[\r\n|\n|\r]+/", " ", $OriginateResponse[1]) == 'Success Message') {
+            $arrayresponseOriginate = explode("\r\n", $array_Request_Originate[4]);
+            $arrayresponse = array();
+            foreach ($arrayresponseOriginate as $responseOriginate) {
+                $element = explode(": ", $responseOriginate);
+                $arrayresponse[$element[0]] = $element[1];
+            };
+            $uniqueid = $arrayresponse['Uniqueid'];
 
-        if ($wrets != '') {
             return $this->_insert_reg_llamada($id_call, $phone, $uniqueid);
         } else {
-            return "no se ha realizado la llamada";
+            return NULL;
         }
+
+        fclose($socket);
     }
 
     private function _insert_reg_llamada($id_call, $phone, $uniqueid)

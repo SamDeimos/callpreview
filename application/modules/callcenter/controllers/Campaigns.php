@@ -150,6 +150,36 @@ class Campaigns extends CI_Controller
             $this->Campaign_model->update_campaign_status($this->input->post('id_campaign'), $param);
         }
     }
+
+    public function export_csv()
+    {
+        if ($this->input->get()) {
+            $filename = $this->input->get('campaign') . '-' . date('Ymd') . '.csv';
+            header("Content-Description: File Transfer");
+            header("Content-Disposition: attachment; filename=$filename");
+            header("Content-Type: application/x-csv; charset=latin1");
+
+            // file creation 
+            $file = fopen('php://output', 'w');
+            $data = $this->Campaign_model->data_export_registro_llamada($this->input->get('id_campaign'));
+
+            //constructor de header
+            $arrayheader = (array) $data[0];
+            $header = array();
+            foreach ($arrayheader as $key => $value) {
+                $header[] = $key;
+            }
+            fputcsv($file, $header);
+
+            //constructor de data
+            foreach ($data as $numeroDeColumna => $columna) {
+                fputcsv($file, (str_replace(array("{", "}", "[", "]"), "", (array) $columna)));
+            }
+
+            fclose($file);
+            exit;
+        }
+    }
 }
 
 /* End of file Campaign.php */

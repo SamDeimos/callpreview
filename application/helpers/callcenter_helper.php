@@ -113,7 +113,7 @@ if (!function_exists('constructor_formulario')) {
                 $values = json_decode($field->value, TRUE);
                 $html_form .= '<div class="form-group">';
                 $html_form .= '<label for="id_user">' . $field->label . '</label>';
-                $html_form .= '<select class="custom-select custom-select-sm" name="'.$field->label.'">';
+                $html_form .= '<select class="custom-select custom-select-sm" name="' . $field->label . '">';
                 foreach ($values as $value) {
                     $html_form .= '<option value="' . $value . '">' . $value . '</option>';
                 }
@@ -127,5 +127,27 @@ if (!function_exists('constructor_formulario')) {
         $html_form .= '</div>';
 
         return $html_form;
+    }
+}
+
+if (!function_exists('exportar_csv')) {
+    function exportar_csv($filename, $data)
+    {
+        // file name 
+        $filename = $filename . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$filename");
+        header("Content-Type: application/csv; ");
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = array("Username", "Name", "Gender", "Email");
+        fputcsv($file, $header);
+        foreach ($data as $key => $line) {
+            fputcsv($file, $line);
+        }
+        fclose($file);
+        exit;
     }
 }
