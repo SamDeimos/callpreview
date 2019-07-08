@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-acction">
-    <a title="Llamadas agendadas" class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>callcenter/calls/calendar"><i class="fa fa-calendar-o"></i></a>
+        <button id="btn-calendar" title="Llamadas agendadas" class="btn btn-primary btn-xs float-right"><i class="fa fa-calendar-o"></i></button>
         <a title="Registro de llamadas" class="btn btn-primary btn-xs float-right mr-1" href="<?php echo base_url(); ?>callcenter/calls/registry"><i class="fa fa-fax"></i></a>
     </div>
 </div>

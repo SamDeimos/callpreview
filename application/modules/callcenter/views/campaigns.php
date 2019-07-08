@@ -9,9 +9,11 @@
             <thead class="bg-light text-capitalize">
                 <tr>
                     <th>ID</th>
-                    <th class="text-center" data-priority="1">Nombre de campaña</th>
+                    <th data-priority="1">Nombre de campaña</th>
+                    <th data-priority="5">Formulario</th>
                     <th class="text-center" data-priority="2">Estado</th>
-                    <th class="text-center" data-priority="3">Acción</th>
+                    <th class="text-center" data-priority="3">Reporte</th>
+                    <th class="text-center" data-priority="4">Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +23,10 @@
                         <td><?php echo "#" . $campaign->id_campaign; ?></td>
 
                         <!-- campaña -->
-                        <td class="text-center"><?php echo $campaign->campaign; ?></td>
+                        <td><?php echo $campaign->campaign; ?></td>
+
+                        <!-- formulario -->
+                        <td><?php echo $campaign->form; ?></td>
 
                         <!-- Estado -->
                         <td class="text-center">
@@ -29,7 +34,16 @@
                         </td>
 
                         <td class="text-center">
-                            <a class="download_reg_camp" href="<?php echo base_url(); ?>callcenter/campaigns/export_csv?campaign=<?php echo $campaign->campaign; ?>&id_campaign=<?php echo $campaign->id_campaign ?>" title="Desacargar reporte"><i class="fa fa-download"></i></a>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle btn-xxs" type="button" data-toggle="dropdown" aria-expanded="false">Exportar</button>
+                                <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(15px, -107px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>callcenter/campaigns/export_csv?campaign=<?php echo $campaign->campaign; ?>&id_campaign=<?php echo $campaign->id_campaign ?>" title="Desacargar reporte"><i class="fa fa-download"></i> CSV</a>
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>callcenter/campaigns/export_xlsx?campaign=<?php echo $campaign->campaign; ?>&id_campaign=<?php echo $campaign->id_campaign ?>" title="Desacargar reporte"><i class="fa fa-download"></i> EXCEL</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $campaign->id_campaign ?>"><i class="far fa-trash-alt"></i></a>
                         </td>
 
                     </tr>
@@ -38,9 +52,11 @@
             <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th class="text-center" data-priority="1">Nombre de campaña</th>
+                    <th data-priority="1">Nombre de campaña</th>
+                    <th data-priority="5">Formulario</th>
                     <th class="text-center" data-priority="2">Estado</th>
-                    <th class="text-center" data-priority="3">Acción</th>
+                    <th class="text-center" data-priority="3">Reporte</th>
+                    <th class="text-center" data-priority="4">Acción</th>
                 </tr>
             </tfoot>
         </table>

@@ -4,8 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?php echo ucfirst($this->uri->segment(1)) ?> - Mi Dami</title>
+    <title><?php echo ucfirst($this->uri->segment(1)) ?> - XUDO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Trumbowyg -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.css">
 
     <!-- Fullcalendar -->
     <link href="<?php echo base_url() ?>assets/js/fullcalendar/packages/core/main.css" rel="stylesheet">

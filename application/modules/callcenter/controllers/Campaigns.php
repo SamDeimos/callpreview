@@ -9,6 +9,7 @@ class Campaigns extends CI_Controller
         parent::__construct();
         $this->load->model('Call_model');
         $this->load->model('Campaign_model');
+        $this->load->library('Exportar');
         $this->load->library('Menu');
         $this->load->library('ValidarLogin');
 
@@ -16,25 +17,24 @@ class Campaigns extends CI_Controller
         $this->data['menu'] = $this->menu->getMenu($this->session->userdata('idpermiso'));
         $this->data['vendedores'] = get_listado_usuarios_idpermiso(2);
         $this->data['campaigns'] = $this->Campaign_model->findAll();
+        $this->data['forms'] = get_listado_forms();
+
+        //Validación de inicio de session
+        $this->validarlogin->validateLogin();
     }
 
 
     public function index()
     {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('campaigns');
+        $this->load->view('modals/modal_delete');
         $this->load->view('footer');
     }
 
     public function campaign()
     {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('formulario_campaign');
@@ -44,7 +44,8 @@ class Campaigns extends CI_Controller
     public function AddCampaign()
     {
         $param['campaign'] = $this->input->post('campaign');
-        $param['id_campaign_status'] = 1;
+        $param['id_form'] = $this->input->post('id_form');
+        $param['id_campaign_status'] = 2;
 
         $id_user = $this->input->post('id_user');
         $id_campaign = $this->Campaign_model->AddCampaign($param);
@@ -52,8 +53,35 @@ class Campaigns extends CI_Controller
 
         $this->_insert_file($dir_file, $id_campaign, $id_user);
 
-
         redirect(base_url() . 'callcenter/campaigns', 'refresh');
+    }
+
+    /**
+     * Actualizar estado de la campaña por medio de ajax
+     * usando un toggle bottton
+     *
+     */
+    public function update_campaign_status()
+    {
+
+        if ($this->input->post()) {
+            $param['id_campaign_status'] = $this->input->post('id_campaign_status');
+            $this->Campaign_model->update_campaign_status($this->input->post('id_campaign'), $param);
+        }
+    }
+
+    public function export_csv()
+    {
+        if ($this->input->get()) {
+            $this->exportar->export_csv($this->input->get('campaign'), $this->Campaign_model->data_export_registro_llamada($this->input->get('id_campaign')));
+        }
+    }
+
+    public function export_xlsx()
+    {
+        if ($this->input->get()) {
+            $this->exportar->export_excel($this->input->get('campaign'), $this->Campaign_model->data_export_registro_llamada($this->input->get('id_campaign')));
+        }
     }
 
     /**
@@ -140,45 +168,6 @@ class Campaigns extends CI_Controller
         }
         # Al finar cerrar el gestor
         fclose($gestor);
-    }
-
-    public function update_campaign_status()
-    {
-
-        if ($this->input->post()) {
-            $param['id_campaign_status'] = $this->input->post('id_campaign_status');
-            $this->Campaign_model->update_campaign_status($this->input->post('id_campaign'), $param);
-        }
-    }
-
-    public function export_csv()
-    {
-        if ($this->input->get()) {
-            $filename = $this->input->get('campaign') . '-' . date('Ymd') . '.csv';
-            header("Content-Description: File Transfer");
-            header("Content-Disposition: attachment; filename=$filename");
-            header("Content-Type: application/x-csv; charset=latin1");
-
-            // file creation 
-            $file = fopen('php://output', 'w');
-            $data = $this->Campaign_model->data_export_registro_llamada($this->input->get('id_campaign'));
-
-            //constructor de header
-            $arrayheader = (array) $data[0];
-            $header = array();
-            foreach ($arrayheader as $key => $value) {
-                $header[] = $key;
-            }
-            fputcsv($file, $header);
-
-            //constructor de data
-            foreach ($data as $numeroDeColumna => $columna) {
-                fputcsv($file, (str_replace(array("{", "}", "[", "]"), "", (array) $columna)));
-            }
-
-            fclose($file);
-            exit;
-        }
     }
 }
 

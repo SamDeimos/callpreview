@@ -43,7 +43,7 @@ class Forms extends CI_Controller
     public function AddForm()
     {
         $param_form['form'] = $this->input->post('campaign');
-        $param_form['id_form_status'] = $this->input->post('id_form_status');
+        //$param_form['id_form_status'] = $this->input->post('id_form_status');
 
         $id_form = $this->Form_model->AddForm($param_form);
 

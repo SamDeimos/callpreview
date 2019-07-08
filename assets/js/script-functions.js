@@ -12,6 +12,23 @@ $("select.select_single").select2({
     minimumInputLength: 3,
 });
 
+$('textarea.edit_text').trumbowyg({
+    lang: 'es',
+    btns: [
+        ['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['foreColor', 'backColor'],
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen']
+    ]
+});
+
 function get_permisos_ventas_delete(idpermiso, id_statusventa) {
     switch (idpermiso) {
         case 1:

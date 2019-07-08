@@ -9,8 +9,7 @@
             <thead class="bg-light text-capitalize">
                 <tr>
                     <th>ID</th>
-                    <th class="text-center" data-priority="1">formulario</th>
-                    <th class="text-center" data-priority="2">Estado</th>
+                    <th data-priority="1">formulario</th>
                     <th class="text-center" data-priority="3">Acción</th>
                 </tr>
             </thead>
@@ -20,13 +19,8 @@
                         <!-- id_call -->
                         <td><?php echo "#" . $form->id_form; ?></td>
 
-                        <!-- campaña -->
-                        <td class="text-center"><?php echo $form->form; ?></td>
-
-                        <!-- estado -->
-                        <td class="text-center">
-                            <button type="button" class="btn btn-outline-<?php echo ($form->id_form_status = 1) ? 'success' : 'danger'; ?> btn-xxs" disabled><?php echo $form->id_form_status; ?></button>
-                        </td>
+                        <!-- fomrulario -->
+                        <td><?php echo $form->form; ?></td>
 
                         <!-- Acción -->
                         <td class="text-center">
@@ -38,8 +32,7 @@
             <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th class="text-center" data-priority="1">formulario</th>
-                    <th class="text-center" data-priority="2">Estado</th>
+                    <th data-priority="1">formulario</th>
                     <th class="text-center" data-priority="3">Acción</th>
                 </tr>
             </tfoot>

@@ -20,40 +20,27 @@ class Calls extends CI_Controller
         $this->data['registrys'] = get_listado_registrys($this->session->userdata('id_user'), $this->session->userdata('idpermiso'));
         $this->data['calls_status'] = $this->Call_model->get_call_status();
         $this->data['schedule'] = json_encode($this->Call_model->get_call_schedule());
+
+        //Validación de inicio de session
+        $this->validarlogin->validateLogin();
     }
 
 
     public function index()
     {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('calls');
         $this->load->view('modal/call_modal.php');
+        $this->load->view('modal/calendar_modal.php');
         $this->load->view('footer');
     }
 
     public function registry()
     {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('registry');
-        $this->load->view('footer');
-    }
-
-    public function calendar()
-    {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
-        //Carga de vistas
-        $this->load->view('header', $this->data);
-        $this->load->view('calendar');
         $this->load->view('footer');
     }
 
@@ -84,8 +71,8 @@ class Calls extends CI_Controller
     public function registro_call()
     {
         //if($this->input->post()){
-            $result['call_registry'] = $this->Call_model->get_call_registry($this->input->post('id_call'));
-            echo json_encode($result);
+        $result['call_registry'] = $this->Call_model->get_call_registry($this->input->post('id_call'));
+        echo json_encode($result);
         //}
     }
 

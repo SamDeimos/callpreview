@@ -81,6 +81,14 @@ if (!function_exists('get_listado_registrys')) {
     }
 }
 
+if (!function_exists('get_listado_forms')){
+    function get_listado_forms(){
+        $CI =& get_instance();
+        $query = $CI->db->get('md_callcenter_forms');
+        return $query->result();
+    }
+}
+
 /**
  * Creacion de formulario dinamico
  *

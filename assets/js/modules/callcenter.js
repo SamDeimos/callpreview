@@ -171,7 +171,7 @@ $(document).ready(function () {
              * Mostrar data_attibute junto con el historial de llamdas
              * con hinformación de formularios
              */
-            $('.datalleCall').click(function (event) {
+            $('a.datalleCall').click(function (event) {
                 event.preventDefault();
                 let parametros = {
                     'id_call': $(this).data('id'),
@@ -182,9 +182,15 @@ $(document).ready(function () {
                     data: parametros,
                     async: true,
                     success: function (data) {
+                        //limpia los datos del modal antes de mostrar datos nuevos
+                        $('#timeline-area').children().remove();
+                        $('#regModalLabel').children('span').text('');
+
+                        //Se crea todo el timeline con la infromacion de las llamdas
                         let arrayDATA = JSON.parse(data);
+                        html = '<div class="timeline-area">';
                         $.each(arrayDATA['call_registry'], function (ind, elem) {
-                            html = '<div class="timeline-task">';
+                            html += '<div class="timeline-task">';
                             html += '<a title="' + elem.estado + '"><div class="icon bg' + elem.id_call_status + '">';
                             html += '<i class="fa fa-phone"></i>';
                             html += '</div></a>';
@@ -194,13 +200,22 @@ $(document).ready(function () {
                             html += '</div>';
                             html += '<div class="row">';
                             $.each(JSON.parse(elem.data), function (key, value) {
-                                html += '<div class="col-4"><strong>' + key + ': </strong>' + value + '</div>';
+                                html += '<div class="col-4"><strong>' + key.replace(/_/gi, " ") + ': </strong>' + value + '</div>';
                             });
                             html += '</div>';
                             html += '</div>';
-                            $('.timeline-area').append(html);
+                        });
+                        html += '</div>';
 
-                            $('#regModalLabel').children('span').text(arrayDATA['call_registry'].length);
+                        //Se carga el timeline y la cantidad de llamadas en en el modal
+                        $('#timeline-area').append(html);
+                        $('#regModalLabel').children('span').text(arrayDATA['call_registry'].length);
+
+                        $('.timeline-area').slimScroll({
+                            height: '350px',
+                            color: '#000000',
+                            size: '10px',
+                            distance: '10px'
                         });
 
                         $('#regModal').modal({
@@ -243,8 +258,15 @@ $(document).ready(function () {
     });
 
     $("#regModal").on('hidden.bs.modal', function () {
-        $('.timeline-area').children().remove();
+        $('#timeline-area').children().remove();
         $('#regModalLabel').children('span').text('');
+    });
+
+    //Cargar datos a modal Delete
+    $('#deleteModal').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let id = button.data('id');
+        $('#idDelete').val(id);
     });
 
     /**
@@ -270,7 +292,7 @@ $(document).ready(function () {
         e.preventDefault();
         if ($('#create_form tr').length > 2) {
             $(this).closest('tr').remove();
-        }else{
+        } else {
             console.log('no puede eliminar este elemnto');
         }
     });
@@ -360,6 +382,35 @@ $(document).ready(function () {
             backdrop: 'static',
             keyboard: false,
             show: true
+        });
+    });
+
+    $(document).on('click', '#btn-calendar', function (e) {
+        e.preventDefault();
+        $('#calendarModal').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
+    });
+
+    $(document).on('click', '#save-script', function (e) {
+        e.preventDefault();
+        let parametros = {
+            'id_script': $('#id_script').val(),
+            'script': $('#script').val(),
+            'contenido_script': $('.trumbowyg-editor').html()
+        }
+        $.ajax({
+            type: "POST",
+            url: baseurl + 'callcenter/scripts/AddScript',
+            data: parametros,
+            async: true,
+            success: function (data) {
+                if (data != '') {
+                    location.href = data;
+                }
+            }
         });
     });
 });

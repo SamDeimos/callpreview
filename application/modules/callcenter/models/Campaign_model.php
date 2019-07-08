@@ -13,6 +13,7 @@ class Campaign_model extends CI_Model
         $this->db->select('*', FALSE);
         $this->db->from('md_callcenter_campaigns a');
         $this->db->join('md_callcenter_campaign_status b', 'a.id_campaign_status = b.id_campaign_status', 'left');
+        $this->db->join('md_callcenter_forms c', 'a.id_form = c.id_form', 'left');
         $query = $this->db->get();
         return $query->result();
     }

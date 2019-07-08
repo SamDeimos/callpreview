@@ -12,6 +12,16 @@
                         <label for="nombre">Nombre campaña</label>
                         <input class="form-control form-control-sm" name="campaign" id="campaign" type="text" value="" require>
                     </div>
+                    <div class="form-group">
+                        <label for="id_user">Selccionar formulario</label>
+                        <div class="input-group">
+                            <select class="custom-select custom-select-sm" name="id_form" id="id_form" required>
+                                <?php foreach ($forms as $form) { ?>
+                                    <option <?php echo ((isset($pago->id_cliente) ? $pago->id_cliente : '') == $form->id_form) ? "selected" : ""; ?> value="<?php echo $form->id_form; ?>"><?php echo $form->form; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
@@ -27,15 +37,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row mb-2">
+            <div class="row mb-4 mt-2">
                 <div class="col-12">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="file_csv" id="file_csv" lang="es">
+                        <input type="file" class="custom-file-input" name="file_csv" id="file_csv" lang="es" required>
                         <label class="custom-file-label" for="file_csv" data-browse="Buscar archivo">Seleccionar Archivo</label>
                     </div>
                 </div>
             </div>
-            <input class="btn btn-primary float-right" type="submit" value="Crear">
+            <input class="btn btn-primary float-right" type="submit" value="Crear campaña">
         </form>
     </div>
 </div>
