@@ -1,5 +1,5 @@
 ﻿# Host: 192.168.0.229  (Version 5.5.56-MariaDB)
-# Date: 2019-06-28 14:50:05
+# Date: 2019-07-10 16:44:01
 # Generator: MySQL-Front 6.1  (Build 1.26)
 
 
@@ -14,13 +14,13 @@ CREATE TABLE `md_callcenter_call_attribute` (
   `data_attribute` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`id_call_attribute`),
   KEY `id_call` (`id_call`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_call_attribute"
 #
 
-INSERT INTO `md_callcenter_call_attribute` VALUES (1,1,'{\"cedula\":\"1756666598\",\"ciudad\":\"Cali - Colombia\",\"edad\":\"21\",\"monto\":\"53\",\"vehiculo\":\"porsche\",\"modelo\":\"cayman\",\"a\\u00f1o\":\"2019\"}'),(2,2,'{\"cedula\":\"1756668542\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"20\",\"monto\":\"26\",\"vehiculo\":\"chevrolet\",\"modelo\":\"camaro\",\"a\\u00f1o\":\"2019\"}'),(3,3,'{\"cedula\":\"1759854632\",\"ciudad\":\"Guallaquil - Ecuador\",\"edad\":\"41\",\"monto\":\"26\",\"vehiculo\":\"Jaguar\",\"modelo\":\"F-Pace\",\"a\\u00f1o\":\"2017\"}'),(4,4,'{\"cedula\":\"1750125486\",\"ciudad\":\"Lima - Peru\",\"edad\":\"25\",\"monto\":\"26\",\"vehiculo\":\"Volkswagen\",\"modelo\":\"canddy\",\"a\\u00f1o\":\"2018\"}'),(5,5,'{\"cedula\":\"1796326571\",\"ciudad\":\"Bueno aires - Argentina\",\"edad\":\"31\",\"monto\":\"26\",\"vehiculo\":\"Lada\",\"modelo\":\"NIVA\",\"a\\u00f1o\":\"2019\"}'),(6,6,'{\"cedula\":\"1796552325\",\"ciudad\":\"Bogot\\u00e1 - Colombia\",\"edad\":\"53\",\"monto\":\"26\",\"vehiculo\":\"Peugeot \",\"modelo\":\"3008\",\"a\\u00f1o\":\"2019\"}'),(7,7,'{\"cedula\":\"1785236204\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"54\",\"monto\":\"26\",\"vehiculo\":\"Jepp\",\"modelo\":\"Renegade\",\"a\\u00f1o\":\"2019\"}');
+INSERT INTO `md_callcenter_call_attribute` VALUES (1,1,'{\"cedula\":\"1756666598\",\"ciudad\":\"Cali - Colombia\",\"edad\":\"21\",\"monto\":\"53\",\"vehiculo\":\"porsche\",\"modelo\":\"cayman\",\"a\\u00f1o\":\"2019\"}'),(2,2,'{\"cedula\":\"1756668542\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"20\",\"monto\":\"26\",\"vehiculo\":\"chevrolet\",\"modelo\":\"camaro\",\"a\\u00f1o\":\"2019\"}'),(3,3,'{\"cedula\":\"1759854632\",\"ciudad\":\"Guallaquil - Ecuador\",\"edad\":\"41\",\"monto\":\"26\",\"vehiculo\":\"Jaguar\",\"modelo\":\"F-Pace\",\"a\\u00f1o\":\"2017\"}'),(4,4,'{\"cedula\":\"1750125486\",\"ciudad\":\"Lima - Peru\",\"edad\":\"25\",\"monto\":\"26\",\"vehiculo\":\"Volkswagen\",\"modelo\":\"canddy\",\"a\\u00f1o\":\"2018\"}'),(5,5,'{\"cedula\":\"1796326571\",\"ciudad\":\"Bueno aires - Argentina\",\"edad\":\"31\",\"monto\":\"26\",\"vehiculo\":\"Lada\",\"modelo\":\"NIVA\",\"a\\u00f1o\":\"2019\"}'),(6,6,'{\"cedula\":\"1796552325\",\"ciudad\":\"Bogot\\u00e1 - Colombia\",\"edad\":\"53\",\"monto\":\"26\",\"vehiculo\":\"Peugeot \",\"modelo\":\"3008\",\"a\\u00f1o\":\"2019\"}'),(7,7,'{\"cedula\":\"1785236204\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"54\",\"monto\":\"26\",\"vehiculo\":\"Jepp\",\"modelo\":\"Renegade\",\"a\\u00f1o\":\"2019\"}'),(8,8,'{\"cedula\":\"1756666598\",\"ciudad\":\"Cali - Colombia\",\"edad\":\"21\",\"monto\":\"53\",\"vehiculo\":\"porsche\",\"modelo\":\"cayman\",\"a\\u00f1o\":\"2019\"}'),(9,9,'{\"cedula\":\"1756668542\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"20\",\"monto\":\"26\",\"vehiculo\":\"chevrolet\",\"modelo\":\"camaro\",\"a\\u00f1o\":\"2019\"}'),(10,10,'{\"cedula\":\"1759854632\",\"ciudad\":\"Guallaquil - Ecuador\",\"edad\":\"41\",\"monto\":\"26\",\"vehiculo\":\"Jaguar\",\"modelo\":\"F-Pace\",\"a\\u00f1o\":\"2017\"}'),(11,11,'{\"cedula\":\"1750125486\",\"ciudad\":\"Lima - Peru\",\"edad\":\"25\",\"monto\":\"26\",\"vehiculo\":\"Volkswagen\",\"modelo\":\"canddy\",\"a\\u00f1o\":\"2018\"}'),(12,12,'{\"cedula\":\"1796326571\",\"ciudad\":\"Bueno aires - Argentina\",\"edad\":\"31\",\"monto\":\"26\",\"vehiculo\":\"Lada\",\"modelo\":\"NIVA\",\"a\\u00f1o\":\"2019\"}'),(13,13,'{\"cedula\":\"1796552325\",\"ciudad\":\"Bogot\\u00e1 - Colombia\",\"edad\":\"53\",\"monto\":\"26\",\"vehiculo\":\"Peugeot \",\"modelo\":\"3008\",\"a\\u00f1o\":\"2019\"}'),(14,14,'{\"cedula\":\"1785236204\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"54\",\"monto\":\"26\",\"vehiculo\":\"Jepp\",\"modelo\":\"Renegade\",\"a\\u00f1o\":\"2019\"}'),(15,15,'{\"cedula\":\"1756666598\",\"ciudad\":\"Cali - Colombia\",\"edad\":\"21\",\"monto\":\"53\",\"vehiculo\":\"porsche\",\"modelo\":\"cayman\",\"año\":\"2019\"}'),(16,16,'{\"cedula\":\"1756668542\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"20\",\"monto\":\"26\",\"vehiculo\":\"chevrolet\",\"modelo\":\"camaro\",\"año\":\"2019\"}'),(17,17,'{\"cedula\":\"1759854632\",\"ciudad\":\"Guallaquil - Ecuador\",\"edad\":\"41\",\"monto\":\"26\",\"vehiculo\":\"Jaguar\",\"modelo\":\"F-Pace\",\"año\":\"2017\"}'),(18,18,'{\"cedula\":\"1750125486\",\"ciudad\":\"Lima - Peru\",\"edad\":\"25\",\"monto\":\"26\",\"vehiculo\":\"Volkswagen\",\"modelo\":\"canddy\",\"año\":\"2018\"}'),(19,19,'{\"cedula\":\"1796326571\",\"ciudad\":\"Bueno aires - Argentina\",\"edad\":\"31\",\"monto\":\"26\",\"vehiculo\":\"Lada\",\"modelo\":\"NIVA\",\"año\":\"2019\"}'),(20,20,'{\"cedula\":\"1796552325\",\"ciudad\":\"Bogotá - Colombia\",\"edad\":\"53\",\"monto\":\"26\",\"vehiculo\":\"Peugeot \",\"modelo\":\"3008\",\"año\":\"2019\"}'),(21,21,'{\"cedula\":\"1785236204\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"54\",\"monto\":\"26\",\"vehiculo\":\"Jepp\",\"modelo\":\"Renegade\",\"año\":\"2019\"}'),(22,22,'{\"cedula\":\"1756666598\",\"ciudad\":\"Cali - Colombia\",\"edad\":\"21\",\"monto\":\"53\",\"vehiculo\":\"porsche\",\"modelo\":\"cayman\",\"año\":\"2019\"}'),(23,23,'{\"cedula\":\"1756668542\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"20\",\"monto\":\"26\",\"vehiculo\":\"chevrolet\",\"modelo\":\"camaro\",\"año\":\"2019\"}'),(24,24,'{\"cedula\":\"1759854632\",\"ciudad\":\"Guallaquil - Ecuador\",\"edad\":\"41\",\"monto\":\"26\",\"vehiculo\":\"Jaguar\",\"modelo\":\"F-Pace\",\"año\":\"2017\"}'),(25,25,'{\"cedula\":\"1750125486\",\"ciudad\":\"Lima - Peru\",\"edad\":\"25\",\"monto\":\"26\",\"vehiculo\":\"Volkswagen\",\"modelo\":\"canddy\",\"año\":\"2018\"}'),(26,26,'{\"cedula\":\"1796326571\",\"ciudad\":\"Bueno aires - Argentina\",\"edad\":\"31\",\"monto\":\"26\",\"vehiculo\":\"Lada\",\"modelo\":\"NIVA\",\"año\":\"2019\"}'),(27,27,'{\"cedula\":\"1796552325\",\"ciudad\":\"Bogotá - Colombia\",\"edad\":\"53\",\"monto\":\"26\",\"vehiculo\":\"Peugeot \",\"modelo\":\"3008\",\"año\":\"2019\"}'),(28,28,'{\"cedula\":\"1785236204\",\"ciudad\":\"Quito - Ecuador\",\"edad\":\"54\",\"monto\":\"26\",\"vehiculo\":\"Jepp\",\"modelo\":\"Renegade\",\"año\":\"2019\"}');
 
 #
 # Structure for table "md_callcenter_call_registry"
@@ -30,18 +30,19 @@ DROP TABLE IF EXISTS `md_callcenter_call_registry`;
 CREATE TABLE `md_callcenter_call_registry` (
   `id_call_registry` int(11) NOT NULL AUTO_INCREMENT,
   `id_call` int(11) DEFAULT NULL,
+  `id_call_status` int(11) DEFAULT NULL,
   `dst` varchar(80) DEFAULT NULL,
   `calldate` datetime DEFAULT NULL,
   `uniqueid` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_call_registry`),
   KEY `id_call` (`id_call`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_call_registry"
 #
 
-INSERT INTO `md_callcenter_call_registry` VALUES (1,1,'104',NULL,'1561572345.42'),(2,5,'104',NULL,'1561572412.44'),(3,1,'104',NULL,'1561572473.46'),(4,3,'104',NULL,'1561577490.48'),(5,2,'104',NULL,'1561577645.49'),(6,1,'104',NULL,'1561577883.51'),(7,3,'104',NULL,'1561577898.52'),(8,3,'104',NULL,'1561577903.53'),(9,4,'104',NULL,'1561577913.54'),(10,4,'104',NULL,'1561577928.56'),(11,4,'104',NULL,'1561577945.58'),(12,3,'104',NULL,'1561577969.60'),(13,5,'104','2019-06-26 02:55:08','1561578905.62'),(14,5,'104','2019-06-26 14:56:31','1561578989.64'),(15,1,'104','2019-06-26 15:12:11','1561579927.66'),(16,2,'104','2019-06-26 15:14:40','1561580078.68'),(17,1,'104','2019-06-26 15:16:45','1561580202.69'),(18,5,'104','2019-06-26 16:12:29','1561583546.71'),(19,2,'104','2019-06-26 16:20:21','1561584018.73'),(20,3,'104','2019-06-26 16:20:50','1561584047.75'),(21,6,'104','2019-06-26 16:33:00','1561584776.77'),(22,7,'104','2019-06-26 16:34:43','1561584883.79'),(23,5,'104','2019-06-26 20:54:18','1561600455.0'),(24,1,'104','2019-06-26 21:18:29','1561601905.2'),(25,2,'104','2019-06-27 11:09:17',NULL),(26,2,'104','2019-06-27 11:10:03','1561651801.0'),(27,3,'104','2019-06-27 11:11:45','1561651902.1'),(28,6,'104','2019-06-27 16:24:05','1561670641.2'),(29,3,'104','2019-06-28 10:35:49','1561736146.0'),(30,2,'104','2019-06-28 10:36:12','1561736170.1'),(31,2,'104','2019-06-28 10:36:57','1561736215.2'),(32,2,'104','2019-06-28 10:37:41','1561736259.3'),(33,2,'103','2019-06-28 10:38:03','1561736281.4'),(34,2,'104','2019-06-28 10:43:07','1561736585.6'),(35,6,'104','2019-06-28 10:43:37','1561736614.7'),(36,2,'104','2019-06-28 10:45:03','1561736701.8'),(37,2,'104','2019-06-28 10:45:36','1561736733.9'),(38,2,'104','2019-06-28 10:47:02','1561736820.10'),(39,2,'104','2019-06-28 10:48:13','1561736891.11'),(40,2,'103','2019-06-28 10:48:43','1561736921.12'),(41,6,'104','2019-06-28 10:51:15','1561737072.14'),(42,6,'104','2019-06-28 10:52:27','1561737144.15'),(43,6,'104','2019-06-28 10:53:43','1561737221.16'),(44,2,'104','2019-06-28 10:54:55','1561737292.17'),(45,2,'104','2019-06-28 10:56:10','1561737367.18'),(46,2,'104','2019-06-28 11:11:19','1561738276.19'),(47,2,'104','2019-06-28 11:12:24','1561738342.20'),(48,2,'104','2019-06-28 11:14:27','1561738465.21'),(49,2,'104','2019-06-28 11:14:48','1561738486.22'),(50,4,'104','2019-06-28 11:16:48','1561738605.23'),(51,4,'104','2019-06-28 11:17:14','1561738632.24'),(52,2,'104','2019-06-28 11:17:52','1561738668.25'),(53,2,'104','2019-06-28 11:18:33','1561738710.26'),(54,2,'104','2019-06-28 11:22:11','1561738929.27'),(55,2,'104','2019-06-28 11:25:25','1561739123.28'),(56,6,'104','2019-06-28 11:27:59','1561739276.29'),(57,6,'104','2019-06-28 11:28:58','1561739334.30'),(58,3,'104','2019-06-28 11:29:23','1561739359.31'),(59,1,'104','2019-06-28 11:31:55','1561739512.32'),(60,6,'104','2019-06-28 11:34:18','1561739656.33'),(61,6,'104','2019-06-28 11:35:32','1561739730.34'),(62,6,'104','2019-06-28 11:36:52','1561739809.35'),(63,2,'103','2019-06-28 11:37:07','1561739824.36'),(64,2,'104','2019-06-28 11:40:19','1561740017.38'),(65,4,'104','2019-06-28 11:40:34','1561740032.39'),(66,1,'104','2019-06-28 11:41:37','1561740094.40'),(67,3,'104','2019-06-28 11:42:21','1561740139.41'),(68,4,'104','2019-06-28 11:42:30','1561740148.42'),(69,4,'104','2019-06-28 11:43:10','1561740188.43'),(70,5,'104','2019-06-28 11:43:21','1561740198.44'),(71,6,'104','2019-06-28 11:44:51','1561740286.45'),(72,1,'104','2019-06-28 11:46:43','1561740401.46'),(73,3,'103','2019-06-28 11:47:40','1561740458.47'),(74,1,'104','2019-06-28 11:49:26','1561740564.49'),(75,3,'103','2019-06-28 11:51:07','1561740664.50'),(76,2,'104','2019-06-28 11:51:52','1561740709.52'),(77,2,'104','2019-06-28 11:52:14','1561740731.53'),(78,1,'104','2019-06-28 11:53:09','1561740786.54'),(79,5,'104','2019-06-28 11:54:11','1561740849.55'),(80,3,'104','2019-06-28 11:54:50','1561740888.56'),(81,3,'103','2019-06-28 11:56:25','1561740982.57'),(82,1,'103','2019-06-28 11:57:13','1561741030.59'),(83,4,'104','2019-06-28 12:03:09','1561741387.61'),(84,4,'104','2019-06-28 12:08:46','1561741722.62'),(85,1,'104','2019-06-28 13:50:19','1561747816.63'),(86,1,'104','2019-06-28 13:51:03','1561747861.64'),(87,2,'104','2019-06-28 13:51:35','1561747892.65'),(88,1,'104','2019-06-28 14:15:48','1561749347.66'),(89,1,'104','2019-06-28 14:16:39','1561749394.67'),(90,2,'104','2019-06-28 14:19:22','1561749556.69'),(91,2,'104','2019-06-28 14:19:43','1561749580.71'),(92,2,'104','2019-06-28 14:19:57','1561749594.73'),(93,2,'104','2019-06-28 14:20:27','1561749624.75'),(94,1,'104','2019-06-28 14:21:49','1561749706.77'),(95,2,'104','2019-06-28 14:32:24','1561750341.79'),(96,2,'104','2019-06-28 14:33:42','1561750421.80'),(97,5,'104','2019-06-28 14:41:21','1561750876.81');
+INSERT INTO `md_callcenter_call_registry` VALUES (1,1,2,'104','2019-07-05 13:54:03','1562352843.6'),(2,6,3,'103','2019-07-05 13:54:12','1562352850.7'),(3,6,2,'103','2019-07-05 15:45:03','1562359500.0'),(4,4,2,'103','2019-07-05 16:56:32','1562363789.2'),(5,1,2,'0984904911','2019-07-05 16:57:05','1562363822.4'),(6,4,4,'103','2019-07-05 16:57:20','1562363837.5'),(7,6,2,'103','2019-07-05 16:58:28','1562363906.7'),(8,6,3,'103','2019-07-05 17:04:56','1562364293.9'),(9,6,4,'103','2019-07-05 17:06:15','1562364373.11'),(10,3,NULL,'104','2019-07-08 13:08:52','1562609328.0'),(11,2,NULL,'103','2019-07-08 13:10:00','1562609398.1'),(12,3,NULL,'104','2019-07-08 13:10:50','1562609447.3'),(13,3,NULL,'104','2019-07-08 13:11:55','1562609513.4'),(14,2,2,'103','2019-07-08 13:13:04','1562609582.5'),(15,3,3,'104','2019-07-08 14:25:05','1562613898.7'),(16,5,3,'104','2019-07-08 14:26:34','1562613992.9'),(17,2,2,'103','2019-07-08 14:27:10','1562614029.10'),(18,7,NULL,'104','2019-07-09 10:24:28','1562685865.0'),(19,3,NULL,'104','2019-07-09 10:27:57','1562686075.1'),(20,7,2,'103','2019-07-09 10:28:58','1562686136.2'),(21,3,2,'104','2019-07-09 10:29:20','1562686158.4'),(22,5,NULL,'104','2019-07-09 10:41:11','1562686869.5'),(23,5,NULL,'104','2019-07-09 10:44:45','1562687083.6'),(24,5,NULL,'104','2019-07-09 10:45:20','1562687117.7'),(25,5,NULL,'104','2019-07-09 10:46:00','1562687157.8'),(26,4,NULL,'103','2019-07-09 10:47:02','1562687219.9'),(27,4,NULL,'103','2019-07-09 10:47:27','1562687240.11'),(28,4,NULL,'103','2019-07-09 10:47:38','1562687256.13'),(29,5,NULL,'104','2019-07-09 10:53:11','1562687588.15'),(30,4,NULL,'103','2019-07-09 10:55:14','1562687711.16'),(31,5,NULL,'104','2019-07-09 10:56:22','1562687779.18'),(32,4,NULL,'104','2019-07-09 10:57:20','1562687837.19'),(33,4,NULL,'103','2019-07-09 10:58:29','1562687907.20'),(34,4,NULL,'104','2019-07-09 10:59:06','1562687942.22'),(35,5,NULL,'104','2019-07-09 11:00:08','1562688005.23'),(36,4,NULL,'103','2019-07-09 11:00:41','1562688039.24'),(37,4,NULL,'104','2019-07-09 11:01:29','1562688087.26'),(38,4,NULL,'103','2019-07-09 11:12:35','1562688752.27'),(39,5,NULL,'104','2019-07-09 11:16:51','1562689009.29'),(40,5,NULL,'104','2019-07-09 11:18:35','1562689112.30'),(41,5,2,'104','2019-07-09 11:19:36','1562689173.31'),(42,1,3,'104','2019-07-09 11:21:05','1562689263.32'),(43,6,NULL,'103','2019-07-09 11:21:36','1562689293.33'),(44,1,NULL,'104','2019-07-09 11:22:58','1562689376.35'),(45,1,NULL,'104','2019-07-09 11:24:31','1562689471.39'),(46,1,2,'104','2019-07-09 11:25:40','1562689540.40'),(47,4,NULL,'104','2019-07-09 11:27:04','1562689624.41'),(48,4,3,'103','2019-07-09 11:27:54','1562689674.42'),(49,6,3,'103','2019-07-09 11:30:57','1562689857.44'),(50,4,2,'104','2019-07-09 11:39:18','1562690354.46'),(51,10,3,'104','2019-07-09 12:25:08','1562693108.47'),(52,8,NULL,'104','2019-07-10 09:30:12','1562769010.0'),(53,9,NULL,'103','2019-07-10 09:30:47','1562769046.1'),(54,8,NULL,'104','2019-07-10 09:35:11','1562769308.3'),(55,9,3,'103','2019-07-10 10:19:29','1562771965.4'),(56,8,4,'104','2019-07-10 10:44:41','1562773476.6'),(57,11,4,'103','2019-07-10 11:02:03','1562774521.7'),(58,15,4,'104','2019-07-10 11:18:53','1562775530.9'),(59,21,2,'104','2019-07-10 11:19:23','1562775561.10'),(60,15,2,'0984904911','2019-07-10 11:31:49','1562776307.11'),(61,28,2,'104','2019-07-10 11:39:38','1562776776.12'),(62,27,3,'104','2019-07-10 13:12:56','1562782372.13');
 
 #
 # Structure for table "md_callcenter_call_status"
@@ -73,13 +74,13 @@ CREATE TABLE `md_callcenter_calls` (
   `nombres` varchar(255) DEFAULT NULL,
   `id_call_status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_call`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_calls"
 #
 
-INSERT INTO `md_callcenter_calls` VALUES (1,1,2,'[\"0984904911\",\"104\",\"103\"]','Santiago Gutierrez',3),(2,1,2,'[\"0996566908\",\"103\",\"104\"]','Josselyn Oña',1),(3,1,2,'[\"0986574232\",\"104\",\"103\"]','Paola Gonzalez',2),(4,1,2,'[\"0978965423\",\"103\",\"104\"]','Sofia Gutierrez',3),(5,1,2,'[\"0985522336\",\"104\",\"103\"]','Ismael Gutierrez',2),(6,1,2,'[\"0969898565\",\"103\",\"104\"]','José Ibañez',2),(7,1,2,'[\"0982233114\",\"104\",\"103\"]','Daniel Pasmiño',2);
+INSERT INTO `md_callcenter_calls` VALUES (1,1,2,'[\"0984904911\",\"104\",\"103\"]','Santiago Gutierrez',2),(2,1,2,'[\"0996566908\",\"103\",\"104\"]','Josselyn Oña',2),(3,1,2,'[\"0986574232\",\"104\",\"103\"]','Paola Gonzalez',2),(4,1,2,'[\"0978965423\",\"103\",\"104\"]','Sofia Gutierrez',2),(5,1,2,'[\"0985522336\",\"104\",\"103\"]','Ismael Gutierrez',2),(6,1,2,'[\"0969898565\",\"103\",\"104\"]','José Ibañez',3),(7,1,2,'[\"0982233114\",\"104\",\"103\"]','Daniel Pasmiño',2),(8,2,2,'[\"0984904911\",\"104\",\"103\"]','Santiago Gutierrez',4),(9,2,2,'[\"0996566908\",\"103\",\"104\"]','Josselyn Oña',3),(10,2,2,'[\"0986574232\",\"104\",\"103\"]','Paola Gonzalez',3),(11,2,2,'[\"0978965423\",\"103\",\"104\"]','Sofia Gutierrez',4),(12,2,2,'[\"0985522336\",\"104\",\"103\"]','Ismael Gutierrez',1),(13,2,2,'[\"0969898565\",\"103\",\"104\"]','José Ibañez',1),(14,2,2,'[\"0982233114\",\"104\",\"103\"]','Daniel Pasmiño',1),(15,3,5,'[\"0984904911\",\"104\",\"103\"]','Santiago Gutierrez',2),(16,3,5,'[\"0996566908\",\"103\",\"104\"]','Josselyn Oña',1),(17,3,5,'[\"0986574232\",\"104\",\"103\"]','Paola Gonzalez',1),(18,3,5,'[\"0978965423\",\"103\",\"104\"]','Sofia Gutierrez',1),(19,3,5,'[\"0985522336\",\"104\",\"103\"]','Ismael Gutierrez',1),(20,3,5,'[\"0969898565\",\"103\",\"104\"]','José Ibañez',1),(21,3,5,'[\"0982233114\",\"104\",\"103\"]','Daniel Pasmiño',2),(22,4,5,'[\"0984904911\",\"104\",\"103\"]','Santiago Gutierrez',1),(23,4,5,'[\"0996566908\",\"103\",\"104\"]','Josselyn Oña',1),(24,4,5,'[\"0986574232\",\"104\",\"103\"]','Paola Gonzalez',1),(25,4,5,'[\"0978965423\",\"103\",\"104\"]','Sofia Gutierrez',1),(26,4,5,'[\"0985522336\",\"104\",\"103\"]','Ismael Gutierrez',1),(27,4,5,'[\"0969898565\",\"103\",\"104\"]','José Ibañez',3),(28,4,5,'[\"0982233114\",\"104\",\"103\"]','Daniel Pasmiño',2);
 
 #
 # Structure for table "md_callcenter_campaign_status"
@@ -107,15 +108,16 @@ CREATE TABLE `md_callcenter_campaigns` (
   `id_campaign` int(11) NOT NULL AUTO_INCREMENT,
   `campaign` varchar(255) DEFAULT NULL,
   `id_form` int(11) DEFAULT NULL,
+  `id_script` int(11) DEFAULT NULL,
   `id_campaign_status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_campaign`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_campaigns"
 #
 
-INSERT INTO `md_callcenter_campaigns` VALUES (1,'Cobranza',5,1);
+INSERT INTO `md_callcenter_campaigns` VALUES (1,'Gestión NOVA',1,1,2),(2,'Campaña con Guion',1,1,1),(3,'Campaña con formato correcto',1,1,1),(4,'All format',1,1,1);
 
 #
 # Structure for table "md_callcenter_form_data_recolected"
@@ -128,13 +130,13 @@ CREATE TABLE `md_callcenter_form_data_recolected` (
   `id_form` int(11) DEFAULT NULL,
   `data` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`id_form_data_recolected`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_form_data_recolected"
 #
 
-INSERT INTO `md_callcenter_form_data_recolected` VALUES (1,15,4,'[\"santiago\",\"gutierrez\"]'),(2,54,5,'[\"Santiago\",\"paga en efectivo\",\"Ecuatoriana\",\"Ecuatoriana\"]'),(3,60,5,'[\"\",\"buzon\",\"\",\"\"]'),(4,67,5,'[\"\",\"buzon\",\"\",\"\"]'),(5,78,5,'[\"santiago\",\"paga en efectivo\",\"jaja\",\"jaja\"]'),(6,81,5,'[\"santiago\",\"ya cancelo\",\"Ecuador\",\"Ecuador\"]'),(7,83,5,'{\"Nombres\":\"santiago\",\"Rsultado_llamada\":\"ya cancelo\",\"direcci\\u00f3n\":\"Solanda\",\"0\":\"Solanda\"}'),(8,84,5,'{\"Nombres\":\"sam\",\"Resultado_llamada\":\"buzon\",\"Direcci\\u00f3n\":\"sjjs\"}'),(9,87,5,'{\"Nombres\":\"sam\",\"Resultado_llamada\":\"buzon\",\"Direcci\\u00f3n\":\"jaja\"}'),(10,88,5,'{\"Nombres\":\"Santago\",\"Resultado_llamada\":\"ya cancelo\",\"Direcci\\u00f3n\":\"Ecuador\"}'),(11,89,5,'{\"Nombres\":\"Paola\",\"Resultado_llamada\":\"buzon\",\"Direcci\\u00f3n\":\"Soaknda\"}'),(12,97,5,'{\"Nombres\":\"santi\",\"Resultado_llamada\":\"buzon\",\"Direcci\\u00f3n\":\"No me acuerdo\"}');
+INSERT INTO `md_callcenter_form_data_recolected` VALUES (1,1,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(2,2,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(3,3,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(4,4,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(5,7,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(6,8,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(7,9,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(8,14,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(9,15,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(10,16,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(11,17,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(12,42,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(13,48,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(14,50,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(15,56,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(16,57,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(17,58,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(18,59,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(20,60,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(24,61,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acci\\u00f3n\":\"no contesta\"}'),(25,62,1,'{\"Detalle_de_Gestion\":\"no desea \",\"Respuesta\":\"NOVA\",\"Acción\":\"no contesta\"}');
 
 #
 # Structure for table "md_callcenter_form_fields"
@@ -148,13 +150,13 @@ CREATE TABLE `md_callcenter_form_fields` (
   `value` varchar(1000) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_form_field`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_form_fields"
 #
 
-INSERT INTO `md_callcenter_form_fields` VALUES (2,1,'lista','uno,dos,tres','1'),(4,3,'text','[\"\"]','0'),(5,3,'list','[\"uno\",\"dos\",\"tres\"]','1'),(6,3,'lista','[\"cuatro\",\"cinco\"]','1'),(7,4,'nombre','[\"\"]','0'),(8,4,'apellidos','[\"\"]','0'),(9,5,'Nombres','[\"\"]','0'),(10,5,'Resultado llamada','[\"buzon\",\"paga en efectivo\",\"ya cancelo\",\"inconfirme\",\"no contesta\"]','1'),(11,5,'Dirección','[\"\"]','0');
+INSERT INTO `md_callcenter_form_fields` VALUES (9,2,'Nombre','[\"pp\"]','1'),(10,2,'Apellido','[\"\"]','0'),(23,1,'Detalle de Gestion','[\"funciona\",\"pero muy bien\",\"No desea\"]','1'),(24,1,'Respuesta','[\"sisas\",\"NOVA\"]','1'),(25,1,'Acción','[\"NOVA\",\"NOVA\"]','1');
 
 #
 # Structure for table "md_callcenter_forms"
@@ -164,15 +166,51 @@ DROP TABLE IF EXISTS `md_callcenter_forms`;
 CREATE TABLE `md_callcenter_forms` (
   `id_form` int(11) NOT NULL AUTO_INCREMENT,
   `form` varchar(255) DEFAULT NULL,
-  `id_form_status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_form`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_callcenter_forms"
 #
 
-INSERT INTO `md_callcenter_forms` VALUES (1,'Prueba Creacion',1),(2,'preuba array value',1),(3,'preuba array value',1),(4,'Prueba',1),(5,'Gestión de cobranza',1);
+INSERT INTO `md_callcenter_forms` VALUES (1,'Formulario NOVA'),(2,'Nuevo valor agregado');
+
+#
+# Structure for table "md_callcenter_schedule"
+#
+
+DROP TABLE IF EXISTS `md_callcenter_schedule`;
+CREATE TABLE `md_callcenter_schedule` (
+  `id_schedule` int(11) NOT NULL AUTO_INCREMENT,
+  `id_call` int(11) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_schedule`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+#
+# Data for table "md_callcenter_schedule"
+#
+
+INSERT INTO `md_callcenter_schedule` VALUES (1,1,'2019-06-29 03:01:00'),(2,2,'2019-06-27 18:00:00');
+
+#
+# Structure for table "md_callcenter_scripts"
+#
+
+DROP TABLE IF EXISTS `md_callcenter_scripts`;
+CREATE TABLE `md_callcenter_scripts` (
+  `id_script` int(11) NOT NULL AUTO_INCREMENT,
+  `script` varchar(255) DEFAULT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `contenido_script` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`id_script`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+#
+# Data for table "md_callcenter_scripts"
+#
+
+INSERT INTO `md_callcenter_scripts` VALUES (1,'Guion de ventas - NOVA','guion para Nova','<h2><font color=\"#ff0000\">Venta consultiva</font></h2><p><ul><li>—Buenas tardes, ¿se encuentra Ramón? (...)&nbsp;Espero que este sea un buen momento para hablar 5 minutos, ¿le parece? (...)&nbsp;Mi nombre es Matías y lo estoy&nbsp;llamando de&nbsp;Autos del Mundo. El motivo de mi llamada es en primer lugar agradecerle por haberse tomado el tiempo de contactarnos&nbsp;a través de nuestro sitio (...) Además&nbsp;entender mejor cómo puedo ayudarlo en la compra de su...&nbsp;</li></ul><ul><li><hr style=\"color: rgb(68, 68, 68); font-size: 15px;\"></li></ul><ul><li><strong>—¿Cuándo está pensando realizar la compra?¿Esta semana, este mes o todavía no lo sabe?</strong></li></ul><ul><li>Conocer&nbsp;el tiempo de compra es uno de los puntos más importantes para calificar la intención de compra del cliente&nbsp;(de hecho, hemos medido que los leads que dicen que comprarán esta semana tienen hasta 7 veces más chances de éxito que los otros leads).&nbsp;</li></ul><ul><li><strong>—¿Va a comprar financiado o contado? ¿Va a entregar su auto en forma de pago?&nbsp;</strong></li></ul><ul><li>Esta pregunta, además de ayudar al vendedor a poder hacer una propuesta concreta, sirve para calificar la intención de compra: si el cliente sabe cómo va a pagar, es probable que esté cerca de realizar la compra.</li></ul></p><p><ul><li><strong>—¿Qué versión le interesa? ¿En qué color lo estás buscando?&nbsp;</strong></li></ul><ul><li>Todas este tipo de preguntas están orientadas a entender mejor la necesidad del cliente, tener datos para poder crear una propuesta y generar una expectativa positiva en el cliente (del otro lado se oye a una persona confiable que entiende del producto que vende y sus detalles).</li><li></li></ul></p><p><hr></p><ul><li></li></ul><p style=\"margin-bottom: 5px;\">—Por favor, envíame esta información por email y luego charlamos.</p><p style=\"margin-bottom: 5px;\">—¡Excelente! Te estoy enviando esto por email en este momento para que lo analices. Me voy a agendar llamarte para definir cómo ayudarte lo mejor posible en tu compra.&nbsp;¿Mañana prefieres&nbsp;hablar a la mañana o a la tarde?</p>');
 
 #
 # Structure for table "md_genero"
@@ -221,13 +259,13 @@ CREATE TABLE `md_menu` (
   `nivel_up` int(11) DEFAULT '0',
   `id_permiso` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_menu"
 #
 
-INSERT INTO `md_menu` VALUES (1,'dashbard','ti-dashboard','',0,'{1,2,3,4}'),(2,'panel administrador',NULL,'dashboard',1,'{1,2}'),(4,'sistema','ti-layout-sidebar-left','',0,'{1}'),(8,'clientes','ti-id-badge','',0,'{}'),(9,'todos los clientes',NULL,'clientes',8,'{}'),(10,'usuarios','ti-user','',0,'{1}'),(11,'todos los usuarios',NULL,'usuarios',10,'{1}'),(12,'historias clinicas','ti-bookmark-alt','',0,''),(13,'todas las historias',NULL,'historiasclinicas',12,''),(14,'añadir nueva',NULL,'historiasclinicas/historia',12,''),(15,'workflows','ti-bolt','',0,'{}'),(16,'tareas',NULL,'workflows',15,'{}'),(17,'añadir nuevo',NULL,'clientes/cliente',8,'{}'),(18,'añadir nuevo',NULL,'usuarios/usuario',10,'{1}'),(19,'añadir nueva',NULL,'workflows/workflow',15,'{}'),(20,'tienda','ti-shopping-cart','',0,'{}'),(21,'todas las ventas',NULL,'tienda/ventas',20,'{}'),(22,'productos',NULL,'tienda/productos',20,'{}'),(23,'pagos',NULL,'tienda/pagos',20,'{}'),(24,'callcenter','ti-headphone-alt','',0,'{1,2}'),(25,'grupos',NULL,'usuarios/grupos',10,'{1}'),(26,'configuración',NULL,'',4,'{1}'),(27,'Gestionar',NULL,'callcenter/calls',24,'{1,2}'),(28,'campañas',NULL,'callcenter/campaigns',24,'{1}'),(29,'formularios',NULL,'callcenter/forms',24,'{1}');
+INSERT INTO `md_menu` VALUES (1,'dashbard','ti-dashboard','',0,'{1,2,3,4}'),(2,'panel administrador',NULL,'dashboard',1,'{1,2}'),(4,'sistema','ti-layout-sidebar-left','',0,'{1}'),(8,'clientes','ti-id-badge','',0,'{}'),(9,'todos los clientes',NULL,'clientes',8,'{}'),(10,'usuarios','ti-user','',0,'{1}'),(11,'todos los usuarios',NULL,'usuarios',10,'{1}'),(12,'historias clinicas','ti-bookmark-alt','',0,''),(13,'todas las historias',NULL,'historiasclinicas',12,''),(14,'añadir nueva',NULL,'historiasclinicas/historia',12,''),(15,'workflows','ti-bolt','',0,'{}'),(16,'tareas',NULL,'workflows',15,'{}'),(17,'añadir nuevo',NULL,'clientes/cliente',8,'{}'),(18,'añadir nuevo',NULL,'usuarios/usuario',10,'{1}'),(19,'añadir nueva',NULL,'workflows/workflow',15,'{}'),(20,'tienda','ti-shopping-cart','',0,'{}'),(21,'todas las ventas',NULL,'tienda/ventas',20,'{}'),(22,'productos',NULL,'tienda/productos',20,'{}'),(23,'pagos',NULL,'tienda/pagos',20,'{}'),(24,'callcenter','ti-headphone-alt','',0,'{1,2}'),(25,'grupos',NULL,'usuarios/grupos',10,'{1}'),(26,'configuración',NULL,'',4,'{1}'),(27,'Gestionar',NULL,'callcenter/calls',24,'{1,2}'),(28,'campañas',NULL,'callcenter/campaigns',24,'{1}'),(29,'formularios',NULL,'callcenter/forms',24,'{1}'),(30,'guiones',NULL,'callcenter/scripts',24,'{1}');
 
 #
 # Structure for table "md_permisos"
@@ -481,13 +519,13 @@ CREATE TABLE `md_user` (
   CONSTRAINT `md_user_ibfk_2` FOREIGN KEY (`id_statuscivil`) REFERENCES `md_statuscivil` (`id_statuscivil`),
   CONSTRAINT `md_user_ibfk_5` FOREIGN KEY (`id_genero`) REFERENCES `md_genero` (`id_genero`),
   CONSTRAINT `md_user_ibfk_6` FOREIGN KEY (`id_statususer`) REFERENCES `md_statususer` (`id_statususer`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_user"
 #
 
-INSERT INTO `md_user` VALUES (1,'Santiago Gutierrez Gonzalez','1756666598',1,'U2wpZq1+FzTxJ2eaOZSI+XE7+4XQOq3kUqnVInjkmxeC71msZ00cUEF7ajVn5w/N3OOgmDs4uwoeB9x2OgZK9g==',1,'zam.2014.sg@gmail.com','0984904911','1997-11-07',3,2,'Pedro Ponce Carrasco Oe-06 y Av. Diego de almagro',NULL,1),(2,'Sofía Gutierrez','0000000001',2,'oSkWKOLAJQoLg71VCZa5ImVvOb8PmIMwS6pIp1v/MfdYrpUBieoin0bVxyFg4QssflBYgf28T2UDG8J3sEY2WQ==',2,'sofia@app.xudo.dev','0984904911','2019-06-12',3,1,'Ecuador',NULL,NULL);
+INSERT INTO `md_user` VALUES (1,'Santiago Gutierrez Gonzalez','1756666598',1,'U2wpZq1+FzTxJ2eaOZSI+XE7+4XQOq3kUqnVInjkmxeC71msZ00cUEF7ajVn5w/N3OOgmDs4uwoeB9x2OgZK9g==',1,'zam.2014.sg@gmail.com','0984904911','1997-11-07',3,2,'Pedro Ponce Carrasco Oe-06 y Av. Diego de almagro',NULL,1),(2,'Sofia Gutierrez','0000000001',2,'0RANbs4kjG1sYnPFaUCx+rY2sCIXAFAtlmruHcrdRwhdhnK3P/3i/Lih6G8wJKpj/S2I+S+djwJlkrtOleyi4g==',2,'sofia@xudo.dev','023060215','2019-07-19',1,1,'Solanda',NULL,1),(5,'Josselyn Oña','0000000002',2,'QWZnzoKKBpiSpy+1aMMuSuuXyh93De/xt2wFlFI/HejN4NzP/uGtKLIoXtaYi7T3XDqjOgU/SoylnyqsE7PMDw==',2,'joss@xudo.dev','023000174','1998-10-09',2,2,'Ecuador',NULL,1);
 
 #
 # Structure for table "md_shop_pagos"
@@ -529,16 +567,18 @@ DROP TABLE IF EXISTS `md_grupos`;
 CREATE TABLE `md_grupos` (
   `id_grupo` int(11) NOT NULL AUTO_INCREMENT,
   `grupo` varchar(255) DEFAULT NULL,
-  `own_user_grupo` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `belong_user_grupo` varchar(1000) DEFAULT '[]',
   PRIMARY KEY (`id_grupo`),
-  KEY `own_user_grupo` (`own_user_grupo`),
-  CONSTRAINT `md_grupos_ibfk_1` FOREIGN KEY (`own_user_grupo`) REFERENCES `md_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `md_grupos_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `md_user` (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_grupos"
 #
 
+INSERT INTO `md_grupos` VALUES (1,'Fast',85,'[\"73\",\"74\",\"75\"]'),(2,'Star',90,'[\"54\"]'),(3,'xudo - DEV',1,'[\"54\",\"73\",\"74\",\"75\"]');
 
 #
 # Structure for table "md_users_grupos"
@@ -549,12 +589,45 @@ CREATE TABLE `md_users_grupos` (
   `id_grupo` int(11) DEFAULT NULL,
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_user`),
-  KEY `id_grupo` (`id_grupo`),
-  CONSTRAINT `md_users_grupos_ibfk_1` FOREIGN KEY (`id_grupo`) REFERENCES `md_grupos` (`id_grupo`),
-  CONSTRAINT `md_users_grupos_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `md_user` (`id_user`)
+  KEY `id_grupo` (`id_grupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
 # Data for table "md_users_grupos"
 #
 
+
+#
+# View "registro_llamadas"
+#
+
+DROP VIEW IF EXISTS `registro_llamadas`;
+CREATE
+  ALGORITHM = UNDEFINED
+  VIEW `registro_llamadas`
+  AS
+  SELECT
+    `a`.`id_call_registry`,
+    `d`.`id_campaign`,
+    `d`.`campaign`,
+    `b`.`nombres` AS 'nombres cliente',
+    `a`.`calldate` AS 'hora llamada',
+    `z`.`dst` AS 'número llamado',
+    `b`.`phones`,
+    `z`.`billsec` AS 'duración',
+    `e`.`estado`,
+    `z`.`disposition` AS 'resultado',
+    `z`.`src` AS 'extensión',
+    `f`.`nombres` AS 'Agente',
+    `z`.`uniqueid` AS 'cdr_uniqueid',
+    `z`.`recordingfile` AS 'cdr_recordingfile',
+    `c`.`data` AS 'data formulario'
+  FROM
+    ((((((`md_callcenter_call_registry` a
+      LEFT JOIN `md_callcenter_calls` b ON ((`a`.`id_call` = `b`.`id_call`)))
+      LEFT JOIN `md_callcenter_form_data_recolected` c ON ((`a`.`id_call_registry` = `c`.`id_call_registry`)))
+      LEFT JOIN `md_callcenter_campaigns` d ON ((`b`.`id_campaign` = `d`.`id_campaign`)))
+      LEFT JOIN `md_callcenter_call_status` e ON ((`a`.`id_call_status` = `e`.`id_call_status`)))
+      LEFT JOIN `md_user` f ON ((`b`.`id_user` = `f`.`id_user`)))
+      LEFT JOIN `asteriskcdrdb`.`cdr` z ON ((`a`.`uniqueid` = CONVERT(`z`.`uniqueid` USING utf8))))
+  ORDER BY `a`.`id_call_registry`;

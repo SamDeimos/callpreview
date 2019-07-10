@@ -33,8 +33,6 @@
                         });
 
                         calendar.render();
-
-                        console.log(calendar.getEventById(1));
                     });
                 </script>
 

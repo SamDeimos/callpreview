@@ -1,11 +1,17 @@
 <div class="card mt-4">
     <div class="card-body">
         <div class="row">
-            <div class="col-12 border-right">
+            <div class="col-6 border-right">
                 <input id="id_script" type="hidden" value="<?php echo isset($script) ? $script->id_script : '' ?>">
                 <div class="form-group">
                     <label for="nombre">Nombre guion</label>
                     <input class="form-control form-control-sm" id="script" type="text" value="<?php echo isset($script) ? $script->script : '' ?>" required>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="nombre">Descripción</label>
+                    <input class="form-control form-control-sm" id="desc_script" type="text" value="<?php echo isset($script) ? $script->descripcion : '' ?>" required>
                 </div>
             </div>
         </div>

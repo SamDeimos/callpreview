@@ -28,12 +28,10 @@ class Usuarios extends CI_Controller
 
     public function index()
     {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
         //Vistas
         $this->load->view('header', $this->data);
         $this->load->view('usuarios');
+        $this->load->view('modals/modal_delete');
         $this->load->view('footer');
     }
 
@@ -60,6 +58,7 @@ class Usuarios extends CI_Controller
         if ($this->input->post()) {
             //Array
             $genero = $this->input->post('genero');
+            $estadosistem = $this->input->post('estadosistem');
 
             //Variables a insertar
             $param['nombres'] = ucwords(mb_strtolower(trim($this->input->post('nombre')), 'UTF-8'));
@@ -74,6 +73,7 @@ class Usuarios extends CI_Controller
             $param['address'] = $this->input->post('address');
             $param['id_lvlformacion'] = $this->input->post('lvlformacion');
             $param['id_statuscivil'] = $this->input->post('estadocivil');
+            $param['id_statususer'] = array_sum($estadosistem);
 
             if (!$this->input->post('id_usuario')) {
                 //Insertamos usuario nuevo
@@ -94,6 +94,13 @@ class Usuarios extends CI_Controller
     public function UsuarioTable()
     {
         echo json_encode((empty($this->data['usuarios'])) ? NULL : $this->data['usuarios']);
+    }
+
+    public function DeleteUser()
+    {
+        if ($this->input->post()) {
+            $this->Usuario_model->DeleteUser($this->input->post('idDelete'));
+        }
     }
 }
 

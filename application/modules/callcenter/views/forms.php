@@ -20,7 +20,7 @@
                         <td><?php echo "#" . $form->id_form; ?></td>
 
                         <!-- fomrulario -->
-                        <td><?php echo $form->form; ?></td>
+                        <td><a href="<?php echo base_url(); ?>callcenter/forms/form/<?php echo $form->id_form; ?>"><?php echo $form->form; ?></a></td>
 
                         <!-- Acción -->
                         <td class="text-center">

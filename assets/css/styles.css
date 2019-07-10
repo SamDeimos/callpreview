@@ -2899,3 +2899,7 @@ i.verde{
     padding: 0.1em 0.5em;
     font-size: 11px;
 }
+
+.form-group-xs{
+    margin-bottom: 0.3rem;
+}

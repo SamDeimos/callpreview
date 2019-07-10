@@ -1,3 +1,6 @@
+$(window).unload(function () {
+    return "Bye now!";
+});
 $(document).ready(function () {
     //Data Table
     var Tableuser = $('#Tableuser').DataTable({
@@ -28,22 +31,16 @@ $(document).ready(function () {
                 "orderable": true,
                 render: function (data, type, row) {
                     if (row.estadouser == 'habilitado') {
-                        return '<i class="fa fa-check-circle">Habilitado</i>';
+                        return '<i class="fa fa-check-circle"></i> Habilitado';
                     } else {
-                        return '<i class="fa fa-times-circle">Deshabilitado</i>';
+                        return '<i class="fa fa-times-circle"></i> Deshabilitado';
                     }
                 }
             },
             {
                 "orderable": true,
                 render: function (data, type, row) {
-                    if (row.perfil == 'Admin') {
-                        return '<a href="#" data-toggle="modal" data-target="#userModalEdit" data-id="' + row.id_user + '"><i class="far fa-edit"></i></a>' +
-                            '<i class="far fa-trash-alt"></i>';
-                    } else {
-                        return '<a href="#" data-toggle="modal" data-target="#userModalEdit" data-id="' + row.id_user + '"><i class="far fa-edit"></i></a>' +
-                            '<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_user + '"><i class="far fa-trash-alt""></i></a>';
-                    }
+                    return '<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_user + '"><i class="far fa-trash-alt""></i></a>';
                 },
                 "className": "text-center"
             }
@@ -127,21 +124,20 @@ $(document).ready(function () {
 
     //Eliminar datos
     $('#form-delete').submit(function (event) {
+        console.log($(this).serialize());
         event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: baseurl + 'Usuarios/DeleteUser',
+            url: baseurl + 'usuarios/DeleteUser',
             data: $(this).serialize(),
             success: function (data) {
-                if (data == 'success') {
-                    output = '<div role="alert"  class="alert alert-success">' +
-                        '<strong>Buen trabajo!</strong> Usuario Eliminado Exitosamente.' +
-                        '</div>';
-                    $('#resultado').html(output);
-                    $('#deleteModal').modal('hide');
-                    Tableuser.ajax.reload(null, false);
-                    hiddenAlert();
-                }
+                output = '<div role="alert"  class="alert alert-success">' +
+                    '<strong>Buen trabajo!</strong> Usuario Eliminado Exitosamente.' +
+                    '</div>';
+                $('#resultado').html(output);
+                $('#deleteModal').modal('hide');
+                Tableuser.ajax.reload(null, false);
+                hiddenAlert();
             },
         });
     });

@@ -9,10 +9,10 @@
             <div class="col-lg-4 col-md-6 mt-5">
                 <div class="card card-bordered">
                     <div class="card-body">
-                        <h4 class="title">Guion: <?php echo $script->script; ?></h4>
-                        <!-- <p class="card-text">
-                            <strong>Integrantes: </strong>
-                        </p> -->
+                        <h4 class="title"><?php echo $script->script; ?></h4>
+                        <p class="card-text">
+                            <strong>Descripción: </strong><?php echo $script->descripcion; ?>
+                        </p>
                         <a href="<?php echo base_url(); ?>callcenter/scripts/script/<?php echo $script->id_script; ?>" class="btn btn-primary">Editar</a>
                     </div>
                 </div>

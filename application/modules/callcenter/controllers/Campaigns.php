@@ -18,6 +18,7 @@ class Campaigns extends CI_Controller
         $this->data['vendedores'] = get_listado_usuarios_idpermiso(2);
         $this->data['campaigns'] = $this->Campaign_model->findAll();
         $this->data['forms'] = get_listado_forms();
+        $this->data['scripts'] = get_listado_scripts();
 
         //Validación de inicio de session
         $this->validarlogin->validateLogin();
@@ -45,6 +46,7 @@ class Campaigns extends CI_Controller
     {
         $param['campaign'] = $this->input->post('campaign');
         $param['id_form'] = $this->input->post('id_form');
+        $param['id_script'] = $this->input->post('id_script');
         $param['id_campaign_status'] = 2;
 
         $id_user = $this->input->post('id_user');

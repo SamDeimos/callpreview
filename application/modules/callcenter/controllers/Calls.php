@@ -8,6 +8,7 @@ class Calls extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Call_model');
+        $this->load->model('Script_model');
         $this->load->library('Menu');
         $this->load->library('Asterisk');
         $this->load->library('ValidarLogin');
@@ -50,6 +51,7 @@ class Calls extends CI_Controller
             $result['id_registry'] = $this->asterisk->llamar_AMI($this->input->post('id_call'), $this->input->post('ext'), $this->input->post('tel'));
             $result['data_attribute'] = $this->Call_model->get_call_attribute($this->input->post('id_call'));
             $result['form'] = constructor_formulario($this->input->post('id_form'), $result['id_registry']);
+            $result['script'] = $this->Script_model->get_script($this->input->post('id_script'));
             echo json_encode($result);
         }
     }
@@ -84,7 +86,7 @@ class Calls extends CI_Controller
 
             $param['id_call_registry'] = $this->input->post('id_call_registry');
             $param['id_form'] = $this->input->post('id_form');
-            $param['data'] = json_encode($array_form_data_recolected);
+            $param['data'] = json_encode($array_form_data_recolected, JSON_UNESCAPED_UNICODE);
 
             if ($this->Call_model->get_exist_id_call_registry($param['id_call_registry']) == NULL) {
                 $id_form_data_recoelcted = $this->Call_model->add_form_data_recolected($param);

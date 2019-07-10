@@ -4,7 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Script_model extends CI_Model
 {
 
-    public function findAll(){
+    public function findAll()
+    {
         $query = $this->db->get('md_callcenter_scripts');
         return $query->result();
     }
@@ -28,6 +29,13 @@ class Script_model extends CI_Model
     {
         $this->db->where('id_script', $id);
         $this->db->update('md_callcenter_scripts', $param);
+    }
+
+    public function get_script($id_script)
+    {
+        $this->db->where('id_script', $id_script);
+        $query = $this->db->get('md_callcenter_scripts');
+        return $query->row()->contenido_script;
     }
 }
 

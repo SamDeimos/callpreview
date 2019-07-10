@@ -15,7 +15,7 @@ $("select.select_single").select2({
 $('textarea.edit_text').trumbowyg({
     lang: 'es',
     btns: [
-        ['viewHTML'],
+        //['viewHTML'],
         ['undo', 'redo'], // Only supported in Blink browsers
         ['foreColor', 'backColor'],
         ['formatting'],

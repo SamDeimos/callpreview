@@ -1,5 +1,17 @@
-$(document).ready(function () {
+/**
+ * Validar si al ventana modal de callModal esta abierta
+ * para mostrar alerta que se perdera la informacion de la gestion
+ */
+$(window).on('beforeunload', function () {
+    if ($('#callModal').hasClass('show')) {
+        return false;
+    }
+});
 
+/**
+ * Script Modulo de callcenter
+ */
+$(document).ready(function () {
     //Valdiar si hay una extension en en localstorage
     var ext = localStorage.getItem('ext');
     if (ext == null || ext == 'undefined') {
@@ -26,6 +38,7 @@ $(document).ready(function () {
         }
     });
 
+    //Tabla de listado de llamdas para gestion
     var Tablecall = $('#Tablecall').DataTable({
         language: {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -49,7 +62,7 @@ $(document).ready(function () {
                         '</button>' +
                         '<div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(15px, -107px, 0px); top: 0px; left: 0px; will-change: transform;">';
                     $.each(JSON.parse(row.phones), function (index, value) {
-                        html += '<a href="#" class="dropdown-item llamar" data-id_call="' + row.id_call + '" data-tel="' + value + '" data-nombres="' + row.nombres + '" data-id_form="' + row.id_form + '">' + value + '</a>';
+                        html += '<a href="#" class="dropdown-item llamar" data-id_call="' + row.id_call + '" data-tel="' + value + '" data-nombres="' + row.nombres + '" data-id_form="' + row.id_form + '" data-id_script="' + row.id_script + '">' + value + '</a>';
                     });
                     html += '</div>' +
                         '</div>';
@@ -95,6 +108,7 @@ $(document).ready(function () {
                     let parametros = {
                         'id_call': $(this).data('id_call'),
                         'id_form': $(this).data('id_form'),
+                        'id_script': $(this).data('id_script'),
                         'tel': $(this).data('tel'),
                         'ext': localStorage.getItem('ext')
                     };
@@ -112,6 +126,9 @@ $(document).ready(function () {
 
                                 //insertar formulario de gestion
                                 $('#caja_form').append(arrayDATA['form']);
+
+                                //insertar script de gestion
+                                $('#ver_script').trumbowyg('html', arrayDATA['script']);
 
                                 //inserta el valor del registro actual en input #id_registry
                                 $('#id_registry').val(arrayDATA['id_registry']);
@@ -169,7 +186,7 @@ $(document).ready(function () {
 
             /**
              * Mostrar data_attibute junto con el historial de llamdas
-             * con hinformación de formularios
+             * con información de formularios
              */
             $('a.datalleCall').click(function (event) {
                 event.preventDefault();
@@ -255,6 +272,7 @@ $(document).ready(function () {
         $('#caja_data_attribute').children().children().remove();
         $('#caja_form').children().remove();
         $('#form_data_recolected').children('input[type="submit"]').val('Guardar Datos');
+        $('#ver_script').trumbowyg('empty');
     });
 
     $("#regModal").on('hidden.bs.modal', function () {
@@ -324,15 +342,15 @@ $(document).ready(function () {
         let valInput = col.children('input[name="val[]"]');
         let values_campInput = col.parent().children('.values_camp');
         let select = col.children('select');
-
-        select.append('<option value="' + valInput.val() + '" selected>' + valInput.val() + '</option>');
-
+        if (valInput.val() != '') {
+            select.append('<option value="' + valInput.val() + '" selected>' + valInput.val() + '</option>');
+        }
+        //Cargan los valores en input oculto para insertar
         if (values_campInput.val() == '') {
             values_campInput.val(valInput.val());
         } else {
             values_campInput.val(values_campInput.val() + ',' + valInput.val());
         }
-
         valInput.val('');
     });
 
@@ -394,11 +412,15 @@ $(document).ready(function () {
         });
     });
 
+    /**
+     * Guardar guion
+     */
     $(document).on('click', '#save-script', function (e) {
         e.preventDefault();
         let parametros = {
             'id_script': $('#id_script').val(),
             'script': $('#script').val(),
+            'descripcion': $('#desc_script').val(),
             'contenido_script': $('.trumbowyg-editor').html()
         }
         $.ajax({

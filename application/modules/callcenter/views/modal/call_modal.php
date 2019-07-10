@@ -4,15 +4,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="callModalLabel">Gestionar llamada</h5>
-                <?php echo form_open('', 'id="form-calificar"') ?>
+                <?php echo form_open('', 'class="form-inline" id="form-calificar"') ?>
                 <input type="hidden" name="id_registry" id="id_registry">
-                <div class="input-group">
+                <div class="input-group mx-sm-3">
                     <select class="custom-select custom-select-sm" name="id_call_status" id="id_call_status" required>
                         <?php foreach ($calls_status as $call_status) { ?>
                             <option value="<?php echo $call_status->id_call_status; ?>"><?php echo $call_status->estado; ?></option>
                         <?php } ?>
                     </select>
                 </div>
+                <button id="button-form-calificar" type="button" class="btn btn-primary btn-xs">Guardar Gestion</button>
                 <?php echo form_close(); ?>
             </div>
 
@@ -26,9 +27,13 @@
                     <div id="caja_form" class="row col-6 mb-4">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <textarea id="ver_script" class="edit_text" disabled></textarea>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button id="button-form-calificar" type="button" class="btn btn-primary">Guardar Gestion</button>
             </div>
         </div>
     </div>

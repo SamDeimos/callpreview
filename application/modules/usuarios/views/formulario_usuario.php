@@ -12,22 +12,22 @@
                     <input class="form-control" name="id_usuario" id="id_usuario" type="hidden" value="<?php echo set_value("id_usuario", (isset($usuario->id_user) ? $usuario->id_user : "")); ?>">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input class="form-control form-control-sm" name="nombre" id="nombre" type="text" value="<?php echo set_value("nombre", (isset($usuario->nombres) ? $usuario->nombres : "")); ?>">
+                        <input class="form-control form-control-sm" name="nombre" id="nombre" type="text" value="<?php echo set_value("nombre", (isset($usuario->nombres) ? $usuario->nombres : "")); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="nombre">Contraseña</label>
-                        <input class="form-control form-control-sm" name="pass" id="pass" type="password" value="<?php echo set_value("pass", (isset($usuario->pass) ? $usuario->pass : "")); ?>">
+                        <input class="form-control form-control-sm" name="pass" id="pass" type="password" value="<?php echo set_value("pass", (isset($usuario->pass) ? $usuario->pass : "")); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input class="form-control form-control-sm" name="email" id="email" type="text" value="<?php echo set_value("email", (isset($usuario->email) ? $usuario->email : "")); ?>">
+                        <input class="form-control form-control-sm" name="email" id="email" type="text" value="<?php echo set_value("email", (isset($usuario->email) ? $usuario->email : "")); ?>" required>
                     </div>
                     <div class="row">
                         <!-- Columna izquierda -->
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="">Estado civil</label>
-                                <select class="custom-select custom-select-sm" name="estadocivil" id="estadocivil">
+                                <select class="custom-select custom-select-sm" name="estadocivil" id="estadocivil" required>
                                     <option value="">Seleccione</option>
                                     <?php foreach ($estadosciviles as $estadocivil) { ?>
                                         <option <?php echo ((isset($usuario->id_statuscivil) ? $usuario->id_statuscivil : "") == $estadocivil->id_statuscivil) ? "selected" : ""; ?> value="<?php echo $estadocivil->id_statuscivil; ?>"><?php echo $estadocivil->estado; ?></option>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Formación academica</label>
-                                <select class="custom-select custom-select-sm" name="lvlformacion" id="lvlformacion">
+                                <select class="custom-select custom-select-sm" name="lvlformacion" id="lvlformacion" required>
                                     <option value="">Seleccione</option>
                                     <?php foreach ($lvlformaciones as $lvlformacion) { ?>
                                         <option <?php echo ((isset($usuario->id_lvlformacion) ? $usuario->id_lvlformacion : "") == $lvlformacion->id_lvlformacion) ? "selected" : ""; ?> value="<?php echo $lvlformacion->id_lvlformacion; ?>"><?php echo $lvlformacion->formacion; ?></option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Permisos del sistema</label>
-                                <select class="custom-select custom-select-sm" name="permiso" id="permiso">
+                                <select class="custom-select custom-select-sm" name="permiso" id="permiso" required>
                                     <option value="">Seleccione</option>
                                     <?php foreach ($permisos as $permiso) { ?>
                                         <option <?php echo ((isset($usuario->id_permiso) ? $usuario->id_permiso : "") == $permiso->id_permiso) ? "selected" : ""; ?> value="<?php echo $permiso->id_permiso; ?>"><?php echo $permiso->perfil; ?></option>

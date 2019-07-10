@@ -52,6 +52,7 @@ class Scripts extends CI_Controller
     {
         if ($this->input->post()) {
             $param['script'] = $this->input->post('script');
+            $param['descripcion'] = $this->input->post('descripcion');
             $param['contenido_script'] = $this->input->post('contenido_script');
 
             if ($this->input->post('id_script') == null) {

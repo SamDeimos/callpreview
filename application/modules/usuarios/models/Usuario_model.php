@@ -58,9 +58,9 @@ class Usuario_model extends CI_Model
         $this->db->update('md_user', $param);
     }
 
-    public function DeleteUser($param)
+    public function DeleteUser($id)
     {
-        $this->db->where('id_user', $param['id_user']);
+        $this->db->where('id_user', $id);
         $this->db->delete('md_user');
     }
 

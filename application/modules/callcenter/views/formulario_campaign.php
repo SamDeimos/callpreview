@@ -35,6 +35,16 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="id_user">Selccionar guion</label>
+                        <div class="input-group">
+                            <select class="custom-select custom-select-sm" name="id_script" id="id_script" required>
+                                <?php foreach ($scripts as $script) { ?>
+                                    <option <?php echo ((isset($pago->id_cliente) ? $pago->id_cliente : '') == $script->id_script) ? "selected" : ""; ?> value="<?php echo $script->id_script; ?>"><?php echo $script->script; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row mb-4 mt-2">

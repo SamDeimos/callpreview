@@ -33,18 +33,27 @@ class Exportar
     {
         $filename = $name . '-' . date('Ymd') . '.xls';
         header("Content-Disposition: attachment; filename=$filename");
-        header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=latin1");
+        header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         header('Pragma: no-cache');
         header("Expires: 0");
 
         echo '<table>' .
             '<thead>' .
             '<tr>';
-        $arraydata = (array) $data[0];
+        /**
+         * buscamos el priemr registro con data_formulario direfente de null
+         *
+         */
+        $i = 0;
+        $arraydata = (array) $data[$i];
+        while ($arraydata['data formulario'] == NULL) {
+            $i++;
+            $arraydata = (array) $data[$i];
+        }
 
-        //Contruccion de formulario
+        //Contruccion de data formulario
         $arrayheaderform = array_pop($arraydata);
-        $arrayheaderform = array_keys(json_decode($arrayheaderform, true));
+        $arrayheaderform = array_map("utf8_decode", array_keys(json_decode($arrayheaderform, true)));
 
         //Construccion header
         $arrayheader = array_keys($arraydata);
@@ -64,8 +73,8 @@ class Exportar
             $fila = array_values((array) $fila);
 
             //Construcctor de resultados de formulario
-            $dataform = json_decode(array_pop($fila), true);
-            if($dataform != NULL){
+            $dataform = json_decode(array_pop($fila), JSON_UNESCAPED_UNICODE);
+            if ($dataform != NULL) {
                 $dataform = array_values($dataform);
                 $fila = array_merge($fila, $dataform);
             }
