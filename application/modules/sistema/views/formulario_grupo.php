@@ -1,7 +1,7 @@
 <br>
 <div class="card">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>usuarios/grupos">volver</a>
+        <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>sistema/usuarios/grupos">volver</a>
     </div>
 </div>
 <br>

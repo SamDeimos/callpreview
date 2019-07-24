@@ -14,13 +14,13 @@
                 <div id="extra"></div>
                 <?php
                 $idDelete = array(
-                    'type'  => 'text',
+                    'type'  => 'hidden',
                     'name'  => 'idDelete',
                     'id'    => 'idDelete',
                     'class' => 'form-control form-control-sm',
                 );
                 $modulo = array(
-                    'type'  => 'text',
+                    'type'  => 'hidden',
                     'name'  => 'modulo',
                     'id'    => 'modulo',
                     'class' => 'form-control form-control-sm',

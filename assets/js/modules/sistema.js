@@ -8,7 +8,7 @@ $(document).ready(function () {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },
         ajax: {
-            "url": baseurl + "usuarios/UsuarioTable",
+            "url": baseurl + "sistema/usuarios/UsuarioTable",
             "type": "POST",
             dataSrc: ''
         },
@@ -17,7 +17,7 @@ $(document).ready(function () {
             {
                 "orderable": true,
                 render: function (data, type, row) {
-                    return '<a target="_black" href="' + baseurl + 'usuarios/usuario/' + row.id_user + '">' + row.nombres + '</a>';
+                    return '<a target="_black" href="' + baseurl + 'sistema/usuarios/usuario/' + row.id_user + '">' + row.nombres + '</a>';
                 }
             },
             { data: 'dni' },
@@ -143,7 +143,7 @@ $(document).ready(function () {
             modulo = $('#modulo').val();
             $.ajax({
                 type: 'POST',
-                url: baseurl + 'usuarios/' + modulo + 's/Delete' + modulo,
+                url: baseurl + 'sistema/susuarios/' + modulo + 's/Delete' + modulo,
                 data: $(this).serialize(),
                 success: function (data) {
                     $('#deleteModal').modal('hide');

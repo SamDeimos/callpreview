@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>usuarios">volver</a>
+        <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>sistema/usuarios">volver</a>
     </div>
 </div>
 <div class="card mt-4">

@@ -78,13 +78,13 @@ class Usuarios extends CI_Controller
             if (!$this->input->post('id_usuario')) {
                 //Insertamos usuario nuevo
                 $id_usuario = $this->Usuario_model->AddUser($param);
-                redirect(base_url() . 'usuarios/usuario/' . $id_usuario, 'refresh');
+                redirect(base_url() . 'sistema/usuarios/usuario/' . $id_usuario, 'refresh');
                 //echo "<script>console.log('Con data: ".json_encode($param)."')</script>";
             } else {
                 //Actualizamos usuario actual
                 $id_usuario = $this->input->post('id_usuario');
                 $this->Usuario_model->EditUser($param, $id_usuario);
-                redirect(base_url() . 'usuarios/usuario/' . $id_usuario, 'refresh');
+                redirect(base_url() . 'sistema/usuarios/usuario/' . $id_usuario, 'refresh');
                 //echo "<script>console.log('Con data: ".json_encode($param)."')</script>";
 
             }

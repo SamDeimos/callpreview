@@ -37,8 +37,8 @@ class Campaigns extends CI_Controller
     public function campaign($id = NULL)
     {
         /*
-        / Condicionamos d si es Nuevo usuario
-        / o Editar usuario
+        / Condicionamos si es Nueva Campaña
+        / o Editar campaña
         / @id int
         */
         if ($id == NULL) {

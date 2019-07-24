@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>usuarios/usuario"><i class="fa fa-user-plus"></i> Nueva usuario</a>
+        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>sistema/usuarios/usuario"><i class="fa fa-user-plus"></i> Nueva usuario</a>
     </div>
 </div>
 <div class="card mt-4">

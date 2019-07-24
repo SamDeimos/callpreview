@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-acction">
-        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>usuarios/grupos/grupo"><i class="fa fa-cart-plus"></i> Nuevo grupo</a>
+        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>sistema/usuarios/grupos/grupo"><i class="fa fa-cart-plus"></i> Nuevo grupo</a>
     </div>
 </div>
 <div class="card-area">

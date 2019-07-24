@@ -70,28 +70,32 @@ if (!function_exists('get_listado_registrys')) {
                 break;
         }
 
-        $CI->db->select('a.id_call_registry, a.id_call, a.dst, a.calldate as reg_calldate, d.campaign, b.id_user, b.phones, b.nombres, c.calldate as cdr_calldate, c.billsec, c.disposition, e.data', FALSE);
+        $CI->db->select('a.id_call_registry, a.id_call, a.dst, a.calldate as reg_calldate, a.id_call_status, d.campaign, b.id_user, b.phones, b.nombres, c.calldate as cdr_calldate, c.billsec, c.disposition, e.data, f.estado', FALSE);
         $CI->db->from('md_callcenter_call_registry a');
         $CI->db->join('md_callcenter_calls b', 'a.id_call = b.id_call', 'left');
         $CI->db->join('asteriskcdrdb.cdr c', 'a.uniqueid = c.uniqueid', 'left');
         $CI->db->join('md_callcenter_campaigns d', 'b.id_campaign = d.id_campaign', 'left');
         $CI->db->join('md_callcenter_form_data_recolected e', 'a.id_call_registry = e.id_call_registry', 'left');
+        $CI->db->join('md_callcenter_call_status f', 'a.id_call_status = f.id_call_status', 'left');
+        $CI->db->order_by('a.id_call_registry', 'desc');
         $query = $CI->db->get();
         return $query->result();
     }
 }
 
-if (!function_exists('get_listado_forms')){
-    function get_listado_forms(){
-        $CI =& get_instance();
+if (!function_exists('get_listado_forms')) {
+    function get_listado_forms()
+    {
+        $CI = &get_instance();
         $query = $CI->db->get('md_callcenter_forms');
         return $query->result();
     }
 }
 
-if (!function_exists('get_listado_scripts')){
-    function get_listado_scripts(){
-        $CI =& get_instance();
+if (!function_exists('get_listado_scripts')) {
+    function get_listado_scripts()
+    {
+        $CI = &get_instance();
         $query = $CI->db->get('md_callcenter_scripts');
         return $query->result();
     }
@@ -165,5 +169,127 @@ if (!function_exists('exportar_csv')) {
         }
         fclose($file);
         exit;
+    }
+}
+
+
+/**
+ * WIDGETS DE CALLCENTER
+ */
+
+if (!function_exists('widget_cantidad_camp_activas')) {
+    function widget_cantidad_camp_activas($id_user, $idpermiso, $idestado)
+    {
+        $CI = &get_instance();
+
+        switch ($idpermiso) {
+            case 1:
+                //Mostramos todas las ventas si es administrador
+                break;
+            case 2:
+                //Listado de vestas para vendedores
+                $CI->db->where('b.id_user', $id_user);
+                break;
+            case 3:
+                //Listado de vestas para DIRECTORES O DUEÑOS DE GRUPO
+                // $id_grupo = get_id_grupo($id_user);
+                // $CI->db->join('md_grupos g', 'g.belong_user_grupo like concat("%", a.id_user, "%")', 'inner');
+                // $CI->db->where('g.id_grupo', $id_grupo);
+                // $CI->db->where('d.id_statusventa', $idestado);
+                break;
+            case 4:
+                // //Mosmotramos todas las ventas si es Autorizador
+                // $CI->db->where('d.id_statusventa', $idestado);
+                break;
+        }
+
+        $CI->db->select("count(distinct a.id_campaign) as campaigns", FALSE);
+        $CI->db->from('md_callcenter_campaigns a');
+        $CI->db->join('md_callcenter_calls b', 'b.id_campaign = a.id_campaign', 'right');
+        $CI->db->where('id_campaign_status', $idestado);
+        $CI->db->group_by('a.id_campaign');
+        $query = $CI->db->get();
+
+        return $query->row();
+    }
+}
+
+if (!function_exists('widget_cantidad_calls')) {
+    function widget_cantidad_calls($id_user, $idpermiso, $idestado = NULL)
+    {
+        $CI = &get_instance();
+
+        switch ($idpermiso) {
+            case 1:
+                //Mostramos todas las ventas si es administrador
+                break;
+            case 2:
+                //Listado de vestas para vendedores
+                $CI->db->where('a.id_user', $id_user);
+                break;
+            case 3:
+                //Listado de vestas para DIRECTORES O DUEÑOS DE GRUPO
+                // $id_grupo = get_id_grupo($id_user);
+                // $CI->db->join('md_grupos g', 'g.belong_user_grupo like concat("%", a.id_user, "%")', 'inner');
+                // $CI->db->where('g.id_grupo', $id_grupo);
+                // $CI->db->where('d.id_statusventa', $idestado);
+                break;
+            case 4:
+                // //Mosmotramos todas las ventas si es Autorizador
+                // $CI->db->where('d.id_statusventa', $idestado);
+                break;
+        }
+
+        if($idestado != NULL){
+            $CI->db->where('id_call_status', $idestado);
+        }else{
+            $CI->db->where('id_call_status !=', 1);
+        }
+
+        $CI->db->select("count(*) as calls", FALSE);
+        $CI->db->from('md_callcenter_calls a');
+        $query = $CI->db->get();
+
+        return $query->row();
+    }
+}
+
+if (!function_exists('widget_historial_calls')) {
+    function widget_historial_calls($id_user, $idpermiso, $idestado = NULL)
+    {
+        $CI = &get_instance();
+
+        switch ($idpermiso) {
+            case 1:
+                //Mostramos todas las ventas si es administrador
+                break;
+            case 2:
+                //Listado de vestas para vendedores
+                $CI->db->where('a.id_user', $id_user);
+                break;
+            case 3:
+                //Listado de vestas para DIRECTORES O DUEÑOS DE GRUPO
+                // $id_grupo = get_id_grupo($id_user);
+                // $CI->db->join('md_grupos g', 'g.belong_user_grupo like concat("%", a.id_user, "%")', 'inner');
+                // $CI->db->where('g.id_grupo', $id_grupo);
+                // $CI->db->where('d.id_statusventa', $idestado);
+                break;
+            case 4:
+                // //Mosmotramos todas las ventas si es Autorizador
+                // $CI->db->where('d.id_statusventa', $idestado);
+                break;
+        }
+
+        if($idestado != NULL){
+            $CI->db->where('id_call_status', $idestado);
+        }else{
+            $CI->db->where('id_call_status !=', 1);
+        }
+
+        $CI->db->select("count(*) as calls", FALSE);
+        $CI->db->from('md_callcenter_calls a');
+        $query = $CI->db->get();
+
+        return $query->row();
     }
 }
