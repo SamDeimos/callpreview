@@ -26,6 +26,7 @@ class Scripts extends CI_Controller
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('script');
+        $this->load->view('modals/modal_delete');
         $this->load->view('footer');
     }
 
@@ -61,6 +62,13 @@ class Scripts extends CI_Controller
             } else {
                 $this->Script_model->EditScript($this->input->post('id_script'), $param);
             }
+        }
+    }
+
+    public function DeleteScript()
+    {
+        if ($this->input->post()) {
+            $this->Script_model->DeleteScript($this->input->post('idDelete'));
         }
     }
 }

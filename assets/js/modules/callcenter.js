@@ -43,16 +43,21 @@ $(document).ready(function () {
         language: {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },
-        order: [[4, 'desc']],
+        order: [[3, 'desc']],
         ajax: {
             "url": baseurl + "callcenter/calls/CallTable",
             "type": "POST",
             dataSrc: ''
         },
         columns: [
-            { data: 'id_call' },
-            { data: 'campaign' },
             { data: 'nombres' },
+            {
+                "orderable": true,
+                render: function (data, type, row) {
+                    return '<span class="text-secondary">'+row.campaign+'</span>';
+                    // return '<small>' + row.campaign + '</small>'
+                }
+            },
             {
                 "orderable": true,
                 render: function (data, type, row) {
@@ -169,7 +174,9 @@ $(document).ready(function () {
                                     async: true,
                                     success: function (data) {
                                         console.log('data guardada');
-                                        $('#form_data_recolected').children('input[type="submit"]').val('Datos Guardados');
+                                        $('#form_data_recolected').children('input[type="submit"]').val('Datos Guardados')
+                                            .addClass("btn-success")
+                                            .removeClass("btn-primary");
                                     }
                                 });
                             });
@@ -245,16 +252,22 @@ $(document).ready(function () {
         }
     });
 
-    $('#form-ext').submit(function (event) {
-        event.preventDefault();
-        localStorage.setItem('ext', $('input[name="ext"]').val());
-        $('#extModal').modal('hide');
-    });
-
     /**
-     * Cambiar el estado de cada gention
+     * Guardar estado de cada gention
      */
     $('#button-form-calificar').on('click', function (e) {
+        if ($('#form_data_recolected').children('input[type="submit"]').val() == 'Datos Guardados') {
+            calificar();
+        } else {
+            let option = confirm('Aun no se ha guardado el formulario de gestion, ¿Desea guardarlo?');
+            if (option == true) {
+                calificar();
+            }
+        }
+        e.preventDefault();
+    });
+
+    function calificar() {
         $.ajax({
             type: "POST",
             url: baseurl + 'callcenter/calls/calificar_llamada',
@@ -265,8 +278,10 @@ $(document).ready(function () {
                 Tablecall.ajax.reload(null, false);
             }
         });
-        e.preventDefault();
-    });
+    }
+    /**
+     * Fin guardar estado de cada gestion
+     */
 
     $("#callModal").on('hidden.bs.modal', function () {
         $('#caja_data_attribute').children().children().remove();
@@ -278,13 +293,6 @@ $(document).ready(function () {
     $("#regModal").on('hidden.bs.modal', function () {
         $('#timeline-area').children().remove();
         $('#regModalLabel').children('span').text('');
-    });
-
-    //Cargar datos a modal Delete
-    $('#deleteModal').on('show.bs.modal', function (event) {
-        let button = $(event.relatedTarget);
-        let id = button.data('id');
-        $('#idDelete').val(id);
     });
 
     /**
@@ -373,7 +381,9 @@ $(document).ready(function () {
 
     });
 
-    //Cambiar estado de campañas
+    /**
+     * Cambiar estado de campaña
+     */
     $(document).on('change', '#status_camp', function () {
         if ($(this).prop('checked') == true) {
             id_campaign_status = 1;
@@ -394,8 +404,12 @@ $(document).ready(function () {
         });
     });
 
+    /**
+     * Asignar extensión
+     */
     $(document).on('click', '#btn-ext', function (e) {
         e.preventDefault();
+        $('#form-ext input[name="ext"]').val(localStorage.getItem('ext'));
         $('#extModal').modal({
             backdrop: 'static',
             keyboard: false,
@@ -403,6 +417,15 @@ $(document).ready(function () {
         });
     });
 
+    $('#form-ext').submit(function (event) {
+        event.preventDefault();
+        localStorage.setItem('ext', $('input[name="ext"]').val());
+        $('#extModal').modal('hide');
+    });
+
+    /**
+     * Abrir Modal con calendario
+     */
     $(document).on('click', '#btn-calendar', function (e) {
         e.preventDefault();
         $('#calendarModal').modal({
@@ -435,5 +458,47 @@ $(document).ready(function () {
             }
         });
     });
-});
 
+    /**
+     * Eliminar Campaña
+     */
+    $('#deleteModal').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let id = button.data('id');
+        let modulo = button.data('modulo');
+
+        switch (modulo) {
+            case 'Campaign':
+                var campaign = button.data('campaign');
+                var extra = `
+                    <small class="text-muted">ALERTA: Al eliminar esta campaña eliminará tambien su reporte de gestion, antes de eliminarla puede descargar el reporte <a href="https://192.168.0.229/xudo/callcenter/campaigns/export_csv?campaign=${campaign}campaign&id_campaign=${id}">CSV</a> - <a href="https://192.168.0.229/xudo/callcenter/campaigns/export_xlsx?campaign=${campaign}campaign&id_campaign=${id}">EXCEL</a></small>
+                `;
+                break;
+            case 'Form':
+                var extra = `
+                    <small class="text-muted">ALERTA: Antes de eliminar este formulario confirme que no esta asignado en ninguna campaña</small>
+                `;
+                break;
+            case 'Script':
+                var extra = 'ALERTA: Antes de eliminar este guion confirme que no esta asignado a ninguna campaña';
+                break;
+        }
+        $('#idDelete').val(id);
+        $('#modulo').val(modulo);
+        $('#extra').html(extra);
+
+        $('#form-delete').submit(function (event) {
+            event.preventDefault();
+            modulo = $('#modulo').val();
+            $.ajax({
+                type: 'POST',
+                url: baseurl + 'callcenter/' + modulo + 's/Delete' + modulo,
+                data: $(this).serialize(),
+                success: function (data) {
+                    $('#deleteModal').modal('hide');
+                    location.reload();
+                },
+            });
+        });
+    });
+});

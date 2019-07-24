@@ -7,6 +7,34 @@
     <title><?php echo ucfirst($this->uri->segment(1)) ?> - XUDO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- socket.io -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://<?php //echo $_SERVER['SERVER_NAME'] ?>:2311');
+        var NickName = localStorage.getItem('ext');
+        user = {
+            nickname: NickName,
+            ext: 103
+        };
+        socket.emit('login', user);
+
+        socket.on('inbounce', function(data) {
+            console.log(data);
+            // output = '<div role="alert"  class="alert alert-success">' +
+            //     '<strong>Llamada entrante del numero</strong> <h1>#' + data.calleridnum + '</h1>' +
+            //     '</div>';
+            // $('#resultado').html(output);
+        });
+
+        socket.on('msgprivade', function(msg) {
+            console.log(msg);
+        });
+
+        function send(nickname, msg) {
+            socket.emit('sendmsg', nickname, msg);
+        }
+    </script> -->
+
     <!-- Trumbowyg -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/trumbowyg/dist/ui/trumbowyg.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.css">
@@ -108,7 +136,7 @@
                                         <?php foreach ($menu as $sub) {
                                             if ($sub->nivel_up == $main->id_menu) { ?>
                                                 <ul class="collapse">
-                                                    <li class="<?php echo ($this->uri->uri_string() == $sub->url) ? "active" : " " ?>"><a href="<?php echo base_url() . $sub->url ?>"><?php echo $sub->menu ?></a></li>
+                                                    <li class="<?php echo (($this->uri->segment(1) . '/' . $this->uri->segment(2)) == $sub->url) ? "active" : " " ?>"><a href="<?php echo base_url() . $sub->url ?>"><?php echo $sub->menu ?></a></li>
                                                 </ul>
                                             <?php }
                                         } ?>

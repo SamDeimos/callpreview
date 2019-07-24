@@ -34,34 +34,52 @@ class Campaigns extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function campaign()
+    public function campaign($id = NULL)
     {
+        /*
+        / Condicionamos d si es Nuevo usuario
+        / o Editar usuario
+        / @id int
+        */
+        if ($id == NULL) {
+            $this->data['campaign'] = NULL;
+        } else {
+            $this->data['campaign'] = $this->Campaign_model->findID($id);
+        }
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('formulario_campaign');
         $this->load->view('footer');
-    }
 
-    public function AddCampaign()
-    {
-        $param['campaign'] = $this->input->post('campaign');
-        $param['id_form'] = $this->input->post('id_form');
-        $param['id_script'] = $this->input->post('id_script');
-        $param['id_campaign_status'] = 2;
+        //Guardar o actualizar
+        if ($this->input->post()) {
+            if (!$this->input->post('id_campaign')) {
+                $param['campaign'] = $this->input->post('campaign');
+                $param['id_form'] = $this->input->post('id_form');
+                $param['id_script'] = $this->input->post('id_script');
+                $param['id_campaign_status'] = 2;
 
-        $id_user = $this->input->post('id_user');
-        $id_campaign = $this->Campaign_model->AddCampaign($param);
-        $dir_file = $this->_upload_file();
+                $id_user = $this->input->post('id_user');
+                $id_campaign = $this->Campaign_model->AddCampaign($param);
+                $dir_file = $this->_upload_file();
 
-        $this->_insert_file($dir_file, $id_campaign, $id_user);
+                $this->_insert_file($dir_file, $id_campaign, $id_user);
 
-        redirect(base_url() . 'callcenter/campaigns', 'refresh');
+                redirect(base_url() . 'callcenter/campaigns', 'refresh');
+            } else {
+                $param['campaign'] = $this->input->post('campaign');
+                $param['id_script'] = $this->input->post('id_script');
+
+                $this->Campaign_model->EditCampaign($this->input->post('id_campaign'), $param);
+
+                redirect(base_url() . 'callcenter/campaigns/campaign/' . $this->input->post('id_campaign'), 'refresh');
+            }
+        }
     }
 
     /**
      * Actualizar estado de la campaña por medio de ajax
      * usando un toggle bottton
-     *
      */
     public function update_campaign_status()
     {
@@ -83,6 +101,13 @@ class Campaigns extends CI_Controller
     {
         if ($this->input->get()) {
             $this->exportar->export_excel($this->input->get('campaign'), $this->Campaign_model->data_export_registro_llamada($this->input->get('id_campaign')));
+        }
+    }
+
+    public function DeleteCampaign()
+    {
+        if ($this->input->post()) {
+            $this->Campaign_model->DeleteCampaign($this->input->post('idDelete'));
         }
     }
 

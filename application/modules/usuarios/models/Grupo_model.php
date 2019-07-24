@@ -32,4 +32,10 @@ class Grupo_model extends CI_Model
         $this->db->where('id_grupo', $id);
         $this->db->update('md_grupos', $param);
     }
+
+    public function DeleteGrupo($id_grupo)
+    {
+        $this->db->where('id_grupo', $id_grupo);
+        $this->db->delete('md_grupos');
+    }
 }

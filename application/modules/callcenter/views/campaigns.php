@@ -23,7 +23,7 @@
                         <td><?php echo "#" . $campaign->id_campaign; ?></td>
 
                         <!-- campaña -->
-                        <td><?php echo $campaign->campaign; ?></td>
+                        <td><a href="<?php echo base_url(); ?>callcenter/campaigns/campaign/<?php echo $campaign->id_campaign; ?>"><?php echo $campaign->campaign; ?></a></td>
 
                         <!-- formulario -->
                         <td><?php echo $campaign->form; ?></td>
@@ -43,7 +43,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $campaign->id_campaign ?>"><i class="far fa-trash-alt"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $campaign->id_campaign ?>" data-modulo="Campaign"><i class="far fa-trash-alt"></i></a>
                         </td>
 
                     </tr>

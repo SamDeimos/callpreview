@@ -40,7 +40,7 @@ $(document).ready(function () {
             {
                 "orderable": true,
                 render: function (data, type, row) {
-                    return '<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_user + '"><i class="far fa-trash-alt""></i></a>';
+                    return '<a href="#" data-toggle="modal" data-target="#deleteModal" data-id="' + row.id_user + '" data-modulo="Usuario"><i class="far fa-trash-alt""></i></a>';
                 },
                 "className": "text-center"
             }
@@ -119,26 +119,37 @@ $(document).ready(function () {
     $('#deleteModal').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget);
         let id = button.data('id');
-        $('#idDelete').val(id);
-    });
+        let modulo = button.data('modulo');
 
-    //Eliminar datos
-    $('#form-delete').submit(function (event) {
-        console.log($(this).serialize());
-        event.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: baseurl + 'usuarios/DeleteUser',
-            data: $(this).serialize(),
-            success: function (data) {
-                output = '<div role="alert"  class="alert alert-success">' +
-                    '<strong>Buen trabajo!</strong> Usuario Eliminado Exitosamente.' +
-                    '</div>';
-                $('#resultado').html(output);
-                $('#deleteModal').modal('hide');
-                Tableuser.ajax.reload(null, false);
-                hiddenAlert();
-            },
+        switch (modulo) {
+            case 'Usuario':
+                var campaign = button.data('campaign');
+                var extra = `
+                    <small class="text-muted">ALERTA: Al eliminar esta campaña eliminará tambien su reporte de gestion, antes de eliminarla puede descargar el reporte <a href="https://192.168.0.229/xudo/callcenter/campaigns/export_csv?campaign=${campaign}campaign&id_campaign=${id}">CSV</a> - <a href="https://192.168.0.229/xudo/callcenter/campaigns/export_xlsx?campaign=${campaign}campaign&id_campaign=${id}">EXCEL</a></small>
+                `;
+                break;
+            case 'Grupos':
+                var extra = `
+                    <small class="text-muted">ALERTA: Antes de eliminar este grupo confirme que no esta asignado en ninguna campaña</small>
+                `;
+                break;
+        }
+        $('#idDelete').val(id);
+        $('#modulo').val(modulo);
+        $('#extra').html(extra);
+
+        $('#form-delete').submit(function (event) {
+            event.preventDefault();
+            modulo = $('#modulo').val();
+            $.ajax({
+                type: 'POST',
+                url: baseurl + 'usuarios/' + modulo + 's/Delete' + modulo,
+                data: $(this).serialize(),
+                success: function (data) {
+                    $('#deleteModal').modal('hide');
+                    location.reload();
+                },
+            });
         });
     });
 

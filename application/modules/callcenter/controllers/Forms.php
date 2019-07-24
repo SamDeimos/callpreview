@@ -23,12 +23,10 @@ class Forms extends CI_Controller
 
     public function index()
     {
-        //Validación de inicio de session
-        $this->validarlogin->validateLogin();
-
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('forms');
+        $this->load->view('modals/modal_delete');
         $this->load->view('footer');
     }
 
@@ -84,6 +82,13 @@ class Forms extends CI_Controller
                 $this->Form_model->AddFormFields($param_form_fields);
             }
             redirect(base_url() . 'callcenter/forms', 'refresh');
+        }
+    }
+
+    public function DeleteForm()
+    {
+        if ($this->input->post()) {
+            $this->Form_model->DeleteForm($this->input->post('idDelete'));
         }
     }
 }

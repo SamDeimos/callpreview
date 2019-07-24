@@ -52,6 +52,12 @@ class Form_model extends CI_Model
         $this->db->where('id_form', $id);
         $this->db->delete('md_callcenter_form_fields');
     }
+
+    public function DeleteForm($id_form)
+    {
+        $this->db->where('id_form', $id_form);
+        $this->db->delete('md_callcenter_forms');
+    }
 }
 
 /* End of file Campaign_model.php */

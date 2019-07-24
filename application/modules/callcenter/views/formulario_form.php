@@ -10,7 +10,7 @@
                 <div class="col-12 border-right">
                     <input name="id_form" id="id_form" type="hidden" value="<?php echo isset($form) ? $form->id_form : '' ?>">
                     <div class="form-group">
-                        <label for="nombre">Nombre formulario</label>
+                        <label for="nombre">Nombre de formulario</label>
                         <input class="form-control form-control-sm" name="form" id="form" type="text" value="<?php echo isset($form) ? $form->form : '' ?>" required>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                         <th scope="col">Tipo</th>
                                         <th scope="col">valores</th>
                                         <th scope="col">
-                                            <button type="button" class="btn btn-outline-primary btn-xs" id="add_campo" <?php echo isset($form) ? 'disabled' : ''?>>Nuevo campo</button>
+                                            <button type="button" class="btn btn-outline-primary btn-xs" id="add_campo" <?php echo isset($form) ? 'disabled' : '' ?>>Nuevo campo</button>
                                         </th>
                                     </tr>
                                 </thead>
@@ -71,8 +71,8 @@
                                                             <div class="col-6">
                                                                 <button class="btn btn-primary btn-xxs remove_val">remove</button>
                                                                 <select multiple class="custom-select custom-select-sm mt-2" name="values_camp_select[]" id="values_camp_select" size="3">
-                                                                    <?php foreach (explode(',', str_replace(array('"', "[", "]"), "", $fields->value)) as $value) :  ?>
-                                                                        <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                                                                    <?php foreach (json_decode($fields->value) as $value) :  ?>
+                                                                        <option value="<?php echo $value ?>"><?php echo $value; ?></option>
                                                                     <?php endforeach; ?>
                                                                 </select>
                                                             </div>

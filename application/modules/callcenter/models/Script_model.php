@@ -37,6 +37,12 @@ class Script_model extends CI_Model
         $query = $this->db->get('md_callcenter_scripts');
         return $query->row()->contenido_script;
     }
+
+    public function DeleteScript($id_script)
+    {
+        $this->db->where('id_script', $id_script);
+        $this->db->delete('md_callcenter_scripts');
+    }
 }
 
 /* End of file Script_model.php */

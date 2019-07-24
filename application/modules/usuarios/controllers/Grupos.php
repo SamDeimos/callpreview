@@ -26,6 +26,7 @@ class Grupos extends CI_Controller
         //Carga de vistas
         $this->load->view('header', $this->data);
         $this->load->view('grupos');
+        $this->load->view('modals/modal_delete');
         $this->load->view('footer');
     }
 
@@ -68,6 +69,13 @@ class Grupos extends CI_Controller
                 redirect(base_url() . 'usuarios/grupos/grupo/' . $id_grupo, 'refresh');
                 echo "<script>console.log('Con data: " . json_encode($param) . "')</script>";
             }
+        }
+    }
+
+    public function DeleteGrupo()
+    {
+        if ($this->input->post()) {
+            $this->Grupo_model->DeleteGrupo($this->input->post('idDelete'));
         }
     }
 }

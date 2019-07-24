@@ -92,7 +92,8 @@ class Call_model extends CI_Model
     /**
      * 
      */
-    public function get_call_schedule(){
+    public function get_call_schedule()
+    {
         $this->db->select('a.id_Call as id, b.nombres as title, a.fecha as start', FALSE);
         $this->db->from('md_callcenter_schedule a');
         $this->db->join('md_callcenter_calls b', 'a.id_call = b.id_call', 'left');

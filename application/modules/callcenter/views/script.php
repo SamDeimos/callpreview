@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<div class="card mt-2">
     <div class="card-acction">
         <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>callcenter/scripts/script"><i class="fa fa-cart-plus"></i> Nuevo guion</a>
     </div>
@@ -14,6 +14,7 @@
                             <strong>Descripción: </strong><?php echo $script->descripcion; ?>
                         </p>
                         <a href="<?php echo base_url(); ?>callcenter/scripts/script/<?php echo $script->id_script; ?>" class="btn btn-primary">Editar</a>
+                        <a href="#" class="text-danger float-right mt-4" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $script->id_script ?>" data-modulo="Script">Eliminar</a>
                     </div>
                 </div>
             </div>

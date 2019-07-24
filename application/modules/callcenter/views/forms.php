@@ -24,7 +24,7 @@
 
                         <!-- Acción -->
                         <td class="text-center">
-                            <a href="#" title="Informacion de cliente"><i class="far fa-trash-alt"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $form->id_form ?>" data-modulo="Form"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 <?php endforeach ?>

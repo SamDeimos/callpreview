@@ -11,6 +11,7 @@
             <?php echo form_open('', 'id="form-delete"') ?>
             <div class="modal-body">
                 <p>Esta acción no se puede deshacer, ¿Desea eliminar este registro?</p>
+                <div id="extra"></div>
                 <?php
                 $idDelete = array(
                     'type'  => 'text',

@@ -96,10 +96,10 @@ class Usuarios extends CI_Controller
         echo json_encode((empty($this->data['usuarios'])) ? NULL : $this->data['usuarios']);
     }
 
-    public function DeleteUser()
+    public function DeleteUsuario()
     {
         if ($this->input->post()) {
-            $this->Usuario_model->DeleteUser($this->input->post('idDelete'));
+            $this->Usuario_model->DeleteUsuario($this->input->post('idDelete'));
         }
     }
 }

@@ -15,6 +15,7 @@
                             <strong>Integrantes: </strong> <?php echo count(json_decode($grupo->belong_user_grupo)); ?>
                         </p>
                         <a href="<?php echo base_url(); ?>usuarios/grupos/grupo/<?php echo $grupo->id_grupo; ?>" class="btn btn-primary">Editar</a>
+                        <a href="#" class="text-danger float-right mt-4" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $grupo->id_grupo ?>" data-modulo="Grupo">Eliminar</a>
                     </div>
                 </div>
             </div>

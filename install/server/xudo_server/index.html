@@ -1,0 +1,8 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://192.168.0.229:2311');
+  socket.on('inbounce', function (data) {
+    console.log(data);
+  });
+</script>
+<h1>Cliente</h1>

@@ -1,4 +1,9 @@
 <div class="card mt-4">
+    <div class="card-acction">
+        <a class="btn btn-primary btn-xs float-right" href="<?php echo base_url(); ?>callcenter/scripts">volver</a>
+    </div>
+</div>
+<div class="card mt-4">
     <div class="card-body">
         <div class="row">
             <div class="col-6 border-right">

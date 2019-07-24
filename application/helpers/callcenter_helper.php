@@ -138,7 +138,7 @@ if (!function_exists('constructor_formulario')) {
             }
         }
 
-        $html_form .= '<input class="btn btn-success btn-xs float-right" type="submit" value="Guardar Datos">';
+        $html_form .= '<input class="btn btn-primary btn-xs float-right" type="submit" value="Guardar Datos">';
         $html_form .= '</form>';
         $html_form .= '</div>';
 
