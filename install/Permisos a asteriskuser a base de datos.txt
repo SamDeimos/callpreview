@@ -1,6 +1,6 @@
 Ejecutar los siguientes comandos para dar permiso a usuario mysql
 
 GRANT ALL PRIVILEGES ON appXudo.* TO asterisk@'localhost';
-GRANT ALL PRIVILEGES ON astariskcdrdb.cdr TO asterisk@'localhost';
+GRANT ALL PRIVILEGES ON asteriskcdrdb.cdr TO asterisk@'localhost';
 
 FLUSH PRIVILEGES;
