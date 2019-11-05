@@ -12,6 +12,23 @@ $("select.select_single").select2({
     minimumInputLength: 3,
 });
 
+$('textarea.edit_text').trumbowyg({
+    lang: 'es',
+    btns: [
+        //['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['foreColor', 'backColor'],
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen']
+    ]
+});
+
 function get_permisos_ventas_delete(idpermiso, id_statusventa) {
     switch (idpermiso) {
         case 1:
@@ -90,4 +107,17 @@ $('.fecha_daterangepicker').daterangepicker({
         ],
         "firstDay": 1
     }
-}); 
+});
+
+function secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    h = (h < 9) ? (h = '0' + h) : h;
+    m = (m < 9) ? (m = '0' + m) : m;
+    s = (s < 9) ? (s = '0' + s) : s;
+
+    return h + ':' + m + ':' + s;
+} 

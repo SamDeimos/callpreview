@@ -93,10 +93,10 @@ $autoload['helper'] = array(
     'html',
     'url',
     'form',
-    'clientes',
-    'tienda',
+    'time',
     'widget',
-    'usuarios'
+    'usuarios',
+    'callcenter'
 );
 
 /*
