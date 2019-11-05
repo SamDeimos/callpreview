@@ -167,7 +167,7 @@
 }
 
 .metismenu li a i {
-    color: #6a56a5;
+    color: #007eb9;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
@@ -290,7 +290,7 @@
 
 .horizontal-menu ul li:hover>a,
 .horizontal-menu ul li.active>a {
-    color: #007BFF;
+    color: #0098d2;
 }
 
 .horizontal-menu nav>ul>li:first-child>a {
@@ -310,7 +310,7 @@
     background: #fff;
     opacity: 0;
     visibility: hidden;
-    border-top: 4px solid #007BFF;
+    border-top: 4px solid #0098d2;
     border-radius: 3px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
 }
@@ -492,7 +492,7 @@
 }
 
 .notification-area li.settings-btn.active i {
-    color: #007BFF;
+    color: #0098d2;
 }
 
 .notification-area li>i {
@@ -684,7 +684,7 @@ ul.breadcrumbs {
     display: block;
     font-size: 14px;
     font-weight: 400;
-    color: #7801ff;
+    color: #0098d2;
     letter-spacing: 0;
     margin-right: 16px;
     position: relative;
@@ -714,8 +714,8 @@ ul.breadcrumbs {
             align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
+    background: -webkit-linear-gradient(left, #0098d2 0%, #00b8e9 100%);
+    background: linear-gradient(to right, #0098d2 0%, #00b8e9 100%);
     padding: 17px 38px;
     position: relative;
 }
@@ -1410,7 +1410,7 @@ table.dbkit-table tr td {
 }
 
 .bg1 {
-    background: #5c6df4;
+    background: rgb(247, 63, 63);
 }
 
 .bg2 {
@@ -1418,6 +1418,9 @@ table.dbkit-table tr td {
 }
 
 .bg3 {
+    background: #5c6df4;
+}
+.bg4 {
     background: #F7CB3F;
 }
 
@@ -1696,8 +1699,8 @@ table.dbkit-table tr td {
 }
 
 .gradiant-bg .card-header a {
-    background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6);
-    background-image: linear-gradient(to bottom right, #8914fe, #8160f6);
+    background-image: -webkit-linear-gradient(top left, #0098d2, #00b8e9);
+    background-image: linear-gradient(to bottom right, #0098d2, #00b8e9);
     color: #fff;
 }
 
@@ -1890,7 +1893,7 @@ p.card-text {
 /*-------------------- 16. Pagination ------------------- */
 
 .pg-color-border li a {
-    border-color: #007BFF;
+    border-color: #0098d2;
 }
 
 .pagination li a {
@@ -1996,7 +1999,7 @@ label {
 }
 
 .fw-icons a:hover {
-    color: #007BFF;
+    color: #0098d2;
 }
 
 .fw-icons a i {
@@ -2052,7 +2055,7 @@ label {
 }
 
 .icon-container:hover span {
-    color: #007BFF;
+    color: #0098d2;
 }
 
 /*-------------------- END Icons ------------------- */
@@ -2084,11 +2087,12 @@ table tr td [class^="ti-"] {
 
 .status-p {
     color: #fff;
-    padding: 0px 20px 1px;
+    padding: 0px 10px 1px;
     border-radius: 20px;
     display: inline-block;
     text-transform: capitalize;
     vertical-align: middle;
+    font-size: 0.8em;
 }
 
 /*-------------------- END Table Basic ------------------- */
@@ -2838,19 +2842,19 @@ table.dataTable thead td {
 }
 
 .btn-float{
-	width:65px;
-	height:65px;
+	width:45px;
+	height:45px;
 	border-radius:100%;
-	background:#872DFC;
+	background:#0098d2;
 	right:0;
 	bottom:0;
 	position:fixed;
-	margin-right:30px;
-	margin-bottom:30px;
+	margin-right:25px;
+	margin-bottom:25px;
 	border:none;
 	outline:none;
 	color:#FFF;
-	font-size:40px;
+	font-size:17px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	transition:.3s;
 	z-index: 99;
@@ -2894,4 +2898,8 @@ i.verde{
 .btn-xxs{
     padding: 0.1em 0.5em;
     font-size: 11px;
+}
+
+.form-group-xs{
+    margin-bottom: 0.3rem;
 }

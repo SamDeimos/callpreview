@@ -11,15 +11,16 @@
             <?php echo form_open('', 'id="form-delete"') ?>
             <div class="modal-body">
                 <p>Esta acción no se puede deshacer, ¿Desea eliminar este registro?</p>
+                <div id="extra"></div>
                 <?php
                 $idDelete = array(
-                    'type'  => 'text',
+                    'type'  => 'hidden',
                     'name'  => 'idDelete',
                     'id'    => 'idDelete',
                     'class' => 'form-control form-control-sm',
                 );
                 $modulo = array(
-                    'type'  => 'text',
+                    'type'  => 'hidden',
                     'name'  => 'modulo',
                     'id'    => 'modulo',
                     'class' => 'form-control form-control-sm',

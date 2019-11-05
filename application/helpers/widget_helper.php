@@ -16,7 +16,7 @@ if (!function_exists('widget_cantidad_ventas_semanales')) {
             case 2:
                 //Listado de vestas para vendedores
                 $CI->db->where('a.id_user', $id_user);
-                $CI->db->where('d.id_statusventa', $idestado);                
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
             case 3:
                 //Listado de vestas para DIRECTORES O DUEÑOS DE GRUPO
@@ -27,7 +27,7 @@ if (!function_exists('widget_cantidad_ventas_semanales')) {
                 break;
             case 4:
                 //Mosmotramos todas las ventas si es Autorizador
-                $CI->db->where('d.id_statusventa', $idestado);                
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
         }
 
@@ -70,11 +70,11 @@ if (!function_exists('widget_cantidad_ventas_mensuales')) {
                 $id_grupo = get_id_grupo($id_user);
                 $CI->db->join('md_grupos g', 'g.belong_user_grupo like concat("%", a.id_user, "%")', 'inner');
                 $CI->db->where('g.id_grupo', $id_grupo);
-                $CI->db->where('d.id_statusventa', $idestado);                
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
             case 4:
                 //Mosmotramos todas las ventas si es Autorizador
-                $CI->db->where('d.id_statusventa', $idestado);                
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
         }
 
@@ -104,18 +104,18 @@ if (!function_exists('widget_importe_ventas_mensuales')) {
             case 2:
                 //Listado de vestas para vendedores
                 $CI->db->where('a.id_user', $id_user);
-                $CI->db->where('d.id_statusventa', $idestado);                               
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
             case 3:
                 //Listado de vestas para DIRECTORES O DUEÑOS DE GRUPO
                 $id_grupo = get_id_grupo($id_user);
                 $CI->db->join('md_grupos g', 'g.belong_user_grupo like concat("%", a.id_user, "%")', 'inner');
                 $CI->db->where('g.id_grupo', $id_grupo);
-                $CI->db->where('d.id_statusventa', $idestado);                
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
             case 4:
                 //Mosmotramos todas las ventas si es Autorizador
-                $CI->db->where('d.id_statusventa', $idestado);                
+                $CI->db->where('d.id_statusventa', $idestado);
                 break;
         }
 

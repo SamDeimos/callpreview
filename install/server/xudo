@@ -1,0 +1,35 @@
+#! /bin/sh
+ 
+NAME=xudo
+DESC="Demonio del servicio xudo"
+PIDFILE="/var/run/${NAME}.pid"
+LOGFILE="/var/log/${NAME}.log"
+ 
+test -x $DAEMON || exit 0
+ 
+set -e
+ 
+case "$1" in
+    start)
+        echo "Starting ${DESC}: "
+	forever start /var/lock/subsys/xudo_server/index.js >> ${LOGFILE}
+        ;;
+    stop)
+        echo "Stopping $DESC: "
+        forever stop /var/lock/subsys/xudo_server/index.js >> ${LOGFILE}
+        rm -f $PIDFILE
+        ;;
+    restart|force-reload)
+        echo "Restarting $DESC: "
+        forever stop /var/lock/subsys/xudo_server/index.js 
+        sleep 1
+        forever start /var/lock/subsys/xudo_server/index.js
+        ;;
+    *)
+        N=/etc/init.d/$NAME
+        echo "Use: $N {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+ 
+exit 0
